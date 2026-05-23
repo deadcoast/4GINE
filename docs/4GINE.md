@@ -75,23 +75,21 @@
 
 ### (D.1) STYLE EXAMPLES
 
-| Name / phrase                                | Description                                                                         | Game examples                                               |
-| -------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| **Low-poly 3D**                              | Sparse polygon models, angular silhouettes, simple geometry                         | *Super Mario 64*, *Tomb Raider*, *Virtua Fighter*           |
-| **PSX-style / PS1-style 3D**                 | Low-poly models, low-res textures, texture wobble, dithering, vertex jitter         | *Metal Gear Solid*, *Silent Hill*, *Crash Bandicoot*        |
-| **Affine texture mapping / texture warping** | The “wobbly” PS1 wall/floor texture distortion                                      | Very PS1-associated                                         |
-| **Vertex jitter / polygon jitter**           | Vertices snap or wobble because of limited precision                                | PS1-style horror and action games                           |
-| **Dithered 3D**                              | Grainy color blending caused by limited color depth                                 | PS1, Saturn, some PC/arcade looks                           |
-| **Flat-shaded low poly**                     | Polygons have solid colors or very simple lighting, little texture detail           | *Virtua Racing*, *Star Fox*, early arcade 3D                |
-| **Gouraud-shaded 3D**                        | Smooth vertex lighting across polygons, often plastic-looking                       | Arcade racers, Saturn/PS1/N64 games                         |
-| **Texture-mapped low poly**                  | Low-poly geometry with painted image textures                                       | Most mid/late-90s 3D                                        |
-| **Billboard sprite 3D**                      | 2D sprites placed in 3D worlds, often for trees, enemies, effects                   | *Doom*-descended games, *Mario Kart 64*, RPGs               |
-| **Pre-rendered 3D backgrounds**              | Static rendered backgrounds with real-time characters                               | *Resident Evil*, *Final Fantasy VII–IX*                     |
-| **Pre-rendered sprite 3D / CGI sprites**     | 3D models rendered into 2D sprites                                                  | *Donkey Kong Country*, *Killer Instinct*, some arcade games |
-| **Voxel graphics**                           | 3D made from volume-like blocks/points rather than polygons                         | *Comanche*, *Outcast*                                       |
-| **Cel-shaded 3D / toon-shaded 3D**           | Cartoon-like outlined or flat-color 3D                                              | *Jet Set Radio*, *The Wind Waker*                           |
-| **Fixed-function 3D**                        | Early hardware pipeline before programmable shaders; very useful term for 1995–2005 | Dreamcast, PS2, GameCube, Xbox-era rendering                |
-| **Early real-time CGI**                      | When games looked like playable toy-like CGI, often glossy/simple                   | Dreamcast/PS2/GameCube cutscene-adjacent look               |
+1. **Low-poly 3D** — the broad modeling style.
+2. **Texture-mapped low-poly 3D** — most console 3D from this era.
+3. **Affine-textured 3D** — PS1-style warped textures.
+4. **Dithered 3D** — grainy PS1/Saturn/early PC color look.
+5. **Vertex-lit 3D** — lighting calculated at vertices, not per pixel.
+6. **Gouraud-shaded 3D** — smooth-shaded polygonal lighting.
+7. **Flat-shaded 3D** — hard polygon facets, often untextured.
+8. **Billboarded 3D** — 2D sprites in a 3D scene.
+9. **Pre-rendered 3D** — CGI backgrounds or sprites rendered offline.
+10. **Fixed-function 3D** — pre-modern-shader hardware look.
+11. **Cel-shaded / toon-shaded 3D** — cartoon rendering.
+12. **Arcade 3D** — Model 2/Model 3/Naomi-style clean, bright 3D.
+13. **Early real-time CGI** — toy-like, glossy, early-2000s 3D realism.
+14. **Sixth-generation 3D** — PS2/GameCube/Dreamcast/Xbox-era look.
+15. **Retro 3D** — modern umbrella term for recreating any of these.
 
 ---
 
@@ -109,7 +107,7 @@
 [SP]: SOFT_PROVEN "Proven as plausible in practice, with meticulously formulated mathematics and critical, open minded theory adjustments. Format is proven as can be WITHOUT direct actionable live testing data"
 [TP]: TECHNICALLY_PLAUSIBLE "A standard of theory to follow for what is considered plasible, allowing for creative freedom without drifting into incoherent nonsense"
 [WL]: WORKFLOW "The global goals, end goals and Roadmap of the workflow"
-[WL01]: 
+[WL01]: WORKFLOW_ONE "[TODO]"
 [PW01]: THEORIZE_BRAINSTORM "Align context, seek creative solutions, find out of the box work arounds, seek where people failed and use only the reason why they failed as learning data, avoid ingesting data and recreating it slightly different as your own.[DN],[DN01],[CW]"
 [SA]: SPINALTAP_ALGORITHM "A series of modular algorithms designed by treating the human nervous system as a framework ideology for a mathematic 3D engine. To collapse all relationships, the mathematic sequence simplified is nervous_system[1] -> vertebrae[2] -> spinal_column[3]"
 [SA01]: nervous_system "large algorithm batch with a narrow scope of work. Each sequence comples their own set of formulations to cohesively run one ecosystem. They all have their own different, unique purposes that operate the ecosystem that is interdependant. The most simple and modular modules. Covers vastly more things but do not over extend their complexity from each modulated area of the nervous_system."
