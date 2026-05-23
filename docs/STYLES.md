@@ -112,7 +112,7 @@ Use combinations like:
 
 The phrase I think best captures what you’re after overall is:
 
-**pre-shader-era low-poly 3D**
+> **pre-shader-era low-poly 3D**
 
 And when you want the dirtier PS1/N64-specific nostalgia:
 
@@ -121,3 +121,5 @@ And when you want the dirtier PS1/N64-specific nostalgia:
 [1]: https://www.david-colson.com/2021/11/30/ps1-style-renderer.html?utm_source=chatgpt.com "Building a PS1 style retro 3D renderer - David Colson"
 [2]: https://ultra64.ca/files/documentation/online-manuals/man/n64man/misc/glossaryGraphic.html?utm_source=chatgpt.com "N64 Graphics Terminology"
 [3]: https://sittingduck.itch.io/n64-material-shader-for-gamemaker?utm_source=chatgpt.com "N64 Material Shader for GameMaker by SittingDuck - Itch.io"
+
+---
