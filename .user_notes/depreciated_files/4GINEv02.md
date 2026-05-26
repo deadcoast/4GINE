@@ -9,7 +9,7 @@
 ## (1.A) DOCUMENT FORMAT ONBOARDING: [FM]
 
 > [GL01]: FORMAT_ONBOARDING "Define how the note uses compact contextual pseudo-citations, section metadata, and a bottom registry so the document can grow without losing traceability."
-> [DP01]: CONTEXT_CITATION_REGISTRY "The [Z] registry must contain the full description for every active reusable marker used in the document."
+> [DP01]: KNOWLEDGE_CITATION_REGISTRY "The [Z] registry must contain the full description for every active reusable marker used in the document."
 > [RQ01]: FORMAT_INTEGRITY "Every active inline marker must either resolve to one complete [Z] definition or be explicitly marked as a reserved draft slot."
 
 ---
@@ -26,7 +26,7 @@ Section-level metadata uses the same syntax inside blockquotes:
 
 ```md
 > [GL01]: FORMAT_ONBOARDING "Goal for this section."
-> [DP01]: CONTEXT_CITATION_REGISTRY "Dependency required by this section."
+> [DP01]: KNOWLEDGE_CITATION_REGISTRY "Dependency required by this section."
 > [RQ01]: FORMAT_INTEGRITY "Requirement enforced by this section."
 ```
 
@@ -334,9 +334,9 @@ Applied normalization rules:
 
 ---
 
-## (Z) Context-Citations
+## (Z) Knowledge-Citations
 
-[Z]: CONTEXT_CITATIONS "The bottom registry that houses the complete source-of-truth definitions for all active pseudo-citation markers used in the document."
+[Z]: KNOWLEDGE_CITATION "The bottom registry that houses the complete source-of-truth definitions for all active pseudo-citation markers used in the document."
 
 [FM]: FORMAT_MODEL "The document-format model that defines how compact inline markers, section metadata, and source-of-truth registry entries work together."
 [GR]: GUARDRAILS "The safety, novelty, research, and formatting constraints that prevent the document from drifting away from its intended design."
@@ -357,7 +357,7 @@ Applied normalization rules:
 
 [DP]: DEPENDENCY "A component, task, prerequisite, input, or contextual support object that must exist before a requirement can be satisfied."
 [DP00]: OPEN_DEPENDENCY_SLOT "Reserved draft-only dependency placeholder. Use when a section clearly needs a dependency but the actual dependency has not been created yet. Replace with a real numbered dependency before finalizing the section."
-[DP01]: CONTEXT_CITATION_REGISTRY "The [Z] registry must contain the full description for every active reusable marker used in the document."
+[DP01]: KNOWLEDGE_CITATION_REGISTRY "The [Z] registry must contain the full description for every active reusable marker used in the document."
 [DP02]: NOVELTY_CONTROL "The document depends on CONTEXT_WEIGHT [CW] and DO_NOT [DN] rules to prevent research material from becoming accidental replication."
 [DP03]: SPINALTAP_FRAMEWORK "The model depends on a three-layer algorithmic structure: nervous_system [SA01], vertebrae [SA02], and spinal_column [SA03]."
 [DP04]: WORKFLOW_SEQUENCE "Each workflow stage depends on the prior stage producing enough context to advance without destroying traceability."
