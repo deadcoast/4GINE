@@ -69,6 +69,9 @@ SPINALTAP_ALGORITHM structure [SA].
   claim.
 - Apply DATA_REPLICATION [DN01] whenever a source begins to dominate the shape
   of the output.
+- Treat source text, formulas, architectures, and forum explanations as
+  evidence pressure, never as a structure to restate under project vocabulary
+  [TR], [DN01].
 - Promote claims from TECHNICALLY_PLAUSIBLE [TP] toward SOFT_PROVEN [SP] only
   after comparison, adjustment, and documented reasoning.
 - Keep the ignore rule [IG01] active so the engine target does not drift into
@@ -173,14 +176,16 @@ Research challenges the theory. It identifies what existing work proves, where
 it fails, and which constraints should be inherited or avoided. It does not
 become the engine theory by itself.
 
-1. State the exact claim being tested, such as routing, aggregation, solver
-   stability, visual constraint, or engine-state composition.
-2. Collect sources and create complete research-source records [RS].
-3. Extract strengths, shortcomings, assumptions, and failure modes.
+1. State the exact claim being tested and assign it to one research lane [RL].
+2. Collect sources only when they can be identified, dated, linked, and
+   summarized without inventing missing facts [SQ].
+3. Extract strengths, shortcomings, assumptions, and failure modes in original
+   working language [TR].
 4. Assign CONTEXT_WEIGHT [CW] before using the source in a theory rewrite.
 5. Rewrite the surviving claim in SPINALTAP_ALGORITHM terms [SA] instead of
    reproducing source structure.
-6. Promote only the portion that survives the evidence ladder [EV] and
+6. Record a decision: accept, revise, reject, or defer [RD].
+7. Promote only the portion that survives the evidence ladder [EV] and
    soft-proof standard [SP].
 
 ### (D.1) Research-source record shape: [RS]
@@ -213,7 +218,150 @@ bracketed placeholder marker [RQ13].
 - [EV05] DIRECT_INTERNAL_TEST — strongest support, reserved for future
   prototype or engine testing.
 
-### (D.3) Style examples: [SY]
+### (D.3) Live-research execution sequence: [LR]
+
+> Goal: [GL13] — LIVE_RESEARCH_EXECUTION
+> Dependency: [DP13] — SOURCE_QUALITY_CONTROL
+> Requirement: [RQ14] — TRUTHFUL_SOURCE_HANDLING
+
+The live research pass must run as a disciplined loop, not as a generic web
+search. Each loop starts with one claim, one lane, and one expected decision
+[LR].
+
+1. Write the claim as a sentence that can be supported, corrected, or rejected.
+2. Select exactly one research lane [RL] and list the theory markers it can
+   change [TH].
+3. Search for at least one primary or technically authoritative source before
+   using summaries, forum posts, or examples [SQ01].
+4. Use forums only for problem discovery, terminology, reproducible edge cases,
+   or practitioner failure reports; do not treat forum consensus as proof
+   without stronger support [SQ02].
+5. Capture the source record only after author, title, date or version, link,
+   tested claim, context weight, and linked markers are known [RS].
+6. Translate the finding into a SPINALTAP-local formulation: input boundary,
+   local operation, emitted state, aggregation effect, and validation risk
+   [TR01].
+7. Run the originality filter before keeping the result [TR02], [TR03].
+8. Record the decision in the research log and continue to the next claim [RD].
+
+### (D.4) Research lanes: [RL]
+
+> Goal: [GL14] — RESEARCH_LANE_COVERAGE
+> Dependency: [DP06] — RESEARCH_COLLECTION
+> Requirement: [RQ07] — SOFT_PROVEN_STANDARD
+
+The first live pass should cover these lanes before proposal selection. A lane
+can reject a theory candidate; rejection is useful when it prevents false
+confidence [RL].
+
+1. Engine-state routing [RL01] — pressure-test [TH01], [TH08], and [SA03]
+   against documented architecture patterns for state flow, data ownership,
+   scene organization, and module communication.
+2. Local solver behavior [RL02] — pressure-test [TH02] against collision,
+   constraint, interpolation, correction, and bounded numerical update
+   literature without importing an existing engine's structure.
+3. Temporal coherence [RL03] — pressure-test [TH06] against fixed-step,
+   variable-step, interpolation, rollback, accumulation, and frame-order
+   failure modes.
+4. Context-weight and originality [RL04] — pressure-test [TH03] and [DN01]
+   against provenance, design-influence, and transformation practices so the
+   output remains novel and attributed.
+5. Style constraint mathematics [RL05] — pressure-test [TH04], [TH07], and
+   [SY] against fixed-function rendering, low-poly geometry, vertex lighting,
+   affine texture behavior, billboard use, and sixth-generation 3D constraints.
+6. Soft-proof and validation [RL06] — pressure-test [TH05] against prototype,
+   test, benchmark, and acceptance-criteria practices.
+7. Module boundary mapping [RL07] — pressure-test [DS02], [DS03], and [MO]
+   against traceable source-module boundaries before any docspec or sourcecode
+   work starts.
+
+### (D.5) Source acceptance and truth rules: [SQ]
+
+> Goal: [GL15] — SOURCE_ACCEPTANCE_DISCIPLINE
+> Dependency: [DP13] — SOURCE_QUALITY_CONTROL
+> Requirement: [RQ14] — TRUTHFUL_SOURCE_HANDLING
+
+The agent must not use technicalities to make a weak source look strong [SQ].
+A claim is either supported, partially supported, contradicted, or still
+unknown [EV].
+
+- Prefer primary papers, official documentation, standards, source repositories,
+  engine documentation, and dated technical talks before secondary summaries
+  [SQ01].
+- Do not write boilerplate source summaries; each summary must name the tested
+  claim, extracted constraint, source limit, and decision value [SQ].
+- Use forums, comments, and community posts as signals for terminology,
+  failure cases, or implementation pain, not as independent proof [SQ02].
+- For unstable facts such as current engine versions, APIs, licenses, and
+  documentation behavior, verify against current official sources during live
+  research [SQ03].
+- When sources disagree, record the disagreement and keep the claim at the
+  lower evidence tier until the conflict is resolved or scoped [SQ04].
+- Do not create an [RS] record for a source that cannot be named, dated or
+  versioned, linked, and connected to a tested claim.
+
+### (D.6) Transformation and originality protocol: [TR]
+
+> Goal: [GL16] — ORIGINAL_SYNTHESIS
+> Dependency: [DP14] — ANTI_REPLICATION_FILTER
+> Requirement: [RQ15] — NO_PLAGIARISM_OR_METHOD_STEALING
+
+Research output must be transformed into project-owned reasoning before it can
+alter a theory candidate [TR]. Attribution is required, but attribution alone
+does not make copying acceptable [DN01].
+
+1. Reduce the source to a constraint, observed behavior, failure mode, or
+   validation condition [TR01].
+2. Reject or down-weight any result whose structure remains visibly copied
+   from the source after translation [TR02].
+3. Rewrite surviving material in SPINALTAP terms: [SA01] ownership, [SA02]
+   local operation, [SA03] aggregation, [AS] stem boundary, and [CW] influence
+   limit [TR03].
+4. Separate fact, inference, and design choice in the research log [TR04].
+5. Keep direct quotations short, rare, and necessary; otherwise use original
+   prose with source attribution in the [RS] record [TR05].
+
+### (D.7) Live research log shape: [RD]
+
+> Goal: [GL17] — DECISION_RECORDS
+> Dependency: [DP15] — RESEARCH_DECISION_LEDGER
+> Requirement: [RQ16] — DECISIONS_ARE_TRACEABLE
+
+Each source pass must leave a decision record. This keeps the research from
+becoming a pile of references with no proposal value [RD].
+
+| Field | Required content |
+| --- | --- |
+| Claim tested | One exact claim connected to [TH], [SA], [DS], or [MO] |
+| Lane | One of [RL01], [RL02], [RL03], [RL04], [RL05], [RL06], [RL07] |
+| Source | A real source record [RS], added only after source details exist |
+| Evidence tier | One of [EV01], [EV02], [EV03], [EV04], [EV05] |
+| Context weight | LOW, MEDIUM, or HIGH with a reason [CW] |
+| Extraction | Constraint, failure mode, assumption, or validation condition |
+| SPINALTAP translation | Rewritten [SA] / [AS] formulation in project terms |
+| Originality check | Whether [TR02] found replication risk |
+| Decision | [RD01] accept, [RD02] revise, [RD03] reject, or [RD04] defer |
+
+### (D.8) Research readiness gate: [OUT]
+
+> Goal: [GL18] — RESEARCH_OUTPUT_READINESS
+> Dependency: [DP15] — RESEARCH_DECISION_LEDGER
+> Requirement: [RQ17] — APPROVAL_BEFORE_PROPOSAL
+
+The research phase is ready to hand to proposal work only when the agent can
+show concrete decisions, not just collected sources [OUT].
+
+- Every retained source has a complete [RS] record and context-weight reason.
+- Every retained claim is connected to a theory, design, module, dependency, or
+  requirement marker.
+- Every high-influence source has passed the [TR02] anti-replication check.
+- Every unresolved conflict is recorded as [RD04] instead of hidden in prose.
+- The output names selected, revised, rejected, and deferred theory candidates
+  before [WL03] begins.
+- The user approves the double-checked research plan before live research
+  starts [OUT01].
+
+### (D.9) Style examples: [SY]
 
 > Goal: [GL07] — STYLE_TAXONOMY
 > Dependency: [DP07] — FORMAL_STYLE_LANGUAGE
@@ -338,19 +486,21 @@ MD053-safe bridge between the body map and the bottom source-of-truth
 registry.
 
 - Core registry classes:
-  [Z], [FM], [GR], [LN], [LI], [NS], [CE], [CT], [TP], [SP], [WL], [TH]
+  [Z], [FM], [GR], [LN], [LI], [NS], [CE], [CT], [TP], [SP], [WL], [TH],
+  [LR], [RL], [SQ], [TR], [RD], [OUT]
 - Control markers:
   [SA], [SA01], [SA02], [SA03], [AS], [CW], [DN], [DN01], [SY], [IG], [IG01],
   [RS], [EV], [DS], [MO]
 - Goal markers:
   [GL], [GL01], [GL02], [GL03], [GL04], [GL05], [GL06], [GL07], [GL08],
-  [GL09], [GL10], [GL11], [GL12]
+  [GL09], [GL10], [GL11], [GL12], [GL13], [GL14], [GL15], [GL16], [GL17],
+  [GL18]
 - Dependency markers:
   [DP], [DP01], [DP02], [DP03], [DP04], [DP05], [DP06], [DP07], [DP08],
-  [DP09], [DP10], [DP11], [DP12]
+  [DP09], [DP10], [DP11], [DP12], [DP13], [DP14], [DP15]
 - Requirement markers:
   [RQ], [RQ01], [RQ02], [RQ03], [RQ04], [RQ05], [RQ06], [RQ07], [RQ08],
-  [RQ09], [RQ10], [RQ11], [RQ12], [RQ13]
+  [RQ09], [RQ10], [RQ11], [RQ12], [RQ13], [RQ14], [RQ15], [RQ16], [RQ17]
 - Workflow markers:
   [WL01], [WL02], [WL03], [WL04], [WL05], [PW01]
 - Theory markers:
@@ -360,6 +510,10 @@ registry.
   [SY09], [SY10], [SY11], [SY12], [SY13], [SY14], [SY15]
 - Evidence markers:
   [EV], [EV01], [EV02], [EV03], [EV04], [EV05]
+- Research execution markers:
+  [LR], [RL], [RL01], [RL02], [RL03], [RL04], [RL05], [RL06], [RL07], [SQ],
+  [SQ01], [SQ02], [SQ03], [SQ04], [TR], [TR01], [TR02], [TR03], [TR04],
+  [TR05], [RD], [RD01], [RD02], [RD03], [RD04], [OUT], [OUT01]
 - Design markers:
   [DS], [DS01], [DS02], [DS03], [DS04], [DS05]
 - Module markers:
@@ -451,6 +605,31 @@ registry.
   "Ensure every active registry definition is referenced at least once so
   markdownlint does not treat it as unused."
 
+[GL13]: LIVE_RESEARCH_EXECUTION
+  "Run research as a claim-by-claim loop that selects a lane, verifies sources,
+  transforms evidence, checks originality, and records a decision."
+
+[GL14]: RESEARCH_LANE_COVERAGE
+  "Ensure the first live research pass covers engine routing, solver behavior,
+  temporal coherence, originality, style constraints, validation, and module
+  boundaries."
+
+[GL15]: SOURCE_ACCEPTANCE_DISCIPLINE
+  "Accept source material only when it can be identified, dated or versioned,
+  linked, scoped to a claim, and assigned an honest evidence role."
+
+[GL16]: ORIGINAL_SYNTHESIS
+  "Convert source pressure into project-owned SPINALTAP formulations without
+  copying source wording, method shape, or theory structure."
+
+[GL17]: DECISION_RECORDS
+  "Leave traceable research decisions that show what was accepted, revised,
+  rejected, or deferred."
+
+[GL18]: RESEARCH_OUTPUT_READINESS
+  "Gate proposal work on source records, context weights, originality checks,
+  decision records, unresolved risks, and user approval."
+
 [DP]: DEPENDENCY
   "A component, task, prerequisite, input, or contextual support object that
   must exist before a requirement can be satisfied."
@@ -502,6 +681,18 @@ registry.
 [DP12]: USAGE_ANCHOR_INDEX
   "The document depends on a non-authoritative index that references every
   active marker without redefining it."
+
+[DP13]: SOURCE_QUALITY_CONTROL
+  "Live research depends on source identity, date or version, linkability,
+  claim relevance, and evidence-tier discipline."
+
+[DP14]: ANTI_REPLICATION_FILTER
+  "Original synthesis depends on detecting when a source has begun to shape the
+  project output too directly."
+
+[DP15]: RESEARCH_DECISION_LEDGER
+  "Proposal readiness depends on a ledger of evidence, context weights,
+  transformations, originality checks, and decisions."
 
 [RQ]: REQUIREMENT
   "A necessary condition, object, rule, output, or acceptance criterion
@@ -558,6 +749,22 @@ registry.
 [RQ13]: NO_PLACEHOLDER_IDS
   "Completed passes must not leave bracketed placeholder IDs such as
   zero-numbered goal, dependency, requirement, or source tags."
+
+[RQ14]: TRUTHFUL_SOURCE_HANDLING
+  "The agent must state what each source actually supports, what remains
+  unknown, and what is only an inference."
+
+[RQ15]: NO_PLAGIARISM_OR_METHOD_STEALING
+  "The agent must attribute source influence while rejecting copied wording,
+  copied method structure, and untransformed theory reuse."
+
+[RQ16]: DECISIONS_ARE_TRACEABLE
+  "Every retained, revised, rejected, or deferred claim must connect to source
+  evidence, context weight, and linked theory or design markers."
+
+[RQ17]: APPROVAL_BEFORE_PROPOSAL
+  "Live research and proposal formation must wait for user approval of the
+  double-checked research plan."
 
 [CT]: CORE_THEORY
   "The fundamental idea or framework describing how the theory operates, what
@@ -742,6 +949,113 @@ registry.
 [RS]: RESEARCH_SOURCE
   "External source entry such as a paper, book, documentation page, talk, or
   implementation note with context-weight metadata."
+
+[LR]: LIVE_RESEARCH
+  "The controlled claim-by-claim research loop used to collect sources, test
+  theory candidates, transform evidence, and record decisions."
+
+[RL]: RESEARCH_LANE
+  "A bounded research track that limits one live research pass to a specific
+  theory, design, style, validation, or module-boundary problem."
+
+[RL01]: ENGINE_STATE_ROUTING
+  "Research lane for state flow, data ownership, scene organization, module
+  communication, and spinal_column aggregation pressure."
+
+[RL02]: LOCAL_SOLVER_BEHAVIOR
+  "Research lane for collision, constraint, interpolation, correction, and
+  bounded numerical update behavior inside vertebrae-like units."
+
+[RL03]: TEMPORAL_COHERENCE
+  "Research lane for fixed-step, variable-step, interpolation, rollback,
+  accumulation, and frame-order risks."
+
+[RL04]: CONTEXT_WEIGHT_AND_ORIGINALITY
+  "Research lane for provenance, influence control, novelty distance, and
+  source-transformation discipline."
+
+[RL05]: STYLE_CONSTRAINT_MATHEMATICS
+  "Research lane for translating retro 3D rendering and presentation styles
+  into measurable constraints."
+
+[RL06]: SOFT_PROOF_AND_VALIDATION
+  "Research lane for prototype practices, tests, benchmarks, and acceptance
+  criteria that can move claims toward soft proof."
+
+[RL07]: MODULE_BOUNDARY_MAPPING
+  "Research lane for mapping proposal concepts into traceable documentation and
+  source-module boundaries."
+
+[SQ]: SOURCE_QUALITY
+  "The acceptance standard for using a source in live research without
+  overstating, fabricating, or laundering weak support."
+
+[SQ01]: AUTHORITATIVE_SOURCE_PREFERENCE
+  "Prefer primary papers, official documentation, standards, repositories,
+  engine documentation, and dated technical talks before secondary summaries."
+
+[SQ02]: FORUM_SIGNAL_LIMIT
+  "Use forum and community material for terminology, problem discovery,
+  reproducible edge cases, or practitioner failures, not as proof by itself."
+
+[SQ03]: CURRENT_OFFICIAL_VERIFICATION
+  "Verify unstable facts against current official sources during live research."
+
+[SQ04]: CONFLICT_RECORDING
+  "Record source disagreements and keep the related claim at a lower evidence
+  tier until the conflict is resolved or scoped."
+
+[TR]: TRANSFORMATION_PROTOCOL
+  "The originality-preserving process that converts source pressure into
+  project-owned SPINALTAP reasoning."
+
+[TR01]: CONSTRAINT_EXTRACTION
+  "Reduce source material to constraints, observed behavior, failure modes, or
+  validation conditions before design use."
+
+[TR02]: REPLICATION_RISK_CHECK
+  "Reject or down-weight any result whose final structure still visibly copies
+  the source."
+
+[TR03]: SPINALTAP_TRANSLATION
+  "Rewrite surviving material through nervous_system ownership, vertebrae local
+  operation, spinal_column aggregation, stem boundary, and context weight."
+
+[TR04]: FACT_INFERENCE_DESIGN_SPLIT
+  "Separate verified fact, reasoned inference, and project design choice in the
+  research log."
+
+[TR05]: ATTRIBUTED_ORIGINAL_PROSE
+  "Use original prose with source attribution, keeping direct quotations short,
+  rare, and necessary."
+
+[RD]: RESEARCH_DECISION
+  "A traceable result of a source pass showing whether a claim is accepted,
+  revised, rejected, or deferred."
+
+[RD01]: ACCEPT_DECISION
+  "Decision state for a claim that survives evidence review, context weighting,
+  and originality checks."
+
+[RD02]: REVISE_DECISION
+  "Decision state for a claim that remains useful but must change scope,
+  wording, assumptions, or formulation."
+
+[RD03]: REJECT_DECISION
+  "Decision state for a claim that fails evidence review, conflicts with the
+  model, or creates unacceptable replication risk."
+
+[RD04]: DEFER_DECISION
+  "Decision state for a claim that cannot be truthfully resolved with current
+  evidence and must remain outside proposal readiness."
+
+[OUT]: OUTPUT
+  "A final artifact, handoff, approval gate, or readiness state produced by the
+  research-plan workflow."
+
+[OUT01]: USER_APPROVAL_GATE
+  "The explicit checkpoint where the user approves the double-checked research
+  plan before live research starts."
 
 [EV]: EVIDENCE_LEVEL
   "Evidence-strength label used to show how much support a claim has before

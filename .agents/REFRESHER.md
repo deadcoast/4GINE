@@ -9,9 +9,9 @@ mechanics in [ONBOARDING.md](ONBOARDING.md#4-operating-mechanics-op), and the
 MD053 repair section in
 [ONBOARDING.md](../.user_notes/depreciated_files/ONBOARDING_v02.md#7-md053-and-markdownlint-repair-md053) [MD053].
 When creating a new project document, populate the blank specimen at
-[CITESOURCE_TEMPLATE.md](templates/ONBOARDING.md#0-template-role-tpl01) [A1] and
+[CITESOURCE_TEMPLATE.md](template/TEMPLATE_ONBOARDING.md#0-template-role-tpl01) [A1] and
 follow its agent population protocol at
-[CITESOURCE_TEMPLATE.md](templates/ONBOARDING.md#8-population-protocol-for-agents-tpl02)
+[CITESOURCE_TEMPLATE.md](template/TEMPLATE_ONBOARDING.md#8-population-protocol-for-agents-tpl02)
 [CLI].
 
 Keep the core rule active: reference markers above, define each active marker
