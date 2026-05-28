@@ -1,3 +1,6 @@
 # .user_notes - rought notes
 .user_notes/
 .venv/
+__pycache__/
+*.py[cod]
+.mypy_cache/

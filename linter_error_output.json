@@ -1,0 +1,796 @@
+[{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/context_weight.py",
+	"owner": "_generated_diagnostic_collection_name_#7",
+	"code": {
+		"value": "arg-type",
+		"target": {
+			"$mid": 1,
+			"path": "/en/latest/_refs.html",
+			"scheme": "https",
+			"authority": "mypy.readthedocs.io",
+			"fragment": "code-arg-type"
+		}
+	},
+	"severity": 8,
+	"message": "Argument 1 to \"float\" has incompatible type \"object\"; expected \"str | Buffer | SupportsFloat | SupportsIndex\"",
+	"source": "Mypy",
+	"startLineNumber": 27,
+	"startColumn": 18,
+	"endLineNumber": 27,
+	"endColumn": 44,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/context_weight.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportArgumentType",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportArgumentType.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Argument of type \"object\" cannot be assigned to parameter \"x\" of type \"ConvertibleToFloat\" in function \"__new__\"\n  Type \"object\" is not assignable to type \"ConvertibleToFloat\"\n    \"object\" is not assignable to \"str\"\n    \"object\" is incompatible with protocol \"Buffer\"\n      \"__buffer__\" is not present\n    \"object\" is incompatible with protocol \"SupportsFloat\"\n      \"__float__\" is not present\n    \"object\" is incompatible with protocol \"SupportsIndex\"\n      \"__index__\" is not present",
+	"source": "Pylance",
+	"startLineNumber": 27,
+	"startColumn": 18,
+	"endLineNumber": 27,
+	"endColumn": 44,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/context_weight.py",
+	"owner": "_generated_diagnostic_collection_name_#7",
+	"code": {
+		"value": "arg-type",
+		"target": {
+			"$mid": 1,
+			"path": "/en/latest/_refs.html",
+			"scheme": "https",
+			"authority": "mypy.readthedocs.io",
+			"fragment": "code-arg-type"
+		}
+	},
+	"severity": 8,
+	"message": "Argument 1 to \"float\" has incompatible type \"object\"; expected \"str | Buffer | SupportsFloat | SupportsIndex\"",
+	"source": "Mypy",
+	"startLineNumber": 45,
+	"startColumn": 15,
+	"endLineNumber": 45,
+	"endColumn": 37,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/context_weight.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportArgumentType",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportArgumentType.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Argument of type \"object\" cannot be assigned to parameter \"x\" of type \"ConvertibleToFloat\" in function \"__new__\"\n  Type \"object\" is not assignable to type \"ConvertibleToFloat\"\n    \"object\" is not assignable to \"str\"\n    \"object\" is incompatible with protocol \"Buffer\"\n      \"__buffer__\" is not present\n    \"object\" is incompatible with protocol \"SupportsFloat\"\n      \"__float__\" is not present\n    \"object\" is incompatible with protocol \"SupportsIndex\"\n      \"__index__\" is not present",
+	"source": "Pylance",
+	"startLineNumber": 45,
+	"startColumn": 15,
+	"endLineNumber": 45,
+	"endColumn": 37,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/context_weight.py",
+	"owner": "_generated_diagnostic_collection_name_#7",
+	"code": {
+		"value": "arg-type",
+		"target": {
+			"$mid": 1,
+			"path": "/en/latest/_refs.html",
+			"scheme": "https",
+			"authority": "mypy.readthedocs.io",
+			"fragment": "code-arg-type"
+		}
+	},
+	"severity": 8,
+	"message": "Argument 1 to \"float\" has incompatible type \"object\"; expected \"str | Buffer | SupportsFloat | SupportsIndex\"",
+	"source": "Mypy",
+	"startLineNumber": 46,
+	"startColumn": 15,
+	"endLineNumber": 46,
+	"endColumn": 30,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/context_weight.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportArgumentType",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportArgumentType.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Argument of type \"object\" cannot be assigned to parameter \"x\" of type \"ConvertibleToFloat\" in function \"__new__\"\n  Type \"object\" is not assignable to type \"ConvertibleToFloat\"\n    \"object\" is not assignable to \"str\"\n    \"object\" is incompatible with protocol \"Buffer\"\n      \"__buffer__\" is not present\n    \"object\" is incompatible with protocol \"SupportsFloat\"\n      \"__float__\" is not present\n    \"object\" is incompatible with protocol \"SupportsIndex\"\n      \"__index__\" is not present",
+	"source": "Pylance",
+	"startLineNumber": 46,
+	"startColumn": 15,
+	"endLineNumber": 46,
+	"endColumn": 30,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/context_weight.py",
+	"owner": "_generated_diagnostic_collection_name_#7",
+	"code": {
+		"value": "arg-type",
+		"target": {
+			"$mid": 1,
+			"path": "/en/latest/_refs.html",
+			"scheme": "https",
+			"authority": "mypy.readthedocs.io",
+			"fragment": "code-arg-type"
+		}
+	},
+	"severity": 8,
+	"message": "Argument 1 to \"float\" has incompatible type \"object\"; expected \"str | Buffer | SupportsFloat | SupportsIndex\"",
+	"source": "Mypy",
+	"startLineNumber": 47,
+	"startColumn": 15,
+	"endLineNumber": 47,
+	"endColumn": 41,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/context_weight.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportArgumentType",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportArgumentType.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Argument of type \"object\" cannot be assigned to parameter \"x\" of type \"ConvertibleToFloat\" in function \"__new__\"\n  Type \"object\" is not assignable to type \"ConvertibleToFloat\"\n    \"object\" is not assignable to \"str\"\n    \"object\" is incompatible with protocol \"Buffer\"\n      \"__buffer__\" is not present\n    \"object\" is incompatible with protocol \"SupportsFloat\"\n      \"__float__\" is not present\n    \"object\" is incompatible with protocol \"SupportsIndex\"\n      \"__index__\" is not present",
+	"source": "Pylance",
+	"startLineNumber": 47,
+	"startColumn": 15,
+	"endLineNumber": 47,
+	"endColumn": 41,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/context_weight.py",
+	"owner": "_generated_diagnostic_collection_name_#7",
+	"code": {
+		"value": "arg-type",
+		"target": {
+			"$mid": 1,
+			"path": "/en/latest/_refs.html",
+			"scheme": "https",
+			"authority": "mypy.readthedocs.io",
+			"fragment": "code-arg-type"
+		}
+	},
+	"severity": 8,
+	"message": "Argument 1 to \"float\" has incompatible type \"object\"; expected \"str | Buffer | SupportsFloat | SupportsIndex\"",
+	"source": "Mypy",
+	"startLineNumber": 48,
+	"startColumn": 15,
+	"endLineNumber": 48,
+	"endColumn": 37,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/context_weight.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportArgumentType",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportArgumentType.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Argument of type \"object\" cannot be assigned to parameter \"x\" of type \"ConvertibleToFloat\" in function \"__new__\"\n  Type \"object\" is not assignable to type \"ConvertibleToFloat\"\n    \"object\" is not assignable to \"str\"\n    \"object\" is incompatible with protocol \"Buffer\"\n      \"__buffer__\" is not present\n    \"object\" is incompatible with protocol \"SupportsFloat\"\n      \"__float__\" is not present\n    \"object\" is incompatible with protocol \"SupportsIndex\"\n      \"__index__\" is not present",
+	"source": "Pylance",
+	"startLineNumber": 48,
+	"startColumn": 15,
+	"endLineNumber": 48,
+	"endColumn": 37,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/time_packet.py",
+	"owner": "_generated_diagnostic_collection_name_#7",
+	"code": {
+		"value": "arg-type",
+		"target": {
+			"$mid": 1,
+			"path": "/en/latest/_refs.html",
+			"scheme": "https",
+			"authority": "mypy.readthedocs.io",
+			"fragment": "code-arg-type"
+		}
+	},
+	"severity": 8,
+	"message": "Argument 1 to \"float\" has incompatible type \"object\"; expected \"str | Buffer | SupportsFloat | SupportsIndex\"",
+	"source": "Mypy",
+	"startLineNumber": 45,
+	"startColumn": 23,
+	"endLineNumber": 45,
+	"endColumn": 47,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/time_packet.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportArgumentType",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportArgumentType.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Argument of type \"object\" cannot be assigned to parameter \"x\" of type \"ConvertibleToFloat\" in function \"__new__\"\n  Type \"object\" is not assignable to type \"ConvertibleToFloat\"\n    \"object\" is not assignable to \"str\"\n    \"object\" is incompatible with protocol \"Buffer\"\n      \"__buffer__\" is not present\n    \"object\" is incompatible with protocol \"SupportsFloat\"\n      \"__float__\" is not present\n    \"object\" is incompatible with protocol \"SupportsIndex\"\n      \"__index__\" is not present",
+	"source": "Pylance",
+	"startLineNumber": 45,
+	"startColumn": 23,
+	"endLineNumber": 45,
+	"endColumn": 47,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/time_packet.py",
+	"owner": "_generated_diagnostic_collection_name_#7",
+	"code": {
+		"value": "call-overload",
+		"target": {
+			"$mid": 1,
+			"path": "/en/latest/_refs.html",
+			"scheme": "https",
+			"authority": "mypy.readthedocs.io",
+			"fragment": "code-call-overload"
+		}
+	},
+	"severity": 8,
+	"message": "No overload variant of \"int\" matches argument type \"object\"",
+	"source": "Mypy",
+	"startLineNumber": 45,
+	"startColumn": 53,
+	"endLineNumber": 45,
+	"endColumn": 77,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/time_packet.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportArgumentType",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportArgumentType.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Argument of type \"object\" cannot be assigned to parameter \"x\" of type \"ConvertibleToInt\" in function \"__new__\"\n  Type \"object\" is not assignable to type \"ConvertibleToInt\"\n    \"object\" is not assignable to \"str\"\n    \"object\" is incompatible with protocol \"Buffer\"\n      \"__buffer__\" is not present\n    \"object\" is incompatible with protocol \"SupportsInt\"\n      \"__int__\" is not present\n    \"object\" is incompatible with protocol \"SupportsIndex\"\n      \"__index__\" is not present",
+	"source": "Pylance",
+	"startLineNumber": 45,
+	"startColumn": 57,
+	"endLineNumber": 45,
+	"endColumn": 76,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/spinaltap/time_packet.py",
+	"owner": "_generated_diagnostic_collection_name_#7",
+	"severity": 2,
+	"message": "Possible overload variants:\n    def int(str | Buffer | SupportsInt | SupportsIndex | SupportsTrunc = ..., /) -> int\n    def int(str | bytes | bytearray, /, base: SupportsIndex) -> int",
+	"source": "Mypy",
+	"startLineNumber": 45,
+	"startColumn": 53,
+	"endLineNumber": 45,
+	"endColumn": 77,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_contract_kernel.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportOptionalMemberAccess",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportOptionalMemberAccess.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "\"code\" is not a known attribute of \"None\"",
+	"source": "Pylance",
+	"startLineNumber": 138,
+	"startColumn": 41,
+	"endLineNumber": 138,
+	"endColumn": 45,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_signal_constraint_spine.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportAttributeAccessIssue",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportAttributeAccessIssue.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Cannot access attribute \"code\" for class \"object\"\n  Attribute \"code\" is unknown",
+	"source": "Pylance",
+	"startLineNumber": 48,
+	"startColumn": 34,
+	"endLineNumber": 48,
+	"endColumn": 38,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_signal_constraint_spine.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportAttributeAccessIssue",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportAttributeAccessIssue.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Cannot access attribute \"reason\" for class \"object\"\n  Attribute \"reason\" is unknown",
+	"source": "Pylance",
+	"startLineNumber": 51,
+	"startColumn": 63,
+	"endLineNumber": 51,
+	"endColumn": 69,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_signal_constraint_spine.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportAttributeAccessIssue",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportAttributeAccessIssue.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Cannot access attribute \"code\" for class \"object\"\n  Attribute \"code\" is unknown",
+	"source": "Pylance",
+	"startLineNumber": 65,
+	"startColumn": 34,
+	"endLineNumber": 65,
+	"endColumn": 38,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_signal_constraint_spine.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportAttributeAccessIssue",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportAttributeAccessIssue.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Cannot access attribute \"reason\" for class \"object\"\n  Attribute \"reason\" is unknown",
+	"source": "Pylance",
+	"startLineNumber": 68,
+	"startColumn": 70,
+	"endLineNumber": 68,
+	"endColumn": 76,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_soft_proof_lab.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportOptionalMemberAccess",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportOptionalMemberAccess.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "\"code\" is not a known attribute of \"None\"",
+	"source": "Pylance",
+	"startLineNumber": 51,
+	"startColumn": 41,
+	"endLineNumber": 51,
+	"endColumn": 45,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_soft_proof_lab.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportOptionalMemberAccess",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportOptionalMemberAccess.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "\"reason\" is not a known attribute of \"None\"",
+	"source": "Pylance",
+	"startLineNumber": 52,
+	"startColumn": 55,
+	"endLineNumber": 52,
+	"endColumn": 61,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_spinal_reconciliation.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportArgumentType",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportArgumentType.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Argument of type \"object\" cannot be assigned to parameter \"obj\" of type \"Sized\" in function \"len\"\n  \"object\" is incompatible with protocol \"Sized\"\n    \"__len__\" is not present",
+	"source": "Pylance",
+	"startLineNumber": 27,
+	"startColumn": 30,
+	"endLineNumber": 27,
+	"endColumn": 58,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_spinal_reconciliation.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportIndexIssue",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportIndexIssue.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "\"__getitem__\" method not defined on type \"object\"",
+	"source": "Pylance",
+	"startLineNumber": 28,
+	"startColumn": 26,
+	"endLineNumber": 28,
+	"endColumn": 54,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_spinal_reconciliation.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportAttributeAccessIssue",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportAttributeAccessIssue.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Cannot access attribute \"code\" for class \"object\"\n  Attribute \"code\" is unknown",
+	"source": "Pylance",
+	"startLineNumber": 47,
+	"startColumn": 47,
+	"endLineNumber": 47,
+	"endColumn": 51,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_spinal_reconciliation.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportAttributeAccessIssue",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportAttributeAccessIssue.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Cannot access attribute \"reason\" for class \"object\"\n  Attribute \"reason\" is unknown",
+	"source": "Pylance",
+	"startLineNumber": 48,
+	"startColumn": 49,
+	"endLineNumber": 48,
+	"endColumn": 55,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_style_constraint_surface.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportOptionalMemberAccess",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportOptionalMemberAccess.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "\"geometry_limit\" is not a known attribute of \"None\"",
+	"source": "Pylance",
+	"startLineNumber": 27,
+	"startColumn": 40,
+	"endLineNumber": 27,
+	"endColumn": 54,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_style_constraint_surface.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportOptionalMemberAccess",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportOptionalMemberAccess.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "\"texture_limit\" is not a known attribute of \"None\"",
+	"source": "Pylance",
+	"startLineNumber": 28,
+	"startColumn": 40,
+	"endLineNumber": 28,
+	"endColumn": 53,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_style_constraint_surface.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportOptionalMemberAccess",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportOptionalMemberAccess.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "\"artifact_limits\" is not a known attribute of \"None\"",
+	"source": "Pylance",
+	"startLineNumber": 29,
+	"startColumn": 40,
+	"endLineNumber": 29,
+	"endColumn": 55,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_style_constraint_surface.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportOptionalMemberAccess",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportOptionalMemberAccess.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "\"code\" is not a known attribute of \"None\"",
+	"source": "Pylance",
+	"startLineNumber": 39,
+	"startColumn": 41,
+	"endLineNumber": 39,
+	"endColumn": 45,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_style_constraint_surface.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportOptionalMemberAccess",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportOptionalMemberAccess.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "\"reason\" is not a known attribute of \"None\"",
+	"source": "Pylance",
+	"startLineNumber": 40,
+	"startColumn": 56,
+	"endLineNumber": 40,
+	"endColumn": 62,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_time_packet_pump.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportCallIssue",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportCallIssue.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "No overloads for \"assertAlmostEqual\" match the provided arguments",
+	"source": "Pylance",
+	"startLineNumber": 17,
+	"startColumn": 9,
+	"endLineNumber": 17,
+	"endColumn": 68,
+	"relatedInformation": [
+		{
+			"startLineNumber": 192,
+			"startColumn": 9,
+			"endLineNumber": 192,
+			"endColumn": 26,
+			"message": "Overload 4 is the closest match",
+			"resource": "/c:/Users/ryanf/.vscode/extensions/ms-python.vscode-pylance-2026.2.1/dist/typeshed-fallback/stdlib/unittest/case.pyi"
+		}
+	],
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_time_packet_pump.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportArgumentType",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportArgumentType.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Argument of type \"float\" cannot be assigned to parameter \"second\" of type \"SupportsRSub[_T@assertAlmostEqual, SupportsAbs[SupportsRound[object]]]\" in function \"assertAlmostEqual\"\n  \"float\" is incompatible with protocol \"SupportsRSub[object, SupportsAbs[SupportsRound[object]]]\"\n    \"__rsub__\" is an incompatible type\n      Type \"(value: float, /) -> float\" is not assignable to type \"(x: _T_contra@SupportsRSub, /) -> _T_co@SupportsRSub\"\n        Parameter 1: type \"_T_contra@SupportsRSub\" is incompatible with type \"float\"\n          \"object\" is not assignable to \"float\"",
+	"source": "Pylance",
+	"startLineNumber": 17,
+	"startColumn": 62,
+	"endLineNumber": 17,
+	"endColumn": 67,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_time_packet_pump.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportCallIssue",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportCallIssue.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "No overloads for \"assertAlmostEqual\" match the provided arguments",
+	"source": "Pylance",
+	"startLineNumber": 18,
+	"startColumn": 9,
+	"endLineNumber": 18,
+	"endColumn": 64,
+	"relatedInformation": [
+		{
+			"startLineNumber": 192,
+			"startColumn": 9,
+			"endLineNumber": 192,
+			"endColumn": 26,
+			"message": "Overload 4 is the closest match",
+			"resource": "/c:/Users/ryanf/.vscode/extensions/ms-python.vscode-pylance-2026.2.1/dist/typeshed-fallback/stdlib/unittest/case.pyi"
+		}
+	],
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_time_packet_pump.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportArgumentType",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportArgumentType.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Argument of type \"float\" cannot be assigned to parameter \"second\" of type \"SupportsRSub[_T@assertAlmostEqual, SupportsAbs[SupportsRound[object]]]\" in function \"assertAlmostEqual\"\n  \"float\" is incompatible with protocol \"SupportsRSub[object, SupportsAbs[SupportsRound[object]]]\"\n    \"__rsub__\" is an incompatible type\n      Type \"(value: float, /) -> float\" is not assignable to type \"(x: _T_contra@SupportsRSub, /) -> _T_co@SupportsRSub\"\n        Parameter 1: type \"_T_contra@SupportsRSub\" is incompatible with type \"float\"\n          \"object\" is not assignable to \"float\"",
+	"source": "Pylance",
+	"startLineNumber": 18,
+	"startColumn": 60,
+	"endLineNumber": 18,
+	"endColumn": 63,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_vertebra_delta_worker.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportAttributeAccessIssue",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportAttributeAccessIssue.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Cannot access attribute \"code\" for class \"object\"\n  Attribute \"code\" is unknown",
+	"source": "Pylance",
+	"startLineNumber": 59,
+	"startColumn": 33,
+	"endLineNumber": 59,
+	"endColumn": 37,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/c:/Users/ryanf/github/_new/4/tests/test_vertebra_delta_worker.py",
+	"owner": "Pylance6",
+	"code": {
+		"value": "reportAttributeAccessIssue",
+		"target": {
+			"$mid": 1,
+			"path": "/microsoft/pylance-release/blob/main/docs/diagnostics/reportAttributeAccessIssue.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Cannot access attribute \"reason\" for class \"object\"\n  Attribute \"reason\" is unknown",
+	"source": "Pylance",
+	"startLineNumber": 62,
+	"startColumn": 48,
+	"endLineNumber": 62,
+	"endColumn": 54,
+	"modelVersionId": 1,
+	"origin": "extHost1"
+}]

@@ -63,6 +63,45 @@ The first source slice must not create:
 | 7 | Soft-Proof Lab specimen | [MG06] | [DC06] | [VG06] |
 | 8 | Minimal spinal reconciliation harness | [MG03], [MG04] | [DC03], [DC04] | [VG03], [VG04] |
 
+Step 1 status: `spinaltap/contract_kernel.py` owns the contract references,
+record fields, refusal states, promotion states, and initial proof specimen
+hook. `tests/test_contract_kernel.py` verifies the [DC01] through [DC06]
+fields and the [VG06] refusal path.
+
+Step 2 status: `spinaltap/context_weight.py` owns the [MG01] source-influence
+specimen. `tests/test_context_weight_governor.py` verifies that low-originality
+or hidden-influence [DC01] claims are blocked before model influence [VG01].
+
+Step 3 status: `spinaltap/time_packet.py` owns the [MG02] fixed-packet
+specimen. `tests/test_time_packet_pump.py` verifies that raw elapsed time is
+converted to [DC02] packets before solver access and oversized elapsed time
+emits overflow risk [VG02].
+
+Step 4 status: `spinaltap/vertebra_delta.py` owns the [MG04] local-slice
+delta specimen. `tests/test_vertebra_delta_worker.py` verifies that bounded
+[DC04] deltas stay inside the declared local slice and outside-slice deltas
+emit explicit refusal risk [VG04].
+
+Step 5 status: `spinaltap/signal_spine.py` owns the [MG03] ordered signal
+bundle specimen. `tests/test_signal_constraint_spine.py` verifies that bounded
+deltas route through [DC03] bundles and direct or incomplete mutation attempts
+emit explicit refusal risk before aggregation [VG03].
+
+Step 6 status: `spinaltap/style_surface.py` owns the [MG05] measurable style
+limit specimen. `tests/test_style_constraint_surface.py` verifies that style
+profiles become [DC05] limits and mood-label profiles emit explicit refusal
+risk [VG05].
+
+Step 7 status: `spinaltap/soft_proof.py` owns the [MG06] proof-record
+specimen. `tests/test_soft_proof_lab.py` verifies that complete claims become
+implementation-ready [DC06] records and prose-only claims without specimen
+plans remain blocked [VG06].
+
+Step 8 status: `spinaltap/reconciliation.py` owns the minimal [MG03]/[MG04]
+reconciliation harness. `tests/test_spinal_reconciliation.py` verifies that
+worker deltas route into ordered [DC03] bundles and [DC04] worker refusals stop
+before signal aggregation [VG03], [VG04].
+
 Step 8 is only a harness. It may prove ordered signal reconciliation, but it
 must not claim a complete engine loop.
 
