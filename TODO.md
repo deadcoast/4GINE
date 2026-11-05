@@ -2,8 +2,8 @@
 
 This TODO is the agent-facing status ledger for the current SPINALTAP source
 slice. It preserves the `linter_error_output.json` intake [IN01], [LS] and
-records the 2026-11-05 mapping validation and fixed-step runtime continuation
-[TK04], [TK06], [TK07], [TK08]. It tracks
+records the 2026-11-05 mapping validation, fixed-step runtime, and multi-worker
+reconciliation continuation [TK04], [TK06], [TK07], [TK08], [TK11]. It tracks
 diagnostic disposition, module status, verification evidence, and remaining
 source work without treating the prototype as an engine-ready system [RQ03],
 [ST].
@@ -59,15 +59,15 @@ source work without treating the prototype as an engine-ready system [RQ03],
   - Applied: full local-slice ownership and per-component `max_delta` checks;
     one invalid component refuses the whole proposal. Invalid constraint
     schemas and nonfinite or nonnumeric deltas are refused.
-  - Still required: vector and per-key budget schemas, worker registry, and
-    conflict semantics.
+  - Still required: vector and per-key budget schemas, persistent worker
+    registry, and conflict policies beyond refusing shared writes.
 - [MO05] `spinaltap/signal_spine.py`
   - Status: `VALIDATION_HOOK_EXECUTION_IMPLEMENTED`.
   - Applied: mandatory shape, time, ownership, and envelope checks precede
     named synchronous hooks. Unknown hooks, exceptions, invalid returns, and
     worker refusals stop bundle acceptance.
-  - Still required: channel registry, global state publication policy, hook
-    isolation, and conflict reconciliation.
+  - Still required: channel registry, general state publication policy, hook
+    isolation, and conflict policies beyond the scalar step boundary.
 - [MO06] `spinaltap/style_surface.py`
   - Status: `MEASURABLE_LIMIT_SPECIMEN_PRESENT`.
   - Applied: untrusted style profiles pass through mapping validation; unknown
@@ -83,12 +83,14 @@ source work without treating the prototype as an engine-ready system [RQ03],
   - Still required: evidence-tier policy, proof review ledger, source
     attachment model, and promotion audit output.
 - [MO08] `spinaltap/reconciliation.py`
-  - Status: `RUNNABLE_SINGLE_WORKER_PIPELINE_PRESENT`.
-  - Applied: typed worker failures become empty refused bundles.
-    `spinaltap/demo.py` and `spinaltap/__main__.py` wire the pump to the harness
-    and apply only accepted bundles to demo-owned state.
-  - Still required: multi-worker ordering, conflict merge rules, transactional
-    publication, and full engine-loop boundary tests.
+  - Status: `ATOMIC_MULTI_WORKER_SCALAR_STEPS_PRESENT`.
+  - Applied: `WorkerUpdate` records run in declared order against one shared
+    snapshot. Repeated write keys are refused. `StepResult` exposes a candidate
+    only if every worker and hook accepts; failures expose no partial bundles.
+    The CLI demo now adopts complete two-worker state updates.
+  - Still required: persistent worker/channel authority, global cross-worker
+    constraints, additive merges, concurrent publication, durable commits, and
+    full engine-loop boundary tests.
 
 ## (3) Linter disposition ledger [LD]
 
@@ -168,8 +170,10 @@ source work without treating the prototype as an engine-ready system [RQ03],
   records after the style schema is specified.
 - [ ] [TK10] Add proof ledger persistence or structured in-memory records after
   evidence-tier rules are specified.
-- [ ] [TK11] Expand reconciliation beyond one worker and one ordered signal
-  bundle.
+- [x] [TK11] Expand reconciliation to ordered multi-worker steps, shared input
+  snapshots, explicit write-conflict refusal, and all-or-nothing scalar state
+  candidates. Trace: `REQ06`, `REQ07`, `REQ12`, `REQ13`, `DC03`, `DC04`,
+  `VG03`, `VG04`; design section 4.5.
 - [x] [TK12] Run docspec alignment checks for this source slice; preserve the
   requirement to rerun them on each later source or TODO change.
 
@@ -180,7 +184,7 @@ source work without treating the prototype as an engine-ready system [RQ03],
 > Requirement: [RQ05] - STATUS_REQUIRES_COMMAND_EVIDENCE
 
 - [x] [VF01] `py -3.13 -m unittest discover -s tests`
-  - Result: `68` tests ran, `OK`; this continuation began with `42` tests.
+  - Result: `87` tests ran, `OK`; this continuation began with `68` tests.
 - [x] [VF02] Pyright CLI, `spinaltap tests`
   - Result: `0 errors`, `0 warnings`, `0 informations`. Invoked the existing
     cached Node CLI directly because `npx` package retrieval was unavailable.
@@ -198,8 +202,9 @@ source work without treating the prototype as an engine-ready system [RQ03],
     `0` missing, unused, duplicate, misplaced, or zero-placeholder markers.
     The root TODO contains `75` definitions and `75` unique references.
 - [x] [VF07] `py -3.13 -m spinaltap` and JSON subprocess smoke test
-  - Result: `14` accepted steps, final `x = 0.672`, remainder `0.008`, and an
-    oversized-delta guard refusal. The CLI exited successfully.
+  - Result: `14` accepted two-worker steps, final `x = 0.672`, `y = -0.336`,
+    remainder `0.008`, and oversized-delta plus write-conflict guard refusals.
+    The CLI exited successfully.
 
 ## (6) Notes for the next source agent [NT]
 
@@ -213,8 +218,8 @@ source work without treating the prototype as an engine-ready system [RQ03],
   contained no missing-import diagnostics.
 - [NT03] `.mypy_cache/` is ignored because local type-checker state is
   generated output.
-- [NT04] Current source includes a runnable scalar demo and single-worker
-  reconciliation harness; broader engine systems remain pending work. Run
+- [NT04] Current source includes a runnable scalar demo and synchronous
+  multi-worker reconciliation; broader engine systems remain pending work. Run
   `py -3.13 -m spinaltap` from the repository root.
 
 ## (Y) Link-complete usage index [LC]
@@ -375,7 +380,8 @@ below remains link-complete [LC], [LN].
   "The source module owning proof record review behavior."
 
 [MO08]: RECONCILIATION_MODULE
-  "The source module owning the minimal worker-to-spine harness."
+  "The source module owning single-worker routing and all-or-nothing
+  multi-worker scalar step candidates."
 
 [LD01]: CONTEXT_WEIGHT_DIAGNOSTICS
   "The context_weight.py diagnostic bucket from the IDE export."
@@ -435,7 +441,8 @@ below remains link-complete [LC], [LN].
   "Add structured proof review records after evidence rules are specified."
 
 [TK11]: RECONCILIATION_EXPANSION_TASK
-  "Expand reconciliation beyond a single worker and a single signal bundle."
+  "Expand reconciliation to ordered workers, shared snapshots, conflict
+  refusals, and complete scalar state candidates."
 
 [TK12]: DOCSPEC_ALIGNMENT_TASK
   "Rerun document alignment checks when TODO or source status changes."
@@ -461,8 +468,8 @@ below remains link-complete [LC], [LN].
   definitions."
 
 [VF07]: RUNNABLE_DEMO_VERIFICATION
-  "Direct CLI and JSON subprocess evidence for the fixed-step scalar demo,
-  including overflow backlog and oversized-delta refusal."
+  "Direct CLI and JSON subprocess evidence for the multi-worker scalar demo,
+  including overflow backlog, oversized-delta refusal, and write conflicts."
 
 [NT01]: SNAPSHOT_NOT_LIVE_STATE
   "The JSON export should not be treated as refreshed IDE state after edits."
@@ -475,5 +482,5 @@ below remains link-complete [LC], [LN].
   "The generated mypy cache directory is ignored by git."
 
 [NT04]: SOURCE_SCOPE_NOTE
-  "The current source remains a contract specimen set plus minimal
-  reconciliation harness."
+  "The current source includes contract specimens and a synchronous scalar
+  multi-worker prototype; broader engine systems remain pending."

@@ -35,6 +35,7 @@ class RefusalCode(StrEnum):
     INVALID_PAYLOAD = "invalid_payload"
     CONSTRAINT_VIOLATION = "constraint_violation"
     VALIDATION_FAILED = "validation_failed"
+    WRITE_CONFLICT = "write_conflict"
     HIDDEN_INFLUENCE = "hidden_influence"
     RAW_DT = "raw_dt"
     DIRECT_GLOBAL_MUTATION = "direct_global_mutation"

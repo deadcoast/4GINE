@@ -277,7 +277,8 @@ Every proposed value must be a finite scalar and satisfy
 for one fixed step. A zero budget permits zero updates. If any component fails,
 the whole proposal returns an empty bounded delta and a refusal; components
 are neither clamped nor partially accepted. Vector norms, per-key limits,
-cross-worker conflicts, and general state schemas remain pending [VG04].
+alternative conflict merge policies, and general state schemas remain pending.
+The step reconciler below refuses overlapping worker writes [VG04].
 
 ### (4.4) Executed signal validation hooks [DC03]
 
@@ -305,8 +306,56 @@ isolation in this slice. Registration is a local lookup, not a channel or
 worker authorization registry [VG03].
 
 Accepted bundles are eligible for the caller's publication policy. The scalar
-demo applies them to demo-owned state, but the engine still lacks a general
-state publisher, multi-worker conflict merge, and transaction model [MG03].
+step reconciler below stages them until the whole step passes. General state
+publication and durable transactions remain future engine work [MG03].
+
+### (4.5) Atomic multi-worker scalar steps [DC03], [DC04]
+
+> Goal: [GL05] - DESIGN_VALIDATION
+> Dependency: [DP05] - VALIDATION_REQUIREMENTS
+> Requirement: [RQ05] - FAILURE_PATHS_VISIBLE
+
+Root TODO task `TK11` extends [MG03] reconciliation across multiple [MG04]
+workers under [REQ06], [REQ07], [VG03], and [VG04]. `WorkerUpdate` and
+`StepResult` are runtime orchestration records around the existing contracts;
+they do not replace or add fields to [DC03] or [DC04].
+
+`reconcile_step(state, time_packet, updates)` uses keyword arguments and:
+
+1. Requires one expanded fixed step and a scalar state mapping with nonblank
+   string keys. Finite integer and float values are normalized to floats;
+   booleans, nested values, and nonfinite numbers are refused [VG02].
+2. Requires an explicit list or tuple of `WorkerUpdate` records. Each supplies
+   a worker, unique owner, channel, constraints, proposed delta, and hook name.
+   Metadata, payload mappings, and local state views are checked or copied
+   before worker or hook execution. Lazy and unordered collections are refused.
+3. Detects every repeated proposed write key before running hooks. Overlapping
+   writes produce `write_conflict`, even if both proposed values are equal or
+   zero. This policy neither sums deltas nor chooses a winning worker.
+4. Routes workers in the declared sequence. Each receives a read-only view of
+   its owned keys from the same initial snapshot. Overlapping read sets are
+   permitted when the proposed write sets are disjoint; earlier proposals do
+   not change what later workers read.
+5. Requires each accepted worker output to retain its scheduled state, time,
+   constraints, and proposal. It stages finite candidate values only after
+   normal worker and signal gates accept. A missing state key cannot be created
+   by a delta, and addition overflow is refused.
+6. Returns a `StepResult` with read-only `next_state` and ordered bundles only
+   when every worker succeeds. Any refusal or worker exception returns
+   `next_state=None`, no ordered bundles, and a refusal. `failed_owner` identifies
+   a worker-stage failure; preflight failures explain their location in the
+   refusal reason. An empty ordered batch returns an unchanged snapshot.
+
+The caller adopts a successful candidate once; this method never writes the
+caller's state. The demo uses that rule for both coordinates, so a late x-worker
+refusal also discards the earlier y-worker update. The original single-worker
+`reconcile` API remains available [MG03], [MG04].
+
+Atomicity covers the returned scalar candidate and bundle set. Workers and
+hooks are synchronous trusted code: their external side effects cannot be
+rolled back, and concurrent state publication is not supported. Persistent
+worker/channel authority, global cross-worker constraints, additive conflict
+merging, nested state, and durable commits remain pending [VG03], [VG04].
 
 ## (5) Validation design [VG]
 

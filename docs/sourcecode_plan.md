@@ -125,6 +125,14 @@ bundles, and `spinaltap/demo.py` connects the time pump to that harness. Tests
 cover accumulator conservation, refusal propagation, hook failure, and state
 updates only after acceptance [VG02], [VG03], [VG04].
 
+Root TODO task `TK11` now adds `WorkerUpdate`, `StepResult`, and
+`SpinalReconciliationHarness.reconcile_step`. Workers share an initial scalar
+snapshot and route in explicit order. Conflicting writes are refused before
+hooks run; later worker or hook failures discard the entire candidate and
+bundle set. `tests/test_multi_worker_reconciliation.py` verifies order,
+ownership, snapshot isolation, conflict refusals, and all-or-nothing results
+[VG02], [VG03], [VG04].
+
 ### (3.1) Run the prototype [PL]
 
 > Goal: [GL03] - IMPLEMENT_MODULES_IN_DEPENDENCY_ORDER
@@ -140,16 +148,19 @@ py -3.13 -m unittest discover -s tests
 ```
 
 The runtime uses only the standard library. The default demonstration converts
-six elapsed-time samples into fourteen fixed updates, drains an oversized
-frame's backlog, and finishes at `x = 0.672` with `0.008` time remaining. A
-separate oversized-delta specimen must be refused; otherwise the command exits
-with a failure status. JSON output carries the same frame and refusal evidence.
+six elapsed-time samples into fourteen complete two-worker steps, drains an
+oversized frame's backlog, and finishes at `x = 0.672`, `y = -0.336`, with
+`0.008` time remaining. The y-worker runs before the x-worker. Separate
+oversized-delta and conflicting-write specimens must be refused, and ordinary
+demo steps must all succeed; otherwise the command exits with a failure status.
+JSON output carries the frame evidence, worker order, final state, and guard
+refusals. Its existing `final_position` field continues to report x.
 
-The demo's custom signal hook restricts position to `-1..1`. Worker or hook
-refusals leave demo-owned state unchanged, while the elapsed simulation step
-is consumed. This is a runnable scalar prototype; renderer, general state
-publication, multi-worker scheduling, and conflict merging remain future work
-[REQ02], [MG02], [MG03], [MG04].
+The demo's custom signal hook restricts each coordinate to `-1..1`. Worker or
+hook refusals leave both coordinates unchanged, while the elapsed simulation
+step is consumed. This is a synchronous scalar prototype; rendering, general
+state publication, worker/channel authority, concurrent scheduling, and
+additive conflict merging remain future work [REQ02], [MG02], [MG03], [MG04].
 
 ## (4) Specimen-first tests [VG]
 
