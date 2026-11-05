@@ -1,6 +1,6 @@
-# (A) 4GINE TASKLIST: SPINALTAP CONSTRAINT ENGINE DOCSPEC [DOC]
+# (A) MIVIM TODO: SPINALTAP CONSTRAINT ENGINE DOCSPEC [DOC]
 
-This tasklist is the third [WL04] docspec artifact. It turns requirements and
+This TODO is the third [WL04] docspec artifact. It turns requirements and
 design into ordered work without starting runtime sourcecode [D04], [D05],
 [WL05].
 
@@ -22,7 +22,7 @@ Task context:
 | [D03] | proposal scope and modules |
 | [D04] | requirements |
 | [D05] | design |
-| [D06] | tasklist |
+| [D06] | TODO |
 
 ## (2) Stage 1: docspec alignment [TK]
 
@@ -102,7 +102,7 @@ pending explicit approval [REQ03].
 > Dependency: [DP06] - TASK_SET
 > Requirement: [RQ06] - COMPLETION_IS_AUDITABLE
 
-This tasklist is ready for execution when:
+This TODO is ready for execution when:
 
 1. Every task has a requirement marker.
 2. Every requirement from [D04] appears in at least one task.
@@ -130,8 +130,8 @@ below remains link-complete [LC], [LN].
 
 ## (Z) Context-Citations
 
-[DOC]: TASKLIST_DOCUMENT
-  "The WL04 tasklist artifact for the SPINALTAP Constraint Engine docspec."
+[DOC]: TODO_DOCUMENT
+  "The WL04 TODO artifact for the SPINALTAP Constraint Engine docspec."
 
 [D01]: RESEARCH_PLAN_DOCUMENT
   "docs/research_plan.md, the approved method and guardrail source."
@@ -148,11 +148,11 @@ below remains link-complete [LC], [LN].
 [D05]: DESIGN_DOCUMENT
   "docs/design.md, the companion design document."
 
-[D06]: TASKLIST_DOCUMENT_INSTANCE
-  "docs/tasklist.md, the current tasklist document."
+[D06]: TODO_DOCUMENT_INSTANCE
+  "docs/TODO.md, the current TODO document."
 
 [WL04]: DEVELOPMENT_DOCSPEC
-  "The workflow phase for requirements, design, and tasklist artifacts."
+  "The workflow phase for requirements, design, and TODO artifacts."
 
 [WL05]: DEVELOPMENT_SOURCECODE
   "The blocked sourcecode phase."
@@ -164,7 +164,7 @@ below remains link-complete [LC], [LN].
   "A scoped docspec work item with requirement traceability."
 
 [AC]: ACCEPTANCE_CRITERIA
-  "The conditions for tasklist readiness and later execution."
+  "The conditions for TODO readiness and later execution."
 
 [LC]: LINK_COMPLETE_STATE
   "A state where every active marker is defined once and referenced."
@@ -272,7 +272,7 @@ below remains link-complete [LC], [LN].
   "Requirement for runnable specimen plans and failure paths."
 
 [TK01]: VERIFY_DOCUMENT_CHAIN_TASK
-  "Task to verify that requirements, design, and tasklist preserve document
+  "Task to verify that requirements, design, and TODO preserve document
   chain."
 
 [TK02]: CONFIRM_SOURCE_BLOCK_TASK
@@ -331,7 +331,7 @@ below remains link-complete [LC], [LN].
   "Preserve task context and document chain."
 
 [GL02]: ALIGN_DOCSPEC
-  "Align requirements, design, and tasklist."
+  "Align requirements, design, and TODO."
 
 [GL03]: REFINE_CONTRACTS
   "Refine module contracts before sourcecode."
@@ -346,7 +346,7 @@ below remains link-complete [LC], [LN].
   "Define auditable completion criteria."
 
 [DP01]: DOCSPEC_PACKAGE
-  "The requirements, design, and tasklist package."
+  "The requirements, design, and TODO package."
 
 [DP02]: REQUIREMENTS_AND_DESIGN
   "The upstream requirements and design documents."
@@ -367,7 +367,7 @@ below remains link-complete [LC], [LN].
   "Every task must trace to a requirement."
 
 [RQ02]: DOCSPEC_IS_CONSISTENT
-  "Requirements, design, and tasklist must stay consistent."
+  "Requirements, design, and TODO must stay consistent."
 
 [RQ03]: CONTRACTS_ARE_IMPLEMENTABLE
   "Contracts must be concrete enough for implementation planning."
