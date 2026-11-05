@@ -13,6 +13,7 @@ from spinaltap.contract_kernel import (
     StyleLimits,
     refuse,
 )
+from spinaltap.contract_validation import ContractValidationError, parse_contract
 
 
 _STYLE_LIMIT_FIELDS = StyleLimits.fields()
@@ -25,8 +26,15 @@ class StyleSurfaceResult:
 
 
 class StyleConstraintSurface:
-    def translate(self, profile: Mapping[str, str]) -> StyleSurfaceResult:
-        missing = tuple(field for field in _STYLE_LIMIT_FIELDS if not profile.get(field))
+    def translate(self, profile: object) -> StyleSurfaceResult:
+        missing = ()
+        if isinstance(profile, Mapping):
+            missing = tuple(
+                field
+                for field in _STYLE_LIMIT_FIELDS
+                if field not in profile
+                or (isinstance(profile[field], str) and not profile[field].strip())
+            )
         if missing:
             return StyleSurfaceResult(
                 limits=None,
@@ -38,18 +46,9 @@ class StyleConstraintSurface:
                 ),
             )
 
-        return StyleSurfaceResult(
-            limits=StyleLimits(
-                geometry_limit=profile["geometry_limit"],
-                lighting_limit=profile["lighting_limit"],
-                texture_limit=profile["texture_limit"],
-                color_limit=profile["color_limit"],
-                fog_limit=profile["fog_limit"],
-                alpha_limit=profile["alpha_limit"],
-                depth_limit=profile["depth_limit"],
-                camera_limit=profile["camera_limit"],
-                animation_cadence=profile["animation_cadence"],
-                artifact_limits=profile["artifact_limits"],
-            ),
-            refusal=None,
-        )
+        try:
+            limits = parse_contract(ContractRef.DC05, profile)
+        except ContractValidationError as error:
+            return StyleSurfaceResult(limits=None, refusal=error.refusal)
+        assert isinstance(limits, StyleLimits)
+        return StyleSurfaceResult(limits=limits, refusal=None)

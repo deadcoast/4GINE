@@ -32,6 +32,9 @@ class PromotionState(StrEnum):
 
 
 class RefusalCode(StrEnum):
+    INVALID_PAYLOAD = "invalid_payload"
+    CONSTRAINT_VIOLATION = "constraint_violation"
+    VALIDATION_FAILED = "validation_failed"
     HIDDEN_INFLUENCE = "hidden_influence"
     RAW_DT = "raw_dt"
     DIRECT_GLOBAL_MUTATION = "direct_global_mutation"
@@ -125,9 +128,21 @@ class SpecimenHook:
     def for_contract(cls, contract: ContractRef, gate: GateRef) -> SpecimenHook:
         return cls(contract=contract, gate=gate)
 
-    def evaluate(self, record: Mapping[str, object]) -> SpecimenResult:
+    def evaluate(self, record: object) -> SpecimenResult:
+        # Import at the boundary to keep the record definitions independent of
+        # the decoder that constructs them.
+        from spinaltap.contract_validation import ContractValidationError, parse_contract
+
+        try:
+            parsed = parse_contract(self.contract, record)
+        except ContractValidationError as error:
+            return SpecimenResult(
+                self.contract, self.gate, PromotionState.BLOCKED, error.refusal
+            )
+
         if self.contract == ContractRef.DC06:
-            return _evaluate_proof_record(self.contract, self.gate, record)
+            assert isinstance(parsed, ProofRecord)
+            return _evaluate_proof_record(self.contract, self.gate, parsed)
 
         return SpecimenResult(
             contract=self.contract,
@@ -138,6 +153,17 @@ class SpecimenHook:
 
 def contract_fields(contract: ContractRef) -> tuple[str, ...]:
     return _CONTRACT_FIELDS[contract]
+
+
+def contract_gate(contract: ContractRef) -> GateRef:
+    return {
+        ContractRef.DC01: GateRef.VG01,
+        ContractRef.DC02: GateRef.VG02,
+        ContractRef.DC03: GateRef.VG03,
+        ContractRef.DC04: GateRef.VG04,
+        ContractRef.DC05: GateRef.VG05,
+        ContractRef.DC06: GateRef.VG06,
+    }[contract]
 
 
 @dataclass(frozen=True)
@@ -242,9 +268,9 @@ def refuse(
 def _evaluate_proof_record(
     contract: ContractRef,
     gate: GateRef,
-    record: Mapping[str, object],
+    record: ProofRecord,
 ) -> SpecimenResult:
-    if not record.get("specimen_plan"):
+    if not record.specimen_plan.strip():
         refusal = refuse(
             contract,
             gate,
@@ -253,7 +279,7 @@ def _evaluate_proof_record(
         )
         return SpecimenResult(contract, gate, PromotionState.BLOCKED, refusal)
 
-    if not record.get("failure_path"):
+    if not record.failure_path.strip():
         refusal = refuse(
             contract,
             gate,

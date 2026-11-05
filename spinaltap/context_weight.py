@@ -16,7 +16,7 @@ class GovernorDecision(StrEnum):
 
 class ContextWeightGovernor:
     def evaluate(self, claim: SourceClaim) -> SourceClaim:
-        if not claim.source_ref:
+        if not claim.source_ref or not claim.source_ref.strip():
             return replace(
                 claim,
                 influence_weight=0.0,

@@ -9,8 +9,11 @@ from spinaltap.contract_kernel import (
     GateRef,
     PromotionState,
     ProofRecord,
+    RefusalCode,
     RefusalState,
     SpecimenHook,
+    contract_gate,
+    refuse,
 )
 
 
@@ -46,13 +49,26 @@ class SoftProofLab:
             {
                 "claim_ref": record.claim_ref,
                 "contract_ref": record.contract_ref,
-                "validation_gate": validation_gate,
                 "specimen_plan": record.specimen_plan,
                 "failure_path": record.failure_path,
                 "promotion_state": record.promotion_state,
                 "evidence_tier": record.evidence_tier,
             }
         )
+
+        if result.refusal is None and validation_gate != contract_gate(
+            record.contract_ref
+        ):
+            refusal = refuse(
+                ContractRef.DC06,
+                GateRef.VG06,
+                RefusalCode.INVALID_PAYLOAD,
+                "validation_gate: gate does not belong to the reviewed contract",
+            )
+            return ProofReview(
+                record=replace(record, promotion_state=PromotionState.BLOCKED),
+                refusal=refusal,
+            )
 
         return ProofReview(
             record=replace(record, promotion_state=result.promotion_state),

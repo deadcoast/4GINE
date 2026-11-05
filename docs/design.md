@@ -4,9 +4,9 @@ This design document is the second [WL04] docspec artifact. It explains how
 the requirements become architecture, module boundaries, data flow, and
 validation behavior [D04].
 
-The design remains pre-sourcecode. It defines architecture precisely enough for
-future implementation planning, but it does not authorize runtime code yet
-[WL05].
+The design defines the architecture for the bounded source prototype now in
+[WL05]. Implementation status lives in [sourcecode_plan.md](sourcecode_plan.md)
+and the remaining source tasks live in [TODO.md](../TODO.md).
 
 ## (1) Context and architecture stance [KN]
 
@@ -188,6 +188,126 @@ Field ownership:
 These are design records, not final code types. Their purpose is to force
 ownership, input, output, and refusal behavior before sourcecode [DS03].
 
+### (4.1) Runtime mapping ingress [DC]
+
+> Goal: [GL04] - DEFINE_DATA_MODEL
+> Dependency: [DP04] - CONTRACT_SET
+> Requirement: [RQ04] - DATA_IS_EXPLICIT
+
+`spinaltap/contract_validation.py` implements the root source TODO task `TK04`
+for [DC01] through [DC06]. `parse_contract(contract, payload)` accepts a
+complete mapping or a matching record, returning a validated record or raising
+`ContractValidationError`. The error carries a field path and a blocked
+`invalid_payload` refusal attributed to the failing contract and gate [DS03].
+
+The ingress rules are:
+
+- Every declared field is required, including nullable fields. Unknown fields
+  and nonstring or blank mapping keys are refused.
+- [DC01] scores and non-null influence weight must be finite numbers in
+  `0..1`. Boolean values and numeric strings are refused. Missing source
+  attribution remains representable so [MG01] can issue its influence refusal.
+- [DC02] elapsed time and remainder must be finite and nonnegative; fixed
+  packet size must also be positive. Packet count must be a nonnegative
+  integer excluding booleans, and interpolation must be in `0..1`. Overflow
+  backlog may exceed one packet. These checks do not certify pump provenance
+  or the consistency of independently supplied timing fields.
+- [DC03] signals must be a list or tuple. Every nested [DC04] delta and its
+  [DC02] time packet is validated, including existing dataclass instances.
+  Errors identify the failing signal index and field. A residual refusal must
+  have a known code, matching contract and gate, and blocked promotion state.
+- Mapping fields receive shallow, read-only snapshots with string keys.
+  Their values remain opaque to this decoder. The worker and spine apply the
+  scalar ownership and magnitude rules below; conflicts and nested value
+  schemas remain future module work.
+- [DC05] fields must be nonblank strings in this slice. Numeric style budgets
+  remain pending. [DC06] uses known contract and promotion enum values;
+  specimen and failure text may be blank so [VG06] can record the specific
+  missing-plan or missing-failure refusal. Truthy non-text values are invalid.
+
+The style surface, specimen hooks, workers, and spine use this boundary.
+Direct dataclass constructors remain trusted internal APIs; workers and the
+spine revalidate records before acceptance. Other external callers must use
+`parse_contract` before invoking typed modules. Shape validation does not
+execute a specimen, establish source authority, or grant publication rights.
+The proof lab also refuses a validation gate that belongs to another reviewed
+contract [VG01], [VG03], [VG06].
+
+### (4.2) Fixed-step solver boundary [DC02]
+
+> Goal: [GL04] - DEFINE_DATA_MODEL
+> Dependency: [DP04] - CONTRACT_SET
+> Requirement: [RQ04] - DATA_IS_EXPLICIT
+
+Root TODO task `TK06` makes [MG02] the conversion boundary for [REQ05] and
+[VG02]. `TimePacketPump.step` accepts finite, nonnegative elapsed time and
+remainder, with a positive fixed size and integer execution budget in
+`1..4096`. It retains excess time as backlog and marks packet-budget overflow.
+Accumulated-time overflow is refused. Division boundaries snap within four
+floating-point ULPs, capped at one billionth of the fixed size, to avoid losing
+a step to representational rounding while preserving smaller fractions.
+
+`pump.solver_steps(frame_packet)` verifies the configured size and budget,
+then emits zero or more [DC02] records. Each has count one, elapsed time equal
+to fixed size, zero remainder and interpolation, and no overflow flag. Frame
+diagnostics remain in the original packet. `solver_packets` remains a checked
+compatibility projection of fixed durations; new worker callers use records.
+
+[MG04] requires a single expanded step. Raw numbers or mappings raise a
+`ContractValidationError` carrying `raw_dt`; malformed records, frame batches,
+zero-step packets, and unconsumed frame metadata carry `invalid_payload`.
+The reconciliation harness converts these failures to empty refused bundles
+before signal acceptance. These checks validate the supplied values, without
+claiming authenticated packet provenance [VG02], [VG03].
+
+### (4.3) Scalar delta constraints [DC04]
+
+> Goal: [GL04] - DEFINE_DATA_MODEL
+> Dependency: [DP04] - CONTRACT_SET
+> Requirement: [RQ04] - DATA_IS_EXPLICIT
+
+Root TODO task `TK07` implements [REQ07] and [VG04]. A worker refuses an input
+state slice containing keys outside its registered local keys, as well as any
+proposed key absent from the local slice. The current constraint schema is
+exactly `max_delta`: a finite nonnegative number. Unsupported rules, missing
+limits, numeric strings, booleans, and nonfinite numbers are refused.
+
+Every proposed value must be a finite scalar and satisfy
+`abs(delta[key]) <= max_delta`. The limit applies separately to each component
+for one fixed step. A zero budget permits zero updates. If any component fails,
+the whole proposal returns an empty bounded delta and a refusal; components
+are neither clamped nor partially accepted. Vector norms, per-key limits,
+cross-worker conflicts, and general state schemas remain pending [VG04].
+
+### (4.4) Executed signal validation hooks [DC03]
+
+> Goal: [GL05] - DESIGN_VALIDATION
+> Dependency: [DP05] - VALIDATION_REQUIREMENTS
+> Requirement: [RQ05] - FAILURE_PATHS_VISIBLE
+
+Root TODO task `TK08` implements the hook boundary for [REQ06] and [VG03].
+`SignalConstraintSpine` registers named synchronous callables; `VG03` is the
+built-in acceptance hook after mandatory checks. Blank, duplicate, and
+noncallable registrations are rejected.
+
+Before any hook runs, the spine validates record shape, the constraint envelope
+(including empty bundles), worker residual refusals, fixed-step time, local
+delta ownership, and both worker and envelope scalar budgets. It preserves
+worker refusals and rejects the entire bundle if any member fails. Custom
+hooks cannot skip these checks [VG02], [VG03], [VG04].
+
+A hook receives the validated bundle and returns `None` to accept or a
+`RefusalState` to refuse. Unknown names, exceptions, unexpected return values,
+or malformed refusal metadata produce `validation_failed` and an empty bundle.
+Hooks see shallow read-only mappings; nested state objects remain opaque.
+Hooks are trusted synchronous code, with no timeout or external side-effect
+isolation in this slice. Registration is a local lookup, not a channel or
+worker authorization registry [VG03].
+
+Accepted bundles are eligible for the caller's publication policy. The scalar
+demo applies them to demo-owned state, but the engine still lacks a general
+state publisher, multi-worker conflict merge, and transaction model [MG03].
+
 ## (5) Validation design [VG]
 
 > Goal: [GL05] - DESIGN_VALIDATION
@@ -303,7 +423,7 @@ below remains link-complete [LC], [LN].
   "The workflow phase for requirements, design, and tasklist artifacts."
 
 [WL05]: DEVELOPMENT_SOURCECODE
-  "The later sourcecode phase, blocked until docspec validation."
+  "The bounded prototype source phase entered after docspec validation."
 
 [KN]: KNOWLEDGE_CONTEXT
   "The tracked method, evidence, proposal, requirements, design, and task

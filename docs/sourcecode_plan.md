@@ -1,9 +1,9 @@
 # (A) 4GINE SOURCECODE IMPLEMENTATION PLAN [DOC]
 
-This document is a gated implementation plan for the SPINALTAP Constraint
-Engine. It is source-facing, but it does not start runtime sourcecode by
-itself [WL05]. It exists because the docspec package reached the validation
-gate required before source planning [D04], [D05], [D06], [REQ03], [TK16].
+This document records the gated implementation order and current source slices
+for the SPINALTAP Constraint Engine [WL05]. It exists because the docspec
+package reached the validation gate required before source planning [D04],
+[D05], [D06], [REQ03], [TK16].
 
 The plan keeps the first implementation target small: a contract-first
 research prototype, not a complete renderer, complete physics engine, ECS
@@ -15,8 +15,11 @@ clone, scene-tree clone, or fixed-function renderer clone [REQ01], [REQ02].
 > Dependency: [DP01] - VALIDATED_DOCSPEC_PACKAGE
 > Requirement: [RQ01] - NO_RUNTIME_SOURCECODE_IN_THIS_DOCUMENT
 
-The only authorized output of this file is a future sourcecode work order
-[TK17]. Runtime code still requires explicit user approval to enter [WL05].
+This file began as the sourcecode work order [TK17]. The eight initial source
+slices below are present, and the user's 2026-11-05 instruction to continue
+development authorizes continuation of the bounded prototype [WL05]. The
+remaining source backlog is [TODO.md](../TODO.md); the initial docspec tasklist
+[D06] remains a completed planning record.
 
 Entry evidence:
 
@@ -105,6 +108,49 @@ before signal aggregation [VG03], [VG04].
 Step 8 is only a harness. It may prove ordered signal reconciliation, but it
 must not claim a complete engine loop.
 
+Continuation status: root TODO task `TK04` adds
+`spinaltap/contract_validation.py` for [DC01] through [DC06] mapping ingress.
+The decoder checks required and unknown fields, finite numbers, declared
+ranges, enum values, nested records, and refusal metadata. It reports a
+blocked refusal with the failing field path. Style and specimen mapping inputs
+use the decoder; direct dataclass constructors remain trusted internal APIs.
+`tests/test_contract_validation.py` covers malformed inputs and preserves the
+distinction between structural validity and module gate acceptance [VG01],
+[VG02], [VG03], [VG04], [VG05], [VG06].
+
+Root TODO tasks `TK06`, `TK07`, and `TK08` now add fixed-step worker entry,
+per-component scalar budgets, and executed signal validation hooks. The
+single-worker reconciliation harness converts invalid inputs into refused
+bundles, and `spinaltap/demo.py` connects the time pump to that harness. Tests
+cover accumulator conservation, refusal propagation, hook failure, and state
+updates only after acceptance [VG02], [VG03], [VG04].
+
+### (3.1) Run the prototype [PL]
+
+> Goal: [GL03] - IMPLEMENT_MODULES_IN_DEPENDENCY_ORDER
+> Dependency: [DP03] - MODULE_CONTRACT_SEQUENCE
+> Requirement: [RQ03] - SMALL_REVIEWABLE_SOURCE_SLICES
+
+From the repository root, using the verified Python 3.13 interpreter:
+
+```powershell
+py -3.13 -m spinaltap
+py -3.13 -m spinaltap --json
+py -3.13 -m unittest discover -s tests
+```
+
+The runtime uses only the standard library. The default demonstration converts
+six elapsed-time samples into fourteen fixed updates, drains an oversized
+frame's backlog, and finishes at `x = 0.672` with `0.008` time remaining. A
+separate oversized-delta specimen must be refused; otherwise the command exits
+with a failure status. JSON output carries the same frame and refusal evidence.
+
+The demo's custom signal hook restricts position to `-1..1`. Worker or hook
+refusals leave demo-owned state unchanged, while the elapsed simulation step
+is consumed. This is a runnable scalar prototype; renderer, general state
+publication, multi-worker scheduling, and conflict merging remain future work
+[REQ02], [MG02], [MG03], [MG04].
+
 ## (4) Specimen-first tests [VG]
 
 > Goal: [GL04] - TEST_REFUSAL_PATHS_FIRST
@@ -154,7 +200,7 @@ task coverage.
 
 Audit result: no requirement in this plan lacks a design owner, contract,
 validation gate, or task coverage. The [TK18] traceability block is therefore
-not triggered. [WL05] remains not started until explicit approval.
+not triggered. [WL05] is active within the bounded prototype scope.
 
 ## (6) Handoff rule [OUT]
 
@@ -162,10 +208,11 @@ not triggered. [WL05] remains not started until explicit approval.
 > Dependency: [DP06] - USER_APPROVAL_TO_START_WL05
 > Requirement: [RQ06] - SOURCE_WORK_BEGINS_WITH_TESTABLE_CONTRACTS
 
-A future source agent should start with Step 1 from this plan, write refusal
-tests for [VG01] through [VG06], then implement only the minimum source needed
-to satisfy those tests. Any claim that needs a broader engine loop must pass
-through [MG06] before it is promoted.
+A continuing source agent should use [TODO.md](../TODO.md) to select the next
+unfinished source task and preserve the completed slices above. Write refusal
+tests for the applicable gates before expanding behavior [VG01], [VG02],
+[VG03], [VG04], [VG05], [VG06]. Any claim that needs a broader engine loop must
+pass through [MG06] before it is promoted.
 
 ## (Y) Link-complete usage index [LC]
 
@@ -187,7 +234,7 @@ below remains link-complete [LC], [LN].
 ## (Z) Context-Citations
 
 [DOC]: SOURCECODE_IMPLEMENTATION_PLAN
-  "The future source-facing plan for the SPINALTAP Constraint Engine."
+  "The source-facing implementation order and status for the bounded prototype."
 
 [D04]: REQUIREMENTS_DOCUMENT
   "docs/requirements.md, the validated requirements document."
@@ -199,13 +246,13 @@ below remains link-complete [LC], [LN].
   "docs/tasklist.md, the validated tasklist document."
 
 [WL05]: DEVELOPMENT_SOURCECODE
-  "The future sourcecode phase, not started by this document."
+  "The active bounded prototype source phase following docspec validation."
 
 [KN]: KNOWLEDGE_GATE
   "The section that records the source-planning entry gate."
 
 [PL]: IMPLEMENTATION_PLAN
-  "The source-facing but pre-runtime implementation order."
+  "The source-facing implementation order with completed slice status."
 
 [VG]: VALIDATION_SPECIMEN_SET
   "The validation gates that must become runnable specimen tests."
@@ -364,7 +411,7 @@ below remains link-complete [LC], [LN].
   "The source block decision depends on traceability."
 
 [DP06]: USER_APPROVAL_TO_START_WL05
-  "Source execution depends on explicit user approval."
+  "The user's continuation instruction authorizes bounded prototype source work."
 
 [RQ01]: NO_RUNTIME_SOURCECODE_IN_THIS_DOCUMENT
   "This document may plan source work but not start runtime sourcecode."

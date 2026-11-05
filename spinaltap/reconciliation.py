@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 
 from spinaltap.contract_kernel import SignalBundle, TimePacket
+from spinaltap.contract_validation import ContractValidationError
 from spinaltap.signal_spine import SignalConstraintSpine
 from spinaltap.vertebra_delta import VertebraDeltaWorker
 
@@ -25,12 +26,24 @@ class SpinalReconciliationHarness:
         proposed_delta: Mapping[str, object],
         validation_hook: str,
     ) -> SignalBundle:
-        delta = worker.propose(
-            local_state_slice=local_state_slice,
-            constraint_set=constraint_set,
-            time_packet=time_packet,
-            proposed_delta=proposed_delta,
-        )
+        try:
+            delta = worker.propose(
+                local_state_slice=local_state_slice,
+                constraint_set=constraint_set,
+                time_packet=time_packet,
+                proposed_delta=proposed_delta,
+            )
+        except ContractValidationError as error:
+            return SignalBundle(
+                owner=owner,
+                channel=channel,
+                ordered_signal_bundle=(),
+                constraint_envelope=(
+                    dict(constraint_set) if isinstance(constraint_set, Mapping) else {}
+                ),
+                validation_hook=validation_hook,
+                residual_risk=error.refusal,
+            )
 
         if delta.residual_risk is not None:
             return SignalBundle(

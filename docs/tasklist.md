@@ -1,8 +1,8 @@
-# (A) MIVIM TODO: SPINALTAP CONSTRAINT ENGINE DOCSPEC [DOC]
+# (A) 4GINE TODO: SPINALTAP CONSTRAINT ENGINE DOCSPEC [DOC]
 
-This TODO is the third [WL04] docspec artifact. It turns requirements and
-design into ordered work without starting runtime sourcecode [D04], [D05],
-[WL05].
+This TODO is the completed third [WL04] docspec artifact. It turned requirements
+and design into ordered work before runtime sourcecode [D04], [D05], [WL05].
+Current source work is tracked in the root [TODO.md](../TODO.md).
 
 Every task must trace to at least one requirement. A task without a parent
 requirement is not valid work for this phase [RQ01].
@@ -93,8 +93,9 @@ Task context:
   contract, validation gate, or task [REQ01].
 
 Output: `docs/sourcecode_plan.md`. Traceability audit found no requirement
-without owner, contract, validation gate, or task. [WL05] remains not started
-pending explicit approval [REQ03].
+without owner, contract, validation gate, or task [REQ03]. The initial source
+slices are now present; [WL05] continues under the user's development
+instruction. The completed planning tasks remain historical evidence.
 
 ## (6) Completion criteria [AC]
 
@@ -149,13 +150,13 @@ below remains link-complete [LC], [LN].
   "docs/design.md, the companion design document."
 
 [D06]: TODO_DOCUMENT_INSTANCE
-  "docs/TODO.md, the current TODO document."
+  "docs/tasklist.md, the completed docspec TODO document."
 
 [WL04]: DEVELOPMENT_DOCSPEC
   "The workflow phase for requirements, design, and TODO artifacts."
 
 [WL05]: DEVELOPMENT_SOURCECODE
-  "The blocked sourcecode phase."
+  "The bounded source phase entered after the docspec planning gate."
 
 [KN]: KNOWLEDGE_LEDGER
   "The active document context and knowledge chain."

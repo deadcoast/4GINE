@@ -1,10 +1,12 @@
-# (A) 4GINE SOURCE TODO: IDE LINTER TRIAGE [DOC]
+# (A) 4GINE SOURCE TODO: RUNNABLE CONTRACT PROTOTYPE [DOC]
 
 This TODO is the agent-facing status ledger for the current SPINALTAP source
-slice after ingesting `linter_error_output.json` [IN01], [LS]. It records
+slice. It preserves the `linter_error_output.json` intake [IN01], [LS] and
+records the 2026-11-05 mapping validation and fixed-step runtime continuation
+[TK04], [TK06], [TK07], [TK08]. It tracks
 diagnostic disposition, module status, verification evidence, and remaining
-source work without treating the current prototype as an engine-ready system
-[RQ03], [ST].
+source work without treating the prototype as an engine-ready system [RQ03],
+[ST].
 
 ## (1) Intake ledger [IN]
 
@@ -30,48 +32,63 @@ source work without treating the current prototype as an engine-ready system
 > Requirement: [RQ02] - DISTINGUISH_SLICE_STATUS_FROM_REMAINING_WORK
 
 - [MO01] `spinaltap/contract_kernel.py`
-  - Status: `SOURCE_SHAPE_TIGHTENED`.
+  - Status: `RUNTIME_MAPPING_INGRESS_VALIDATED`.
   - Applied: typed `SourceClaim`, `TimePacket`, `SignalBundle`,
-    `DeltaPacket`, `StyleLimits`, and `ProofRecord` fields.
-  - Still required: inbound payload validation, schema export, package
-    metadata, and cross-module contract versioning.
+    `DeltaPacket`, `StyleLimits`, and `ProofRecord` fields; companion
+    `spinaltap/contract_validation.py` validates all six payload schemas and
+    nested records with structured field-path refusals.
+  - Still required: module-specific value schemas, schema export, package
+    metadata, and cross-module contract versioning. Direct record constructors
+    remain trusted internal APIs.
 - [MO02] `spinaltap/context_weight.py`
   - Status: `LINTER_ROOT_FIX_APPLIED_THROUGH_CONTRACT_TYPES`.
-  - Applied: numeric source-influence fields are now statically visible.
+  - Applied: numeric source-influence fields are statically visible; mapping
+    ingress enforces finite scores in `0..1`, and blank source attribution
+    remains blocked by the governor.
   - Still required: calibrated down-weight branch, source registry linkage,
     originality scoring policy, and claim provenance ledger.
 - [MO03] `spinaltap/time_packet.py`
-  - Status: `LINTER_ROOT_FIX_APPLIED_THROUGH_CONTRACT_TYPES`.
-  - Applied: `TimePacket` exposes `float` packet data and `int` packet count.
-  - Still required: solver API boundary, raw-dt refusal surface, accumulator
-    stress tests, and pump integration with reconciliation.
+  - Status: `FIXED_STEP_SOLVER_BOUNDARY_IMPLEMENTED`.
+  - Applied: finite inputs, bounded packet budgets, overflow backlog, decimal
+    boundary correction, and `solver_steps` expansion. Workers refuse raw time
+    and unexpanded frame records. Accumulator stress and demo integration pass.
+  - Still required: packet provenance, checkpoint policy, and scheduler-level
+    timing qualification.
 - [MO04] `spinaltap/vertebra_delta.py`
-  - Status: `LOCAL_SLICE_SPECIMEN_PRESENT`.
-  - Applied: outside-local-slice refusal remains explicit and typed.
-  - Still required: constraint magnitude enforcement, multi-key delta rules,
-    worker registry, and conflict semantics.
+  - Status: `SCALAR_DELTA_CONSTRAINTS_IMPLEMENTED`.
+  - Applied: full local-slice ownership and per-component `max_delta` checks;
+    one invalid component refuses the whole proposal. Invalid constraint
+    schemas and nonfinite or nonnumeric deltas are refused.
+  - Still required: vector and per-key budget schemas, worker registry, and
+    conflict semantics.
 - [MO05] `spinaltap/signal_spine.py`
-  - Status: `ORDERED_SIGNAL_SPECIMEN_PRESENT`.
-  - Applied: residual-risk shape is typed for analyzer access.
-  - Still required: channel registry, validation-hook execution, global state
-    publication policy, and conflict reconciliation.
+  - Status: `VALIDATION_HOOK_EXECUTION_IMPLEMENTED`.
+  - Applied: mandatory shape, time, ownership, and envelope checks precede
+    named synchronous hooks. Unknown hooks, exceptions, invalid returns, and
+    worker refusals stop bundle acceptance.
+  - Still required: channel registry, global state publication policy, hook
+    isolation, and conflict reconciliation.
 - [MO06] `spinaltap/style_surface.py`
   - Status: `MEASURABLE_LIMIT_SPECIMEN_PRESENT`.
-  - Applied: style profile input now carries `Mapping[str, str]` values into
-    typed `StyleLimits`.
+  - Applied: untrusted style profiles pass through mapping validation; unknown
+    fields and non-text values are refused, while missing or blank limits
+    retain the vague-style refusal.
   - Still required: numeric/range schema, renderer-facing translation, style
     preset ledger, and artifact budget validation.
 - [MO07] `spinaltap/soft_proof.py`
   - Status: `PROOF_RECORD_SPECIMEN_PRESENT`.
-  - Applied: `ProofRecord` fields now preserve contract, promotion, and text
-    shape for static analysis.
+  - Applied: proof mappings validate field types and enums; whitespace-only
+    plans or failure paths remain blocked. A gate belonging to another
+    reviewed contract cannot advance the claim.
   - Still required: evidence-tier policy, proof review ledger, source
     attachment model, and promotion audit output.
 - [MO08] `spinaltap/reconciliation.py`
-  - Status: `MINIMAL_WORKER_TO_SPINE_HARNESS_PRESENT`.
-  - Applied: typed signal bundles now expose ordered deltas and residual risk.
-  - Still required: multi-worker ordering, conflict merge rules, time-packet
-    pump wiring, and full loop boundary tests.
+  - Status: `RUNNABLE_SINGLE_WORKER_PIPELINE_PRESENT`.
+  - Applied: typed worker failures become empty refused bundles.
+    `spinaltap/demo.py` and `spinaltap/__main__.py` wire the pump to the harness
+    and apply only accepted bundles to demo-owned state.
+  - Still required: multi-worker ordering, conflict merge rules, transactional
+    publication, and full engine-loop boundary tests.
 
 ## (3) Linter disposition ledger [LD]
 
@@ -131,23 +148,30 @@ source work without treating the current prototype as an engine-ready system
   through the chosen manifest instead of relying on global Python.
 - [ ] [TK03] Re-export VS Code Problems after the IDE refreshes; compare new
   diagnostics against [LD01] through [LD09].
-- [ ] [TK04] Add runtime validation for untrusted mappings entering contract
-  records.
+- [x] [TK04] Add runtime validation for untrusted mappings entering all six
+  contract records. `parse_contract` validates complete payloads and nested
+  records; style and specimen mapping inputs use it. Trace: requirements
+  `REQ04` through `REQ09`, contracts `DC01` through `DC06`, and
+  [design ingress rules](docs/design.md#41-runtime-mapping-ingress-dc).
 - [ ] [TK05] Define the `DOWN_WEIGHT` governor path or remove the enum branch
   if the next design pass rejects it.
-- [ ] [TK06] Add a solver-facing API that accepts only `TimePacket` packets and
-  records raw-dt refusal behavior.
-- [ ] [TK07] Implement measurable vertebra constraint enforcement beyond local
-  key ownership.
-- [ ] [TK08] Implement signal validation hook execution before publication.
+- [x] [TK06] Add fixed-step `TimePacket` worker entry with raw-dt refusals,
+  checked frame expansion, and accumulator stress tests. Trace: `REQ05`,
+  `REQ11`, `DC02`, `VG02`; design section 4.2.
+- [x] [TK07] Enforce scalar per-component delta limits and reject the entire
+  proposal on any violation. Trace: `REQ07`, `REQ13`, `DC04`, `VG04`; design
+  section 4.3.
+- [x] [TK08] Execute named signal validation hooks after mandatory checks and
+  before bundle acceptance. Trace: `REQ06`, `REQ12`, `DC03`, `VG03`; design
+  section 4.4. General state publication remains pending.
 - [ ] [TK09] Convert style limits from strings into validated range/budget
   records after the style schema is specified.
 - [ ] [TK10] Add proof ledger persistence or structured in-memory records after
   evidence-tier rules are specified.
 - [ ] [TK11] Expand reconciliation beyond one worker and one ordered signal
   bundle.
-- [ ] [TK12] Keep docspec alignment checks running when source modules or
-  TODO status markers change.
+- [x] [TK12] Run docspec alignment checks for this source slice; preserve the
+  requirement to rerun them on each later source or TODO change.
 
 ## (5) Verification ledger [VF]
 
@@ -155,21 +179,27 @@ source work without treating the current prototype as an engine-ready system
 > Dependency: [DP05] - LOCAL_COMMAND_OUTPUT
 > Requirement: [RQ05] - STATUS_REQUIRES_COMMAND_EVIDENCE
 
-- [x] [VF01] `python -m unittest discover -s tests`
-  - Result: `19` tests ran, `OK`.
-- [x] [VF02] `npx --yes pyright spinaltap tests`
-  - Result: `0 errors`, `0 warnings`, `0 informations`.
-- [ ] [VF03] `python -m mypy spinaltap tests`
-  - Result: blocked by environment; system Python reports `No module named
+- [x] [VF01] `py -3.13 -m unittest discover -s tests`
+  - Result: `68` tests ran, `OK`; this continuation began with `42` tests.
+- [x] [VF02] Pyright CLI, `spinaltap tests`
+  - Result: `0 errors`, `0 warnings`, `0 informations`. Invoked the existing
+    cached Node CLI directly because `npx` package retrieval was unavailable.
+- [ ] [VF03] `py -3.13 -m mypy spinaltap tests`
+  - Result: blocked by environment; Python 3.13 reports `No module named
     mypy`.
 - [ ] [VF04] `.venv\Scripts\python.exe -m mypy spinaltap tests`
-  - Result: blocked by environment; repo-local virtualenv reports `No module
-    named mypy`.
-- [x] [VF05] `npx --yes markdownlint-cli2 ... TODO.md`
-  - Result: `8` Markdown files linted, `0` errors.
-- [x] [VF06] Link-resolved pseudo-citation audit for `TODO.md`
-  - Result: `74` definitions, `74` references, `0` missing, `0` unused, `0`
-    duplicate, `0` body definitions, `0` zero placeholders.
+  - Result: not run; this checkout has no repo-local virtualenv interpreter.
+    Tooling setup remains tracked by [TK01] and [TK02].
+- [x] [VF05] Markdownlint CLI for `TODO.md`, requirements, design, tasklist,
+  and sourcecode plan, using the existing cached Node CLI.
+  - Result: `5` Markdown files linted, `0` issues; lint configuration unchanged.
+- [x] [VF06] Pseudo-citation audit for the same five documents
+  - Result: `383` definitions and `383` unique references summed across files;
+    `0` missing, unused, duplicate, misplaced, or zero-placeholder markers.
+    The root TODO contains `75` definitions and `75` unique references.
+- [x] [VF07] `py -3.13 -m spinaltap` and JSON subprocess smoke test
+  - Result: `14` accepted steps, final `x = 0.672`, remainder `0.008`, and an
+    oversized-delta guard refusal. The CLI exited successfully.
 
 ## (6) Notes for the next source agent [NT]
 
@@ -183,8 +213,9 @@ source work without treating the current prototype as an engine-ready system
   contained no missing-import diagnostics.
 - [NT03] `.mypy_cache/` is ignored because local type-checker state is
   generated output.
-- [NT04] Current source still represents contract specimens and a minimal
-  reconciliation harness; broader engine systems remain pending work.
+- [NT04] Current source includes a runnable scalar demo and single-worker
+  reconciliation harness; broader engine systems remain pending work. Run
+  `py -3.13 -m spinaltap` from the repository root.
 
 ## (Y) Link-complete usage index [LC]
 
@@ -200,7 +231,7 @@ below remains link-complete [LC], [LN].
   [LD08], [LD09]
 - Task markers: [TK01], [TK02], [TK03], [TK04], [TK05], [TK06], [TK07],
   [TK08], [TK09], [TK10], [TK11], [TK12]
-- Verification markers: [VF01], [VF02], [VF03], [VF04], [VF05], [VF06]
+- Verification markers: [VF01], [VF02], [VF03], [VF04], [VF05], [VF06], [VF07]
 - Note markers: [NT01], [NT02], [NT03], [NT04]
 - Metadata markers: [GL01], [GL02], [GL03], [GL04], [GL05], [GL06], [DP01],
   [DP02], [DP03], [DP04], [DP05], [DP06], [RQ01], [RQ02], [RQ03], [RQ04],
@@ -322,8 +353,8 @@ below remains link-complete [LC], [LN].
   state."
 
 [MO01]: CONTRACT_KERNEL_MODULE
-  "The source module owning contract refs, records, refusal states, and proof
-  hook primitives."
+  "The contract kernel and companion mapping validation module owning records,
+  refusal states, payload shape checks, and proof hook primitives."
 
 [MO02]: CONTEXT_WEIGHT_MODULE
   "The source module owning source-influence scoring behavior."
@@ -416,11 +447,11 @@ below remains link-complete [LC], [LN].
   "Fresh Pyright command evidence for Pylance-class static diagnostics."
 
 [VF03]: SYSTEM_MYPY_BLOCKED
-  "System Python could not run mypy because the module is not installed."
+  "Python 3.13 could not run mypy because the module is not installed."
 
 [VF04]: VENV_MYPY_BLOCKED
-  "Repo-local virtualenv could not run mypy because the module is not
-  installed."
+  "Repo-local mypy was not run because this checkout has no virtualenv
+  interpreter."
 
 [VF05]: MARKDOWNLINT_VERIFICATION
   "Markdownlint verification for TODO and docspec documents."
@@ -428,6 +459,10 @@ below remains link-complete [LC], [LN].
 [VF06]: PSEUDO_CITATION_AUDIT
   "Custom audit for missing, unused, duplicate, or misplaced marker
   definitions."
+
+[VF07]: RUNNABLE_DEMO_VERIFICATION
+  "Direct CLI and JSON subprocess evidence for the fixed-step scalar demo,
+  including overflow backlog and oversized-delta refusal."
 
 [NT01]: SNAPSHOT_NOT_LIVE_STATE
   "The JSON export should not be treated as refreshed IDE state after edits."
