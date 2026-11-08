@@ -24,7 +24,7 @@ context markers are local to this document.
 
 ### ST-005: Specify contract identity and schema evolution
 
-- Status: planned
+- Status: ready
 - Phase: P2
 - Requirements: REQ03, REQ04, REQ05, REQ06, REQ07, REQ08, REQ09
 - Depends on: ST-001

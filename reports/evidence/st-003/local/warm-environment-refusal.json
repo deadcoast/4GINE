@@ -1,0 +1,21 @@
+﻿{
+    "timestamp_utc":  "2026-11-08T12:42:50.5162689Z",
+    "status":  "failed",
+    "source_revision":  null,
+    "runner_os":  null,
+    "runner_arch":  null,
+    "image_os":  null,
+    "image_version":  null,
+    "run_id":  null,
+    "run_attempt":  null,
+    "cold_paths_absent":  {
+                              ".tools":  false,
+                              ".venv":  true,
+                              "node_modules":  true
+                          },
+    "stages":  [
+
+               ],
+    "error":  "CI requires a fresh checkout without .tools, .venv or node_modules. Use Verify.cmd for an existing environment.",
+    "exit_code":  1
+}

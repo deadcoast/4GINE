@@ -1,0 +1,32 @@
+﻿{
+    "timestamp_utc":  "2026-11-08T12:45:52.6630465Z",
+    "status":  "passed",
+    "source_revision":  "ae935751776b282b7e70a5062ca674717ca78197",
+    "runner_os":  "Windows",
+    "runner_arch":  "X64",
+    "image_os":  "win25-vs2026",
+    "image_version":  "20261103.298.1",
+    "run_id":  "42481713173",
+    "run_attempt":  "1",
+    "cold_paths_absent":  {
+                              ".tools":  true,
+                              ".venv":  true,
+                              "node_modules":  true
+                          },
+    "stages":  [
+                   {
+                       "name":  "bootstrap and required checks",
+                       "exit_code":  0
+                   },
+                   {
+                       "name":  "planning and Markdown refusal probes",
+                       "exit_code":  0
+                   },
+                   {
+                       "name":  "submitted diff whitespace",
+                       "exit_code":  0
+                   }
+               ],
+    "diff_base":  "bc3ada529f2e77fac5d5ab43b25bd1f478b86a36",
+    "exit_code":  0
+}

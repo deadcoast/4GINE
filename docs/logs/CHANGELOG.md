@@ -206,3 +206,19 @@ tag/reference model and bottom `(Z) Context-Citations` registry pattern.
   published the [qualification record](../../reports/ST-002%20bootstrap%20qualification.md)
   with raw command output, source identities and explicit simulation limits.
 * Closed ST-002 and advanced the canonical queue to ST-003 for automated checks.
+
+---
+
+08: 2026-11-08 automated checks and hosted P1 qualification
+
+* Added a Windows GitHub Actions job using the pinned bootstrap, isolated
+  planning/Markdown refusal probes, submitted-diff whitespace and retained
+  diagnostic artifacts. Actions are pinned and repository permissions read-only.
+* Qualified real hosted failure and success. The failure exposed one extra
+  blank line in the ST-002 checksum record; checksum values were preserved.
+* Added three regression cases preventing false-positive refusal evidence and
+  recorded 87 runtime / 31 tooling tests passing on the hosted environment.
+* Published the [CI guide](../continuous_integration.md),
+  [hosted report](../../reports/ST-003%20automated%20checks.md) and durable evidence.
+* Closed ST-003, reviewed P1 exit and selected ST-005 contract identity policy.
+  The qualification branch is unmerged; runtime behavior remains unchanged.

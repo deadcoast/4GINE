@@ -86,8 +86,9 @@ upload and no hosted-runner claim; inspect .tools/ci and .tools/verification.
 
 Windows Server runner evidence complements the Windows desktop qualification
 from ST-002. It does not qualify Linux, macOS, ARM, a renderer, GPU behavior,
-performance budgets or an installed application. P1 exit still requires review
-of its complete evidence; a workflow file alone cannot close the phase.
+performance budgets or an installed application. The
+[hosted qualification and P1 review](../reports/ST-003%20automated%20checks.md)
+records actual execution; a workflow file alone cannot close the phase.
 
 ## (Y) Link-complete usage index [LI]
 

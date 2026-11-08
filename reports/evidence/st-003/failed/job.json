@@ -1,0 +1,33 @@
+﻿{
+    "timestamp_utc":  "2026-11-08T12:41:37.9183445Z",
+    "status":  "failed",
+    "source_revision":  "bc3ada529f2e77fac5d5ab43b25bd1f478b86a36",
+    "runner_os":  "Windows",
+    "runner_arch":  "X64",
+    "image_os":  "win25-vs2026",
+    "image_version":  "20261103.298.1",
+    "run_id":  "42481417652",
+    "run_attempt":  "1",
+    "cold_paths_absent":  {
+                              ".tools":  true,
+                              ".venv":  true,
+                              "node_modules":  true
+                          },
+    "stages":  [
+                   {
+                       "name":  "bootstrap and required checks",
+                       "exit_code":  0
+                   },
+                   {
+                       "name":  "planning and Markdown refusal probes",
+                       "exit_code":  0
+                   },
+                   {
+                       "name":  "submitted commit whitespace",
+                       "exit_code":  2
+                   }
+               ],
+    "diff_base":  "HEAD commit (no event base)",
+    "error":  "submitted commit whitespace failed (exit 2). See job.log and verifier evidence.",
+    "exit_code":  1
+}

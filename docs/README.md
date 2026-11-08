@@ -21,6 +21,7 @@ the research, prototype and future application horizons [GL01].
 | [Setup guide](getting_started.md) | Bootstrap, verification and failure recovery | Selected Windows x64 development environment |
 | [Automated checks](continuous_integration.md) | CI job, artifacts and failure diagnosis | Windows runner; evidence remains dated |
 | [Bootstrap qualification](../reports/ST-002%20bootstrap%20qualification.md) | Cold/repeat setup, refusal cases and raw evidence | Observed Windows environment; CI remains separate |
+| [Automation qualification](../reports/ST-003%20automated%20checks.md) | Hosted success/failure artifacts and P1 exit review | Windows push run; other triggers remain unexercised |
 | [Research plan](research_plan.md) | Method, guardrails, theories, lanes and styles | Preserved research vocabulary |
 | [Live research](live_research.md) | Original sources and theory dispositions | Dated 2026-05-26 research snapshot |
 | [Proposal](proposal.md) | Initial bounded prototype scope and module rationale | Original proposal, not the current work queue |

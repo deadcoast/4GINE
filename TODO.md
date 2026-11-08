@@ -11,10 +11,10 @@ below are snapshots, not a second mutable backlog.
 > Dependency: [DP04] - CURRENT_SLICE_LIMITS
 > Requirement: [RQ04] - KEEP_PENDING_INTEGRATION_VISIBLE
 
-Next task: ST-003
+Next task: ST-005
 
 Start with
-[ST-003: Automate the accepted repository checks](docs/todos/tooling.md#st-003-automate-the-accepted-repository-checks).
+[ST-005: Specify contract identity and schema evolution](docs/todos/contracts.md#st-005-specify-contract-identity-and-schema-evolution).
 Its card owns status, scope, dependencies, acceptance and evidence.
 Follow the [development workflow](docs/development_workflow.md), updating this
 pointer when the selected task finishes.

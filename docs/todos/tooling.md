@@ -70,7 +70,7 @@ context markers are local to this document.
 
 ### ST-003: Automate the accepted repository checks
 
-- Status: in_progress
+- Status: done
 - Phase: P1
 - Requirements: REQ03, REQ09, REQ15
 - Depends on: ST-002
@@ -83,7 +83,13 @@ context markers are local to this document.
   versions. Include planning and documentation gates. Document environment
   limits rather than claiming every operating system or GPU has been
   qualified.
-- Evidence: pending
+- Evidence: 2026-11-08 [hosted qualification and P1 review](../../reports/ST-003%20automated%20checks.md).
+  Run 42481713173 on Windows Server 2025 passed the fresh bootstrap, 87 runtime
+  tests, 31 tooling tests, demo, static/planning/Markdown gates and submitted
+  diff whitespace. Invalid planning/Markdown fixtures exited 1 as expected.
+  Run 42481417652 proves a real check failure fails the job and retains logs.
+  Source/tool identities and both artifacts are preserved; PR/manual triggers
+  are configured but not separately exercised. Branch remains unmerged.
 
 ### ST-004: Refresh or retire the historical IDE diagnostic intake
 

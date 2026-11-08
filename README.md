@@ -182,6 +182,10 @@ records successful cold/repeat Windows setup, 87 runtime and 28 tooling tests,
 all required gates and eight expected refusals. The
 [automated-checks guide](docs/continuous_integration.md) describes the Windows
 CI job and retained artifacts; the canonical card owns its acceptance status.
+The [hosted qualification](reports/ST-003%20automated%20checks.md) records
+87 runtime and 31 tooling tests, deliberate planning/Markdown refusals and
+retained failure output on Windows Server 2025. Its aggregate review admits
+P2 contract-policy work within the declared Windows development scope.
 
 No renderer/GPU, installed application, performance budget or human acceptance
 claim follows from these checks.

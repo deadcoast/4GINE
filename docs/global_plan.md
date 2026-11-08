@@ -93,9 +93,12 @@ decision. This chooses prototype tooling, not the production engine stack.
 The [accepted tooling policy](decisions/prototype_toolchain.md) specifies
 versions, required checks and the clean-environment qualification procedure.
 The [bootstrap qualification](../reports/ST-002%20bootstrap%20qualification.md)
-records cold and repeated Windows setup with refusal evidence. P1 also requires
-automation through ST-003 and aggregate exit review; local qualification alone
-does not close the phase.
+records cold and repeated Windows setup with refusal evidence. The
+[hosted automation and aggregate review](../reports/ST-003%20automated%20checks.md)
+records P1 exit on 2026-11-08 for the declared Windows environment: fresh local
+and hosted setup, required gates, invalid-fixture refusals and retained failure
+output. P2 may proceed within that scope. The optional IDE intake stays
+deferred; engine/application requirements remain separate.
 
 Required cards:
 
