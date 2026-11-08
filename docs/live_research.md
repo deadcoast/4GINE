@@ -1,5 +1,12 @@
 # (A) 4GINE LIVE RESEARCH PASS 01: SPINALTAP ENGINE CONSTRAINTS [DOC]
 
+Historical scope notice (2026-11-07): this is the original 2026-05-26 research
+pass. Keep its source dates, formulations and dispositions as provenance.
+Current delivery work follows the [global plan](global_plan.md).
+The [new technical review](../research_notes/4GINE%20development%20realignment/technical_research.md)
+records refreshed sources and the unresolved FR05 minimum-versus-runtime-mean
+decision; it does not silently replace this historical formulation.
+
 This document records the first live research pass authorized on 2026-05-26
 [DOC]. It follows the approved research plan's rule that research is evidence
 pressure, not a copy source [WL02], [GR], [TR].

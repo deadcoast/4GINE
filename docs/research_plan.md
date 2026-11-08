@@ -1,5 +1,11 @@
 # (A) 4GINE: SPINALTAP MULTI-MODULAR ALGORITHMIC ENGINE
 
+Current role (2026-11-07): preserved research method, theory, lane and style
+catalogue. Delivery sequencing now belongs to the [global plan](global_plan.md)
+and individual [workstream TODOs](README.md). Original research vocabulary is
+not a commitment to implement every candidate. Current direct-test evidence is
+scoped to the exact prototype behavior tested.
+
 A novel, research-guided three-dimensional game-engine design organized
 through SPINALTAP_ALGORITHM [SA] and the multi-modular ALGORITHMIC_STEM model
 [AS].
@@ -474,7 +480,7 @@ architecture legible against the pseudo-citation map [MO].
 - [LN11] Do not use bracket-colon definitions inside blockquote metadata.
 - [LN12] Reserve bracket-colon reference-definition lines for the registry.
 
-## (I) LINK-COMPLETE USAGE INDEX: [LI]
+## (Y) LINK-COMPLETE USAGE INDEX: [LI]
 
 > Goal: [GL12] — LINK_COMPLETENESS
 > Dependency: [DP12] — USAGE_ANCHOR_INDEX
@@ -1078,8 +1084,9 @@ registry.
   to requirements and dependencies."
 
 [EV05]: DIRECT_INTERNAL_TEST
-  "Highest support tier reserved for future direct testing inside a built
-  prototype or engine module."
+  "Direct internal test support for the exact tested prototype or engine
+  behavior. A scalar specimen does not establish untested visual, performance
+  or complete-engine claims."
 
 [DS]: DESIGN_OBJECT
   "Design-level object used by the proposal and docspec to turn theory into

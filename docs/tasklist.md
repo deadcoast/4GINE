@@ -1,5 +1,11 @@
 # (A) 4GINE TODO: SPINALTAP CONSTRAINT ENGINE DOCSPEC [DOC]
 
+Historical scope notice (2026-11-07): TK01-TK18 below are completed docspec
+planning tasks, not proof of a completed engine or the current source backlog.
+Keep their checked states and local IDs. Current work is in the
+[global plan](global_plan.md) and [canonical TODO cards](README.md).
+Same-numbered root-TODO tasks are a different historical ledger.
+
 This TODO is the completed third [WL04] docspec artifact. It turned requirements
 and design into ordered work before runtime sourcecode [D04], [D05], [WL05].
 Current source work is tracked in the root [TODO.md](../TODO.md).

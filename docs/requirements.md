@@ -1,11 +1,25 @@
 # (A) 4GINE REQUIREMENTS: SPINALTAP CONSTRAINT ENGINE [DOC]
 
+Current scope (2026-11-07): REQ01-REQ15 remain the prototype requirement
+authority. Their initial docspec-before-source entry gate was satisfied for
+the existing slices; it does not re-block authorized continuation. Changes
+still need aligned requirements, design and task evidence through the
+[development workflow](development_workflow.md). Application requirements must
+be extended explicitly under the [global plan](global_plan.md).
+
+Readiness interpretation: current implementation_ready proof records validate
+planning structure, not executed results; style records currently validate
+nonblank strings, not measurable budgets. REQ08/REQ14 and proof-evidence
+semantics remain open under the [style](todos/style.md) and
+[proof](todos/proof.md) cards. Requirement coverage is not satisfaction.
+
 This requirements document is the first [WL04] docspec artifact. It converts
 the proposal into testable conditions while preserving the context chain from
 the research plan, live research pass, and proposal [D01], [D02], [D03].
 
-No sourcecode is authorized by this document. Sourcecode begins only after the
-requirements, design, and tasklist are aligned and validated [WL05].
+Original entry condition: source began only after requirements, design and
+tasklist alignment/validation [WL05]. The current scope notice above records
+that this gate has been satisfied for existing authorized slices.
 
 ## (1) Context ledger [KN]
 
@@ -227,7 +241,9 @@ below remains link-complete [LC], [LN].
   "The design object for input, output, ownership, and refusal boundaries."
 
 [EV05]: DIRECT_INTERNAL_TEST
-  "The future evidence tier reserved for direct prototype or engine tests."
+  "Direct internal test evidence for the exact tested claim. Current scalar
+  specimens can occupy this tier without establishing rendering, performance
+  or complete-engine acceptance."
 
 [TR02]: REPLICATION_RISK_CHECK
   "The originality check that rejects copied source structure."

@@ -24,7 +24,7 @@ context markers are local to this document.
 
 ### ST-001: Choose the prototype toolchain and required checks
 
-- Status: ready
+- Status: done
 - Phase: P1
 - Requirements: REQ02, REQ03, REQ09
 - Depends on: none
@@ -37,28 +37,40 @@ context markers are local to this document.
   strategy and required versus optional checks. Explain whether Mypy is
   required, replaced or deferred. Include a clean-environment verification
   plan; do not claim that a manifest alone proves reproducibility.
-- Evidence: pending
+- Evidence: 2026-11-08 [accepted decision](../decisions/prototype_toolchain.md)
+  specifies exact target versions, lock ownership, required checks, optional
+  Mypy and fresh-environment success/failure cases. Planning and Markdown
+  checks pass for 27 scoped documents. Local baseline: 87 runtime tests,
+  19 checker tests, JSON demo and Pyright pass. Selected-version installation
+  and clean-environment qualification are explicitly ST-002 work.
 
 ### ST-002: Provide a repeatable bootstrap and verification entry point
 
-- Status: planned
+- Status: done
 - Phase: P1
 - Requirements: REQ02, REQ03, REQ09
 - Depends on: ST-001
 - Owner: tooling
 - Legacy: TODO.md::TK01, TODO.md::TK02
 - Scope: Implement the selected manifest/environment and one documented
-  verification command without relying on personal npm-cache paths.
+  verification command without relying on personal npm-cache paths. Follow
+  the [accepted decision](../decisions/prototype_toolchain.md), including exact
+  pins, local tools, lock freshness and its clean-environment failure cases.
 - Acceptance: From a fresh repository-local environment, run the demo, runtime
   suite, chosen static checks, Markdown lint and planning checker. Missing
   tools fail with actionable messages. Record commands, versions, source
   revision and results; preserve the standard-library runtime unless the
   decision explicitly changes it.
-- Evidence: pending
+- Evidence: 2026-11-08 [qualification report](../../reports/ST-002%20bootstrap%20qualification.md)
+  and raw command evidence. Pinned tools installed; cold and repeated setup in
+  a path with spaces pass 87 runtime and 28 tooling tests, demo, Pyright,
+  planning, Markdown and whitespace gates. Eight refusal probes pass, locks
+  and project inputs remain unchanged, and Windows Python registrations match
+  before/after. GIL-disabled and outage probes are explicitly simulated.
 
 ### ST-003: Automate the accepted repository checks
 
-- Status: planned
+- Status: in_progress
 - Phase: P1
 - Requirements: REQ03, REQ09, REQ15
 - Depends on: ST-002
@@ -92,7 +104,7 @@ context markers are local to this document.
 
 ### ST-034: Establish the global plan and task consistency workflow
 
-- Status: in_progress
+- Status: done
 - Phase: P1
 - Requirements: REQ01, REQ02, REQ03, REQ09, REQ15
 - Depends on: none
@@ -107,7 +119,11 @@ context markers are local to this document.
   local links and citation checks pass with named exclusions, and checker
   regression tests reject representative drift. Record exact verification
   scope before closing.
-- Evidence: pending
+- Evidence: 2026-11-07 [realignment report](../../reports/4GINE%20development%20realignment.md).
+  Planning/link/citation check passed for 26 Markdown files, 34 cards,
+  5 phases and 15 requirements. All 26 Markdown files lint clean; 19 checker
+  regression tests and static checks pass. Diff whitespace passes, and runtime,
+  runtime tests, historical drafts and agent controls are unchanged.
 
 ## (Y) Link-complete usage index [LI]
 

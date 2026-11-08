@@ -1,5 +1,17 @@
 # (A) 4GINE DESIGN: SPINALTAP CONSTRAINT ENGINE [DOC]
 
+Current scope (2026-11-07): this file owns technical contract meaning and
+the documented scalar runtime boundaries. The [global plan](global_plan.md)
+owns delivery sequencing; [workstream cards](README.md) own current task status.
+The original prototype is implemented only within its stated limits.
+Proof promotion still checks planning text, style still checks nonblank
+strings, and governor aggregation differs from historical FR05. Their policy
+and implementation decisions are tracked explicitly before broader claims.
+
+Direct internal tests establish only their tested behavior. Durable commits,
+concurrent publication, conflict merging and hook isolation require accepted
+use cases; they are not automatic prerequisites of the first demonstrator.
+
 This design document is the second [WL04] docspec artifact. It explains how
 the requirements become architecture, module boundaries, data flow, and
 validation behavior [D04].
@@ -527,7 +539,9 @@ below remains link-complete [LC], [LN].
   "The formulation that converts style into measurable limits."
 
 [EV05]: DIRECT_INTERNAL_TEST
-  "The future evidence tier reserved for direct prototype or engine tests."
+  "Direct internal test evidence for the exact tested claim. Current scalar
+  specimens can occupy this tier without establishing rendering, performance
+  or complete-engine acceptance."
 
 [MG]: MODULE_GROUP
   "The proposed SPINALTAP Constraint Engine modules."

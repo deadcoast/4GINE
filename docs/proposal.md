@@ -1,5 +1,11 @@
 # (A) 4GINE PROPOSAL: SPINALTAP CONSTRAINT ENGINE [DOC]
 
+Historical scope notice (2026-11-07): this proposal records the original
+bounded prototype admission and rationale. Its handoff wording is historical;
+the user subsequently authorized source continuation. Current delivery and
+future application admission follow the [global plan](global_plan.md) and
+[workstream cards](README.md). This proposal does not specify a complete engine.
+
 This proposal is the next research step after the approved research plan
 [D01] and first live research pass [D02]. It converts source-pressured theory
 into a scoped engine direction without starting sourcecode [WL03], [WL04],

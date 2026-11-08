@@ -1,5 +1,12 @@
 # (A) 4GINE SOURCECODE IMPLEMENTATION PLAN [DOC]
 
+Current scope (2026-11-07): this record preserves the eight initial source
+slices, their implementation order and later scalar continuation. The
+[global plan](global_plan.md) now owns delivery phases and
+[canonical TODO cards](README.md) own current task status. Slice presence does
+not establish complete requirements, measured style or executed proof evidence.
+Future concurrency, durability, merging or isolation needs a scoped use case.
+
 This document records the gated implementation order and current source slices
 for the SPINALTAP Constraint Engine [WL05]. It exists because the docspec
 package reached the validation gate required before source planning [D04],
@@ -90,15 +97,17 @@ bundle specimen. `tests/test_signal_constraint_spine.py` verifies that bounded
 deltas route through [DC03] bundles and direct or incomplete mutation attempts
 emit explicit refusal risk before aggregation [VG03].
 
-Step 6 status: `spinaltap/style_surface.py` owns the [MG05] measurable style
-limit specimen. `tests/test_style_constraint_surface.py` verifies that style
-profiles become [DC05] limits and mood-label profiles emit explicit refusal
-risk [VG05].
+Step 6 status: `spinaltap/style_surface.py` owns the [MG05] textual style
+record specimen. `tests/test_style_constraint_surface.py` verifies complete
+nonblank [DC05] strings and missing-field refusals [VG05]. Arbitrary nonblank
+labels still pass; numeric units, ranges and budget enforcement remain open
+in the [style TODO](todos/style.md).
 
 Step 7 status: `spinaltap/soft_proof.py` owns the [MG06] proof-record
-specimen. `tests/test_soft_proof_lab.py` verifies that complete claims become
-implementation-ready [DC06] records and prose-only claims without specimen
-plans remain blocked [VG06].
+specimen. `tests/test_soft_proof_lab.py` verifies structural planning readiness
+for text-complete [DC06] records and missing-plan refusals [VG06]. The current
+implementation-ready label does not establish specimen execution or verified
+artifacts; that lifecycle is defined in the [proof TODO](todos/proof.md).
 
 Step 8 status: `spinaltap/reconciliation.py` owns the minimal [MG03]/[MG04]
 reconciliation harness. `tests/test_spinal_reconciliation.py` verifies that
@@ -241,6 +250,8 @@ below remains link-complete [LC], [LN].
 - Tasks and metadata: [TK16], [TK17], [TK18], [GL01], [GL02], [GL03],
   [GL04], [GL05], [GL06], [DP01], [DP02], [DP03], [DP04], [DP05], [DP06],
   [RQ01], [RQ02], [RQ03], [RQ04], [RQ05], [RQ06]
+
+- Validation family: [VG]
 
 ## (Z) Context-Citations
 

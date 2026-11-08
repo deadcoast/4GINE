@@ -35,9 +35,11 @@ context markers are local to this document.
   reset/pause, inspectable refusals, asset needs and measurable success.
 - Acceptance: Record one small use case and explicit exclusions with an owner
   decision. Define visual/latency/frame budgets to be measured and required
-  user acceptance. Identify which contracts need extension. This brief admits
-  a demonstrator; it does not promise a complete renderer, physics engine,
-  editor, network stack or every style category.
+  user acceptance. Publish accepted application requirements and design
+  extensions, then update downstream task requirement mappings before new
+  application source work. This brief admits a demonstrator; it does not
+  promise a complete renderer, physics engine, editor, network stack or every
+  style category.
 - Evidence: pending
 
 ### ST-026: Compare and select the presentation and language boundary

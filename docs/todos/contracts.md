@@ -60,7 +60,8 @@ context markers are local to this document.
 
 - Status: planned
 - Phase: P2
-- Requirements: REQ01, REQ02, REQ03, REQ04, REQ05, REQ06, REQ07, REQ08, REQ09, REQ10, REQ11, REQ12, REQ13, REQ14, REQ15
+- Requirements: REQ01, REQ02, REQ03, REQ04, REQ05, REQ06, REQ07, REQ08, REQ09,
+  REQ10, REQ11, REQ12, REQ13, REQ14, REQ15
 - Depends on: ST-006, ST-008, ST-009, ST-011, ST-012, ST-014, ST-018, ST-024
 - Owner: contracts
 - Legacy: Continues TODO.md::TK12 as a behavioral audit

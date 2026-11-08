@@ -1,0 +1,18 @@
+[project]
+name = "4gine"
+version = "0.0.0"
+description = "SPINALTAP scalar contract prototype"
+requires-python = ">=3.13.18,<3.14"
+dependencies = []
+
+[tool.uv]
+required-version = "==0.13.7"
+package = false
+
+[tool.pyright]
+include = ["spinaltap", "tests", "scripts"]
+pythonVersion = "3.13"
+pythonPlatform = "Windows"
+typeCheckingMode = "standard"
+venvPath = "."
+venv = ".venv"

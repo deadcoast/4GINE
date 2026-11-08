@@ -445,7 +445,7 @@ def validate(root: Path) -> Result:
                 )
             else:
                 upstream = tasks[dependency]
-                if task.fields.get("Status") in {"ready", "in_progress"}:
+                if task.fields.get("Status") in {"ready", "in_progress", "done"}:
                     if upstream.fields.get("Status") != "done":
                         issue(
                             task.path,

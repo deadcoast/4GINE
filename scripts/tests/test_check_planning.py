@@ -142,6 +142,18 @@ class PlanningValidatorTests(unittest.TestCase):
         self.assert_issue("done requires non-pending evidence detail")
         self.assert_issue("next task is not ready or in_progress")
 
+    def test_done_task_cannot_skip_an_unfinished_prerequisite(self) -> None:
+        self.set_cards(
+            first=card(
+                "ST-001",
+                status="done",
+                dependencies="ST-002",
+                evidence="PASS: claimed result with unfinished prerequisite.",
+            ),
+            second=card("ST-002", status="planned", requirements="REQ02"),
+        )
+        self.assert_issue("dependency ST-002 is not done")
+
     def test_done_with_evidence_unlocks_ready_dependency(self) -> None:
         self.set_cards(
             first=card(

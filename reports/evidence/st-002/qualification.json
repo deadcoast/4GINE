@@ -1,0 +1,1172 @@
+{
+  "started_utc": "2026-11-08T10:10:50.416022+00:00",
+  "source_root": "C:\\github\\4GINE",
+  "checkout": "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces",
+  "cases": [
+    {
+      "name": "clone",
+      "command": [
+        "git",
+        "clone",
+        "--quiet",
+        "--no-hardlinks",
+        "C:\\github\\4GINE",
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces"
+      ],
+      "exit_code": 0,
+      "expected_success": true,
+      "passed": true,
+      "log": "00-clone.txt",
+      "output": ""
+    },
+    {
+      "name": "cold-bootstrap",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\scripts\\bootstrap.ps1"
+      ],
+      "exit_code": 0,
+      "expected_success": true,
+      "passed": true,
+      "log": "01-cold-bootstrap.txt",
+      "output": "Downloading https://releases.astral.sh/github/uv/releases/download/0.13.7/uv-x86_64-pc-windows-msvc.zip\nDownloading https://nodejs.org/dist/v24.22.2/node-v24.22.2-win-x64.zip\n\nadded 87 packages in 15s\nChecking uv version...\nChecking Node version...\nChecking npm version...\nChecking Python lock freshness...\nChecking npm lock freshness...\nChecking installed npm tree...\nChecking runtime tests...\nChecking tooling tests...\nChecking demo...\nChecking Pyright...\nChecking planning...\nChecking Markdown...\nChecking whitespace...\nPASS: all required checks passed; project inputs unchanged.\nEvidence: C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\verification\\latest.json\nBootstrap and verification passed.\nDownloading cpython-3.13.18-windows-x86_64-none (download) (21.0MiB)\n Downloaded cpython-3.13.18-windows-x86_64-none (download)\nInstalled Python 3.13.18 in 3.29s\n + cpython-3.13.18-windows-x86_64-none\nUsing CPython 3.13.18\nCreating virtual environment at: .venv\nResolved 1 package in 1ms\nChecked in 0.00ms\nnpm notice\nnpm notice New major version of npm available! 11.19.1 -> 12.2.2\nnpm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2\nnpm notice To update run: npm install -g npm@12.2.2\nnpm notice\n"
+    },
+    {
+      "name": "repeat-bootstrap",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\scripts\\bootstrap.ps1"
+      ],
+      "exit_code": 0,
+      "expected_success": true,
+      "passed": true,
+      "log": "02-repeat-bootstrap.txt",
+      "output": "\nadded 87 packages in 14s\nChecking uv version...\nChecking Node version...\nChecking npm version...\nChecking Python lock freshness...\nChecking npm lock freshness...\nChecking installed npm tree...\nChecking runtime tests...\nChecking tooling tests...\nChecking demo...\nChecking Pyright...\nChecking planning...\nChecking Markdown...\nChecking whitespace...\nPASS: all required checks passed; project inputs unchanged.\nEvidence: C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\verification\\latest.json\nBootstrap and verification passed.\nPython 3.13.18 is already installed\nResolved 1 package in 0.75ms\nChecked in 0.00ms\n"
+    },
+    {
+      "name": "stale-python-lock",
+      "command": [
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\uv-0.13.7\\uv.exe",
+        "sync",
+        "--locked",
+        "--managed-python",
+        "--config-file",
+        ".tools/uv.toml"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "passed": true,
+      "log": "03-stale-python-lock.txt",
+      "output": "Resolved 1 package in 2ms\nerror: The lockfile at `uv.lock` needs to be updated, but `--locked` was provided.\n\nhint: To update the lockfile, run `uv lock`.\n"
+    },
+    {
+      "name": "stale-npm-lock",
+      "command": [
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\scripts\\verify.py"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "passed": true,
+      "log": "04-stale-npm-lock.txt",
+      "output": "Evidence: C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\verification\\latest.json\nVERIFICATION FAILED: Stale package-lock.json: root devDependencies differs from package.json; review and regenerate the lock during an intentional tool update.\n"
+    },
+    {
+      "name": "missing-checker",
+      "command": [
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\scripts\\verify.py"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "passed": true,
+      "log": "05-missing-checker.txt",
+      "output": "Checking uv version...\nChecking Node version...\nChecking npm version...\nEvidence: C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\verification\\latest.json\nVERIFICATION FAILED: Missing local checker pyright; run Bootstrap.cmd.\n"
+    },
+    {
+      "name": "wrong-checker-version",
+      "command": [
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\scripts\\verify.py"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "passed": true,
+      "log": "06-wrong-checker-version.txt",
+      "output": "Checking uv version...\nChecking Node version...\nChecking npm version...\nEvidence: C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\verification\\latest.json\nVERIFICATION FAILED: pyright: expected 1.1.414, got 0.0.0; run Bootstrap.cmd.\n"
+    },
+    {
+      "name": "failed-child-command",
+      "command": [
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\scripts\\verify.py"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "passed": true,
+      "log": "07-failed-child-command.txt",
+      "output": "Checking uv version...\nChecking Node version...\nChecking npm version...\nChecking Python lock freshness...\nChecking npm lock freshness...\nChecking installed npm tree...\nChecking runtime tests...\nChecking tooling tests...\nChecking demo...\nChecking Pyright...\nEvidence: C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\verification\\latest.json\nVERIFICATION FAILED: Pyright failed (exit 23):\nPASS\n\n"
+    },
+    {
+      "name": "unsupported-python",
+      "command": [
+        "C:\\Python314\\python.exe",
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\scripts\\verify.py"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "passed": true,
+      "log": "08-unsupported-python.txt",
+      "output": "Evidence: C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\verification\\latest.json\nVERIFICATION FAILED: Python: expected 3.13.18, got 3.14.3; run Bootstrap.cmd.\n"
+    },
+    {
+      "name": "free-threaded-refusal",
+      "command": [
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+        "-c",
+        "import sys; sys.path.insert(0,'scripts'); import verify; verify.sysconfig.get_config_var=lambda key: 1 if key=='Py_GIL_DISABLED' else None; raise SystemExit(verify.main([]))"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "passed": true,
+      "log": "09-free-threaded-refusal.txt",
+      "output": "Evidence: C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\verification\\latest.json\nVERIFICATION FAILED: Reference runtime requires GIL-enabled CPython.\n"
+    },
+    {
+      "name": "network-failure",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\network outage fixture\\outage.ps1"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "passed": true,
+      "log": "10-network-failure.txt",
+      "output": "Downloading https://releases.astral.sh/github/uv/releases/download/0.13.7/uv-x86_64-pc-windows-msvc.zip\nBOOTSTRAP FAILED: simulated network outage\n"
+    },
+    {
+      "name": "after-refusals",
+      "command": [
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+        "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\scripts\\verify.py"
+      ],
+      "exit_code": 0,
+      "expected_success": true,
+      "passed": true,
+      "log": "11-after-refusals.txt",
+      "output": "Checking uv version...\nChecking Node version...\nChecking npm version...\nChecking Python lock freshness...\nChecking npm lock freshness...\nChecking installed npm tree...\nChecking runtime tests...\nChecking tooling tests...\nChecking demo...\nChecking Pyright...\nChecking planning...\nChecking Markdown...\nChecking whitespace...\nPASS: all required checks passed; project inputs unchanged.\nEvidence: C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\verification\\latest.json\n"
+    }
+  ],
+  "python_registry_before": {
+    "Software\\Python\\Astral": [
+      "('DisplayName', 'Astral Software Inc.', 1)",
+      "('SupportUrl', 'https://github.com/astral-sh/uv', 1)"
+    ],
+    "Software\\Python\\Astral\\CPython3.11.14": [
+      "('DisplayName', 'CPython 3.11.14 (64-bit)', 1)",
+      "('SupportUrl', 'https://github.com/astral-sh/uv', 1)",
+      "('Version', '3.11.14', 1)",
+      "('SysVersion', '3.11.14', 1)",
+      "('SysArchitecture', '64bit', 1)",
+      "('DownloadUrl', 'https://github.com/astral-sh/python-build-standalone/releases/download/20251014/cpython-3.11.14%2B20251014-x86_64-pc-windows-msvc-install_only_stripped.tar.gz', 1)",
+      "('DownloadSha256', 'c2a7b0bb86eb9f1cc094a01bdabef7ddc77f89f8e45161fa7819f2b4a7ba7bc1', 1)"
+    ],
+    "Software\\Python\\Astral\\CPython3.11.14\\InstallPath": [
+      "('', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.11.14-windows-x86_64-none', 1)",
+      "('ExecutablePath', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.11.14-windows-x86_64-none\\\\python.exe', 1)",
+      "('WindowedExecutablePath', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.11.14-windows-x86_64-none\\\\pythonw.exe', 1)"
+    ],
+    "Software\\Python\\Astral\\CPython3.13.9": [
+      "('DisplayName', 'CPython 3.13.9 (64-bit)', 1)",
+      "('SupportUrl', 'https://github.com/astral-sh/uv', 1)",
+      "('Version', '3.13.9', 1)",
+      "('SysVersion', '3.13.9', 1)",
+      "('SysArchitecture', '64bit', 1)",
+      "('DownloadUrl', 'https://github.com/astral-sh/python-build-standalone/releases/download/20251014/cpython-3.13.9%2B20251014-x86_64-pc-windows-msvc-install_only_stripped.tar.gz', 1)",
+      "('DownloadSha256', '76e0a9749c4deeb975a4b6b36d54be4e43f0c2a4c654bedab5d2e4d62dbc3006', 1)"
+    ],
+    "Software\\Python\\Astral\\CPython3.13.9\\InstallPath": [
+      "('', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.13.9-windows-x86_64-none', 1)",
+      "('ExecutablePath', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.13.9-windows-x86_64-none\\\\python.exe', 1)",
+      "('WindowedExecutablePath', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.13.9-windows-x86_64-none\\\\pythonw.exe', 1)"
+    ]
+  },
+  "implementation_hashes": {
+    ".agents/ONBOARDING.md": "2487228abd6db978a4e776afa2e13cb1f811fa78c4628e5d42c87b49c6babd25",
+    ".agents/REFRESHER.md": "a81154f7c82e2b1bad1a5d7c996dfc9c9dff2600efa2a074152b0b8caaefcd4e",
+    ".agents/VALIDATE_WORKFLOW.json": "827733efeab8f7c852d4b9d529a193a8dc60fc60fa0e26ff6a6988eab457c53f",
+    ".agents/template/TEMPLATE_ONBOARDING.md": "f28304e11829be543399a031c8e701144b2ab21d25260a413b89ae10e0c8884a",
+    ".agents/template/TEMPLATE_VALIDATE_WORKFLOW.json": "827733efeab8f7c852d4b9d529a193a8dc60fc60fa0e26ff6a6988eab457c53f",
+    ".gitignore": "f2a4d78beaa836a50d45a27ea2171136c03ec7eff3c9fa1d71ee07a92242aaad",
+    ".node-version": "9185b9f67843cabfa8054f65ce47ce0b52036b0bfe07ae5a6b834d97cc127140",
+    ".python-version": "57de572f10b591d6dcd9e25db9f59db260aa11f7afa3d6a4ddec4f00bb5f8838",
+    ".user_notes/depreciated_files/4GINE_v01.md": "6ca7ac4fcbee7618e90ea79551b74517a105d7388acaf94b7bcd4223bd507658",
+    ".user_notes/depreciated_files/4GINEv02.md": "3c446db85b1c5a2da748f06f18e71fdd90e75ad7d03090921aa875a961cf9f5c",
+    "Bootstrap.cmd": "9657c7c8797177713c7bed5a07731198600eb92ea1b5ab3736426c21cc565169",
+    "README.md": "bff83329fea4595ec421f16311e7c2db8a460dfe5c8456d132225a6fd64b1d1e",
+    "TODO.md": "79a3561243a6884175a74cba481a9b71d09006939f6970195b77f6334c213d33",
+    "VERIFICATION.md": "0ec3eb634e40bbffa4f51435a81e66cce8608b033b3d42ff0bc12f491ad15d39",
+    "Verify.cmd": "5ea1e7c04f9abd313cc8efc9685f1d42ca0c650e860aac7c810b2c5f91ae3ace",
+    "docs/README.md": "9004612c8e1900f8ea1ca2e722464655353df25f33cd0d1cae1bb8007384bff1",
+    "docs/decisions/prototype_toolchain.md": "a9abb57c622b427e2ffde41595c6a437ad1e2fdec9e193f4352470b35f996b42",
+    "docs/design.md": "3398b0d851364f5f6dadf6f297782d1ad7573f65d267fd579e9d8bf432e76f94",
+    "docs/development_workflow.md": "88c780a559129a91f4b7fca6d3fa47840b6c5d112d3892b7ce4e20be2777e7ff",
+    "docs/getting_started.md": "641291b7ba53bea31aa608c3f39e45337836faedab59de0086ad1de9c7283e52",
+    "docs/global_plan.md": "a7bd4596c73e465eefd8abd3e5ee6815aefc823ed0dddeaba95e5e96ad0821ab",
+    "docs/live_research.md": "330cdbb1e0e0a59e0311ac6157532dd026f8f325b695ac3bde67738b5ee00728",
+    "docs/logs/CHANGELOG.md": "044a465b9e2944f892fb4acd428401559d09f98812a07a6796ebb09d55676091",
+    "docs/proposal.md": "8834c174e7510c220d5f3e58aeb747a074216e3926eb0bf0c944e6624b1bd30b",
+    "docs/requirements.md": "c859211eaf474e40fa1ac921f787fcb6fbd18bc80f6b0fa81668cb33cf70d166",
+    "docs/research_plan.md": "bce05b8c2b6f4778b4d302b42e448a24570200e5fcd2e673d801efd8c209b951",
+    "docs/sourcecode_plan.md": "cdb2b0c0b1f0bc3c92bb25e3a0f7c84a0f833d31c6be4dbee9e0c00a6698f508",
+    "docs/tasklist.md": "f6de495fe7812bb43027c29d0fd95f330634c0574c355f1d01119e647630f228",
+    "docs/todos/application.md": "8cf309bf8f18d0e7a693128de0c69cd87c4fa51b051e8057b1f0006c6f91adb6",
+    "docs/todos/contracts.md": "9f28f18f2327543b0f0875613b5c4c3165104fa6514990b23bd66f01b8ab7a03",
+    "docs/todos/governance.md": "51b16ddb66dd6c5b5e1ca2b3e11f62e05156763b2c7f3a026f64fc69bcda4088",
+    "docs/todos/proof.md": "9faf8451431e994b775332a437c02688bbe801b1e79521a59a6b24fbf156f5c3",
+    "docs/todos/signals.md": "7f6b9cdc3d3e25da87712a1271e93e844f8eb541bdc6b35804d722cd6fe52e50",
+    "docs/todos/style.md": "eb566770d436b9df4e4b04e229c76435345299c01fab68ae518dc1f8c53025f4",
+    "docs/todos/time.md": "193dcb4303203b53c18ca4b9d64fca50134a2bb4d9b950aa4ec67dd3e54de3e2",
+    "docs/todos/tooling.md": "dd4d5841dfee591218c496ce769f350567c5db2c92a8042ef746c4a120a092ee",
+    "docs/todos/workers.md": "5dc5bc95b9f67fc0b5d03d04ab492b770f011fb0a95d951f54b42ea586a91439",
+    "linter_error_output.json": "ca0a1cf18d8433d6f84a7e7fb4c9e84555541f089f4508177c049e079190b2cd",
+    "package-lock.json": "78a426c408124792c1334aea572eec664e1ec7cb13b219ca41317a1e232160f2",
+    "package.json": "63d2a27008e8822004fdb4a0b17840cacac5a40526028a3bd2fd29a8d3ea9446",
+    "pyproject.toml": "2f6caf2608275ad0f4f592ca251b35ba06df38022961511ac9ad300515d971e7",
+    "reports/4GINE development realignment.md": "8b53545c0e0b6cb9f9f61d2af69a61922ea8c009a0cd0a864b89f805773f97bd",
+    "research_notes/4GINE development realignment/catalogue_inventory.json": "58addb9f01598cb818bf1c848e51d9a1974472adf5673d8606425876ac22cdc5",
+    "research_notes/4GINE development realignment/planning_review.md": "4822543533fbf60fde2418bb6bf7e9f39c8d8041a72c4a1b3b03d2773d759f0f",
+    "research_notes/4GINE development realignment/source_review.md": "c1340787f48b564d36ca7355d4326a666ff46f41af5612708f74fed3286a4696",
+    "research_notes/4GINE development realignment/technical_research.md": "fbe26242547445758d78e606723a9a2ed77dc0706ed0eb6f429762cc56ae545d",
+    "scripts/bootstrap.ps1": "25ff5bbd8cd165a228b23f98f8bc1735327a69db643130f5e976e0bdd4ef27fe",
+    "scripts/check_planning.py": "6750edeabe08d14befc4b57964221ad357e83240f638cd7eef2edc4a09ce5008",
+    "scripts/qualify_bootstrap.py": "8226d32a94121c3a2c14ff2d64f6ae787d73f39e23b534f914b1956535afb522",
+    "scripts/tests/test_check_planning.py": "35c77f8e5a0be1363e3f6e9e51168113c078e8a1cd14c86ea7534c73e4f6ab28",
+    "scripts/tests/test_verify.py": "906b4a9cf6c099d6a04f57ef624350da212cdf27d0a7654328b08e85912379df",
+    "scripts/toolchain-artifacts.json": "44521d1d2134ab98c87918799c2f42f942666bfaf29bd4a7d276adbd82c09746",
+    "scripts/verify.py": "533775eb94e9de15086d1b7740c4b8133e4115f66f66038c58dc389515abe588",
+    "spinaltap/__init__.py": "4d615e15b924e9e093b904d19d51c3f86f0af6c111e1a70c4df00f0d3a48c85e",
+    "spinaltap/__main__.py": "20863c42eccb0a7e6e830d03cfc4a88d578dab1a23be4ee5132fccbf113c25cf",
+    "spinaltap/context_weight.py": "83f8f63619a924d40847e5a329ff60de1b20d9bd3a12fd1cffc0796ba4e18f25",
+    "spinaltap/contract_kernel.py": "fafbb75889ccfe9614e1461cd8f858c0ed696d53ac3ee37787e757452ab03f45",
+    "spinaltap/contract_validation.py": "b69587ba1e88103580d417c1b1cbe1b3eff9deb95b70272c0ca843f1a31d4430",
+    "spinaltap/demo.py": "a0d37ec852de10e71da12144075215aa99f299fd2330705ad570c472b7af3657",
+    "spinaltap/reconciliation.py": "6ba03f797452e7d9d5a07f0a9a9aa2fc55bf57c51ae2476d85e6ba80770e5f94",
+    "spinaltap/signal_spine.py": "cb214d5dd8dfe81f3c555cac9b7a43f934e6223c28288b60734df14c86799e1f",
+    "spinaltap/soft_proof.py": "7ca6748e5b150086a584ab4aade30effafad4fd7291e485065286d18e9d90b29",
+    "spinaltap/style_surface.py": "351209e70cd13339f2fdfd0722965ecc28bc79632db4c2c02075da579547ad59",
+    "spinaltap/time_packet.py": "c9c17c25f91256c97943e64a57a067f44d61af1f8e8efc822e1ac68fe9c08bfd",
+    "spinaltap/vertebra_delta.py": "35fd3dbb627a48d81922005ade34a0c4cba811b0478ee35b4f88d2c41e1c7468",
+    "tests/test_context_weight_governor.py": "731a01a3b018b97c9304ed2ee313a57c39ee2edc49912c74425570a4f9db9323",
+    "tests/test_contract_kernel.py": "769f7ac0522b90ef394930cf9ffad5958feaa50332fd75c621ee62be2a51dc39",
+    "tests/test_contract_validation.py": "33dcc9976bd2e73c6a0e6d5e560f44682f892cc90f4458e44aa354eec74aacd1",
+    "tests/test_demo.py": "b86b98cfc9f3d49820fa188653c9aad63f54dd9e917f4f792d6e28f985adf0ba",
+    "tests/test_multi_worker_reconciliation.py": "982bf3fe79cdcc3c200207c3528d640f6534a3c6315ddca395fb62da64f8d385",
+    "tests/test_runtime_gates.py": "4a6476c4b63ab4c87138fb6033602950a80563b8ab2fe25d488ebfe08f7470b0",
+    "tests/test_signal_constraint_spine.py": "381ddb366ec51791e32c5f5996d05ebd3a041954fe7c200c92f16e4fdfb6a93e",
+    "tests/test_soft_proof_lab.py": "4b717463285114c25c18265cea4319a64f0fc3cdc3dc1276accc98688f241c22",
+    "tests/test_spinal_reconciliation.py": "7e9513ff0c90c54aead225ae9d16932ea52cb1b59649597f4829bbf420c1a2bd",
+    "tests/test_style_constraint_surface.py": "246e230f91ce7491fa5dc78dfea1ed82e6f2f8bb9512acd66751e363af507b50",
+    "tests/test_time_packet_pump.py": "f49cf784c40ab90fd865872f31b5a25c86a83b36a12f5fecd46bbb3c7045ef11",
+    "tests/test_vertebra_delta_worker.py": "001ba8392d2b23b3ecb540118f216bfe82e6d55bd4f696ba363085313a041ef4",
+    "uv.lock": "212c41a9fbe48ef2e2c0a531f1fb0db2d4928b61b20ce1943e108ed5807af6e1"
+  },
+  "base_revision": "8519d3c13aa6e6e574cd241aed0a79187a704905",
+  "cold_paths_absent": {
+    ".tools": true,
+    ".venv": true,
+    "node_modules": true
+  },
+  "cold_verification": {
+    "timestamp_utc": "2026-11-08T10:11:55.197252+00:00",
+    "root": "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces",
+    "revision": "8519d3c13aa6e6e574cd241aed0a79187a704905",
+    "working_tree": " M .agents/REFRESHER.md\n M .agents/VALIDATE_WORKFLOW.json\n M .agents/template/TEMPLATE_ONBOARDING.md\n M .agents/template/TEMPLATE_VALIDATE_WORKFLOW.json\n M .gitignore\n M .user_notes/depreciated_files/4GINEv02.md\n M README.md\n M TODO.md\n M VERIFICATION.md\n M docs/design.md\n M docs/live_research.md\n M docs/logs/CHANGELOG.md\n M docs/proposal.md\n M docs/requirements.md\n M docs/research_plan.md\n M docs/sourcecode_plan.md\n M docs/tasklist.md\n M docs/todos/application.md\n M docs/todos/contracts.md\n M docs/todos/governance.md\n M docs/todos/proof.md\n M docs/todos/signals.md\n M docs/todos/style.md\n M docs/todos/time.md\n M docs/todos/tooling.md\n M docs/todos/workers.md\n M scripts/check_planning.py\n M scripts/tests/test_check_planning.py\n M spinaltap/__init__.py\n M spinaltap/__main__.py\n M spinaltap/context_weight.py\n M spinaltap/contract_kernel.py\n M spinaltap/contract_validation.py\n M spinaltap/demo.py\n M spinaltap/reconciliation.py\n M spinaltap/signal_spine.py\n M spinaltap/soft_proof.py\n M spinaltap/style_surface.py\n M spinaltap/time_packet.py\n M spinaltap/vertebra_delta.py\n M tests/test_context_weight_governor.py\n M tests/test_contract_kernel.py\n M tests/test_contract_validation.py\n M tests/test_demo.py\n M tests/test_multi_worker_reconciliation.py\n M tests/test_runtime_gates.py\n M tests/test_signal_constraint_spine.py\n M tests/test_soft_proof_lab.py\n M tests/test_spinal_reconciliation.py\n M tests/test_style_constraint_surface.py\n M tests/test_time_packet_pump.py\n M tests/test_vertebra_delta_worker.py\n?? .node-version\n?? .python-version\n?? Bootstrap.cmd\n?? Verify.cmd\n?? docs/README.md\n?? docs/decisions/\n?? docs/development_workflow.md\n?? docs/getting_started.md\n?? docs/global_plan.md\n?? package-lock.json\n?? package.json\n?? pyproject.toml\n?? reports/\n?? scripts/bootstrap.ps1\n?? scripts/qualify_bootstrap.py\n?? scripts/tests/test_verify.py\n?? scripts/toolchain-artifacts.json\n?? scripts/verify.py\n?? uv.lock\n",
+    "source_hashes_before": {
+      ".agents/ONBOARDING.md": "2487228abd6db978a4e776afa2e13cb1f811fa78c4628e5d42c87b49c6babd25",
+      ".agents/REFRESHER.md": "a81154f7c82e2b1bad1a5d7c996dfc9c9dff2600efa2a074152b0b8caaefcd4e",
+      ".agents/VALIDATE_WORKFLOW.json": "827733efeab8f7c852d4b9d529a193a8dc60fc60fa0e26ff6a6988eab457c53f",
+      ".agents/template/TEMPLATE_ONBOARDING.md": "f28304e11829be543399a031c8e701144b2ab21d25260a413b89ae10e0c8884a",
+      ".agents/template/TEMPLATE_VALIDATE_WORKFLOW.json": "827733efeab8f7c852d4b9d529a193a8dc60fc60fa0e26ff6a6988eab457c53f",
+      ".gitignore": "f2a4d78beaa836a50d45a27ea2171136c03ec7eff3c9fa1d71ee07a92242aaad",
+      ".node-version": "9185b9f67843cabfa8054f65ce47ce0b52036b0bfe07ae5a6b834d97cc127140",
+      ".python-version": "57de572f10b591d6dcd9e25db9f59db260aa11f7afa3d6a4ddec4f00bb5f8838",
+      ".user_notes/depreciated_files/4GINE_v01.md": "6ca7ac4fcbee7618e90ea79551b74517a105d7388acaf94b7bcd4223bd507658",
+      ".user_notes/depreciated_files/4GINEv02.md": "3c446db85b1c5a2da748f06f18e71fdd90e75ad7d03090921aa875a961cf9f5c",
+      "Bootstrap.cmd": "9657c7c8797177713c7bed5a07731198600eb92ea1b5ab3736426c21cc565169",
+      "README.md": "bff83329fea4595ec421f16311e7c2db8a460dfe5c8456d132225a6fd64b1d1e",
+      "TODO.md": "79a3561243a6884175a74cba481a9b71d09006939f6970195b77f6334c213d33",
+      "VERIFICATION.md": "0ec3eb634e40bbffa4f51435a81e66cce8608b033b3d42ff0bc12f491ad15d39",
+      "Verify.cmd": "5ea1e7c04f9abd313cc8efc9685f1d42ca0c650e860aac7c810b2c5f91ae3ace",
+      "docs/README.md": "9004612c8e1900f8ea1ca2e722464655353df25f33cd0d1cae1bb8007384bff1",
+      "docs/decisions/prototype_toolchain.md": "a9abb57c622b427e2ffde41595c6a437ad1e2fdec9e193f4352470b35f996b42",
+      "docs/design.md": "3398b0d851364f5f6dadf6f297782d1ad7573f65d267fd579e9d8bf432e76f94",
+      "docs/development_workflow.md": "88c780a559129a91f4b7fca6d3fa47840b6c5d112d3892b7ce4e20be2777e7ff",
+      "docs/getting_started.md": "641291b7ba53bea31aa608c3f39e45337836faedab59de0086ad1de9c7283e52",
+      "docs/global_plan.md": "a7bd4596c73e465eefd8abd3e5ee6815aefc823ed0dddeaba95e5e96ad0821ab",
+      "docs/live_research.md": "330cdbb1e0e0a59e0311ac6157532dd026f8f325b695ac3bde67738b5ee00728",
+      "docs/logs/CHANGELOG.md": "044a465b9e2944f892fb4acd428401559d09f98812a07a6796ebb09d55676091",
+      "docs/proposal.md": "8834c174e7510c220d5f3e58aeb747a074216e3926eb0bf0c944e6624b1bd30b",
+      "docs/requirements.md": "c859211eaf474e40fa1ac921f787fcb6fbd18bc80f6b0fa81668cb33cf70d166",
+      "docs/research_plan.md": "bce05b8c2b6f4778b4d302b42e448a24570200e5fcd2e673d801efd8c209b951",
+      "docs/sourcecode_plan.md": "cdb2b0c0b1f0bc3c92bb25e3a0f7c84a0f833d31c6be4dbee9e0c00a6698f508",
+      "docs/tasklist.md": "f6de495fe7812bb43027c29d0fd95f330634c0574c355f1d01119e647630f228",
+      "docs/todos/application.md": "8cf309bf8f18d0e7a693128de0c69cd87c4fa51b051e8057b1f0006c6f91adb6",
+      "docs/todos/contracts.md": "9f28f18f2327543b0f0875613b5c4c3165104fa6514990b23bd66f01b8ab7a03",
+      "docs/todos/governance.md": "51b16ddb66dd6c5b5e1ca2b3e11f62e05156763b2c7f3a026f64fc69bcda4088",
+      "docs/todos/proof.md": "9faf8451431e994b775332a437c02688bbe801b1e79521a59a6b24fbf156f5c3",
+      "docs/todos/signals.md": "7f6b9cdc3d3e25da87712a1271e93e844f8eb541bdc6b35804d722cd6fe52e50",
+      "docs/todos/style.md": "eb566770d436b9df4e4b04e229c76435345299c01fab68ae518dc1f8c53025f4",
+      "docs/todos/time.md": "193dcb4303203b53c18ca4b9d64fca50134a2bb4d9b950aa4ec67dd3e54de3e2",
+      "docs/todos/tooling.md": "dd4d5841dfee591218c496ce769f350567c5db2c92a8042ef746c4a120a092ee",
+      "docs/todos/workers.md": "5dc5bc95b9f67fc0b5d03d04ab492b770f011fb0a95d951f54b42ea586a91439",
+      "linter_error_output.json": "ca0a1cf18d8433d6f84a7e7fb4c9e84555541f089f4508177c049e079190b2cd",
+      "package-lock.json": "78a426c408124792c1334aea572eec664e1ec7cb13b219ca41317a1e232160f2",
+      "package.json": "63d2a27008e8822004fdb4a0b17840cacac5a40526028a3bd2fd29a8d3ea9446",
+      "pyproject.toml": "2f6caf2608275ad0f4f592ca251b35ba06df38022961511ac9ad300515d971e7",
+      "reports/4GINE development realignment.md": "8b53545c0e0b6cb9f9f61d2af69a61922ea8c009a0cd0a864b89f805773f97bd",
+      "research_notes/4GINE development realignment/catalogue_inventory.json": "58addb9f01598cb818bf1c848e51d9a1974472adf5673d8606425876ac22cdc5",
+      "research_notes/4GINE development realignment/planning_review.md": "4822543533fbf60fde2418bb6bf7e9f39c8d8041a72c4a1b3b03d2773d759f0f",
+      "research_notes/4GINE development realignment/source_review.md": "c1340787f48b564d36ca7355d4326a666ff46f41af5612708f74fed3286a4696",
+      "research_notes/4GINE development realignment/technical_research.md": "fbe26242547445758d78e606723a9a2ed77dc0706ed0eb6f429762cc56ae545d",
+      "scripts/bootstrap.ps1": "25ff5bbd8cd165a228b23f98f8bc1735327a69db643130f5e976e0bdd4ef27fe",
+      "scripts/check_planning.py": "6750edeabe08d14befc4b57964221ad357e83240f638cd7eef2edc4a09ce5008",
+      "scripts/qualify_bootstrap.py": "8226d32a94121c3a2c14ff2d64f6ae787d73f39e23b534f914b1956535afb522",
+      "scripts/tests/test_check_planning.py": "35c77f8e5a0be1363e3f6e9e51168113c078e8a1cd14c86ea7534c73e4f6ab28",
+      "scripts/tests/test_verify.py": "906b4a9cf6c099d6a04f57ef624350da212cdf27d0a7654328b08e85912379df",
+      "scripts/toolchain-artifacts.json": "44521d1d2134ab98c87918799c2f42f942666bfaf29bd4a7d276adbd82c09746",
+      "scripts/verify.py": "533775eb94e9de15086d1b7740c4b8133e4115f66f66038c58dc389515abe588",
+      "spinaltap/__init__.py": "4d615e15b924e9e093b904d19d51c3f86f0af6c111e1a70c4df00f0d3a48c85e",
+      "spinaltap/__main__.py": "20863c42eccb0a7e6e830d03cfc4a88d578dab1a23be4ee5132fccbf113c25cf",
+      "spinaltap/context_weight.py": "83f8f63619a924d40847e5a329ff60de1b20d9bd3a12fd1cffc0796ba4e18f25",
+      "spinaltap/contract_kernel.py": "fafbb75889ccfe9614e1461cd8f858c0ed696d53ac3ee37787e757452ab03f45",
+      "spinaltap/contract_validation.py": "b69587ba1e88103580d417c1b1cbe1b3eff9deb95b70272c0ca843f1a31d4430",
+      "spinaltap/demo.py": "a0d37ec852de10e71da12144075215aa99f299fd2330705ad570c472b7af3657",
+      "spinaltap/reconciliation.py": "6ba03f797452e7d9d5a07f0a9a9aa2fc55bf57c51ae2476d85e6ba80770e5f94",
+      "spinaltap/signal_spine.py": "cb214d5dd8dfe81f3c555cac9b7a43f934e6223c28288b60734df14c86799e1f",
+      "spinaltap/soft_proof.py": "7ca6748e5b150086a584ab4aade30effafad4fd7291e485065286d18e9d90b29",
+      "spinaltap/style_surface.py": "351209e70cd13339f2fdfd0722965ecc28bc79632db4c2c02075da579547ad59",
+      "spinaltap/time_packet.py": "c9c17c25f91256c97943e64a57a067f44d61af1f8e8efc822e1ac68fe9c08bfd",
+      "spinaltap/vertebra_delta.py": "35fd3dbb627a48d81922005ade34a0c4cba811b0478ee35b4f88d2c41e1c7468",
+      "tests/test_context_weight_governor.py": "731a01a3b018b97c9304ed2ee313a57c39ee2edc49912c74425570a4f9db9323",
+      "tests/test_contract_kernel.py": "769f7ac0522b90ef394930cf9ffad5958feaa50332fd75c621ee62be2a51dc39",
+      "tests/test_contract_validation.py": "33dcc9976bd2e73c6a0e6d5e560f44682f892cc90f4458e44aa354eec74aacd1",
+      "tests/test_demo.py": "b86b98cfc9f3d49820fa188653c9aad63f54dd9e917f4f792d6e28f985adf0ba",
+      "tests/test_multi_worker_reconciliation.py": "982bf3fe79cdcc3c200207c3528d640f6534a3c6315ddca395fb62da64f8d385",
+      "tests/test_runtime_gates.py": "4a6476c4b63ab4c87138fb6033602950a80563b8ab2fe25d488ebfe08f7470b0",
+      "tests/test_signal_constraint_spine.py": "381ddb366ec51791e32c5f5996d05ebd3a041954fe7c200c92f16e4fdfb6a93e",
+      "tests/test_soft_proof_lab.py": "4b717463285114c25c18265cea4319a64f0fc3cdc3dc1276accc98688f241c22",
+      "tests/test_spinal_reconciliation.py": "7e9513ff0c90c54aead225ae9d16932ea52cb1b59649597f4829bbf420c1a2bd",
+      "tests/test_style_constraint_surface.py": "246e230f91ce7491fa5dc78dfea1ed82e6f2f8bb9512acd66751e363af507b50",
+      "tests/test_time_packet_pump.py": "f49cf784c40ab90fd865872f31b5a25c86a83b36a12f5fecd46bbb3c7045ef11",
+      "tests/test_vertebra_delta_worker.py": "001ba8392d2b23b3ecb540118f216bfe82e6d55bd4f696ba363085313a041ef4",
+      "uv.lock": "212c41a9fbe48ef2e2c0a531f1fb0db2d4928b61b20ce1943e108ed5807af6e1"
+    },
+    "stages": [
+      {
+        "name": "uv version",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\uv-0.13.7\\uv.exe",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "uv 0.13.7 (316c827e0 2026-11-03 x86_64-pc-windows-msvc)\n",
+        "stderr": ""
+      },
+      {
+        "name": "Node version",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "v24.22.2\n",
+        "stderr": ""
+      },
+      {
+        "name": "npm version",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "11.19.1\n",
+        "stderr": ""
+      },
+      {
+        "name": "Python lock freshness",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\uv-0.13.7\\uv.exe",
+          "lock",
+          "--check",
+          "--managed-python",
+          "--config-file",
+          ".tools/uv.toml"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Resolved 1 package in 1ms\n"
+      },
+      {
+        "name": "npm lock freshness",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+          "ci",
+          "--dry-run",
+          "--ignore-scripts",
+          "--offline",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "exit_code": 0,
+        "stdout": "\nup to date in 446ms\n",
+        "stderr": ""
+      },
+      {
+        "name": "installed npm tree",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+          "ls",
+          "--all",
+          "--json"
+        ],
+        "exit_code": 0,
+        "stdout": "{\n  \"version\": \"0.0.0\",\n  \"name\": \"4gine-development\",\n  \"dependencies\": {\n    \"markdownlint-cli2\": {\n      \"version\": \"0.23.1\",\n      \"resolved\": \"https://registry.npmjs.org/markdownlint-cli2/-/markdownlint-cli2-0.23.1.tgz\",\n      \"overridden\": false,\n      \"dependencies\": {\n        \"globby\": {\n          \"version\": \"16.2.1\",\n          \"resolved\": \"https://registry.npmjs.org/globby/-/globby-16.2.1.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"@sindresorhus/merge-streams\": {\n              \"version\": \"4.0.0\",\n              \"resolved\": \"https://registry.npmjs.org/@sindresorhus/merge-streams/-/merge-streams-4.0.0.tgz\",\n              \"overridden\": false\n            },\n            \"fast-glob\": {\n              \"version\": \"3.3.3\",\n              \"resolved\": \"https://registry.npmjs.org/fast-glob/-/fast-glob-3.3.3.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"@nodelib/fs.stat\": {\n                  \"version\": \"2.0.5\",\n                  \"resolved\": \"https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz\",\n                  \"overridden\": false\n                },\n                \"@nodelib/fs.walk\": {\n                  \"version\": \"1.2.8\",\n                  \"resolved\": \"https://registry.npmjs.org/@nodelib/fs.walk/-/fs.walk-1.2.8.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"@nodelib/fs.scandir\": {\n                      \"version\": \"2.1.5\",\n                      \"resolved\": \"https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"@nodelib/fs.stat\": {\n                          \"version\": \"2.0.5\"\n                        },\n                        \"run-parallel\": {\n                          \"version\": \"1.2.0\",\n                          \"resolved\": \"https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz\",\n                          \"overridden\": false,\n                          \"dependencies\": {\n                            \"queue-microtask\": {\n                              \"version\": \"1.2.3\",\n                              \"resolved\": \"https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz\",\n                              \"overridden\": false\n                            }\n                          }\n                        }\n                      }\n                    },\n                    \"fastq\": {\n                      \"version\": \"1.20.3\",\n                      \"resolved\": \"https://registry.npmjs.org/fastq/-/fastq-1.20.3.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"reusify\": {\n                          \"version\": \"1.1.0\",\n                          \"resolved\": \"https://registry.npmjs.org/reusify/-/reusify-1.1.0.tgz\",\n                          \"overridden\": false\n                        }\n                      }\n                    }\n                  }\n                },\n                \"glob-parent\": {\n                  \"version\": \"5.1.2\",\n                  \"resolved\": \"https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"is-glob\": {\n                      \"version\": \"4.0.3\",\n                      \"resolved\": \"https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"is-extglob\": {\n                          \"version\": \"2.1.1\",\n                          \"resolved\": \"https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz\",\n                          \"overridden\": false\n                        }\n                      }\n                    }\n                  }\n                },\n                \"merge2\": {\n                  \"version\": \"1.4.1\",\n                  \"resolved\": \"https://registry.npmjs.org/merge2/-/merge2-1.4.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromatch\": {\n                  \"version\": \"4.0.8\"\n                }\n              }\n            },\n            \"ignore\": {\n              \"version\": \"7.0.14\",\n              \"resolved\": \"https://registry.npmjs.org/ignore/-/ignore-7.0.14.tgz\",\n              \"overridden\": false\n            },\n            \"is-path-inside\": {\n              \"version\": \"4.0.0\",\n              \"resolved\": \"https://registry.npmjs.org/is-path-inside/-/is-path-inside-4.0.0.tgz\",\n              \"overridden\": false\n            },\n            \"slash\": {\n              \"version\": \"5.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/slash/-/slash-5.1.0.tgz\",\n              \"overridden\": false\n            },\n            \"unicorn-magic\": {\n              \"version\": \"0.4.1\",\n              \"resolved\": \"https://registry.npmjs.org/unicorn-magic/-/unicorn-magic-0.4.1.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"js-yaml\": {\n          \"version\": \"5.2.1\",\n          \"resolved\": \"https://registry.npmjs.org/js-yaml/-/js-yaml-5.2.1.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"argparse\": {\n              \"version\": \"2.0.1\",\n              \"resolved\": \"https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"jsonc-parser\": {\n          \"version\": \"3.3.1\",\n          \"resolved\": \"https://registry.npmjs.org/jsonc-parser/-/jsonc-parser-3.3.1.tgz\",\n          \"overridden\": false\n        },\n        \"jsonpointer\": {\n          \"version\": \"5.0.1\",\n          \"resolved\": \"https://registry.npmjs.org/jsonpointer/-/jsonpointer-5.0.1.tgz\",\n          \"overridden\": false\n        },\n        \"markdown-it\": {\n          \"version\": \"14.3.0\",\n          \"resolved\": \"https://registry.npmjs.org/markdown-it/-/markdown-it-14.3.0.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"argparse\": {\n              \"version\": \"2.0.1\"\n            },\n            \"entities\": {\n              \"version\": \"4.5.0\",\n              \"resolved\": \"https://registry.npmjs.org/entities/-/entities-4.5.0.tgz\",\n              \"overridden\": false\n            },\n            \"linkify-it\": {\n              \"version\": \"5.0.2\",\n              \"resolved\": \"https://registry.npmjs.org/linkify-it/-/linkify-it-5.0.2.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"uc.micro\": {\n                  \"version\": \"2.1.0\"\n                }\n              }\n            },\n            \"mdurl\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/mdurl/-/mdurl-2.1.0.tgz\",\n              \"overridden\": false\n            },\n            \"punycode.js\": {\n              \"version\": \"2.3.1\",\n              \"resolved\": \"https://registry.npmjs.org/punycode.js/-/punycode.js-2.3.1.tgz\",\n              \"overridden\": false\n            },\n            \"uc.micro\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/uc.micro/-/uc.micro-2.1.0.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"markdownlint-cli2-formatter-default\": {\n          \"version\": \"0.0.6\",\n          \"resolved\": \"https://registry.npmjs.org/markdownlint-cli2-formatter-default/-/markdownlint-cli2-formatter-default-0.0.6.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"markdownlint-cli2\": {\n              \"version\": \"0.23.1\"\n            }\n          }\n        },\n        \"markdownlint\": {\n          \"version\": \"0.41.1\",\n          \"resolved\": \"https://registry.npmjs.org/markdownlint/-/markdownlint-0.41.1.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"micromark-core-commonmark\": {\n              \"version\": \"2.0.3\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-core-commonmark/-/micromark-core-commonmark-2.0.3.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"decode-named-character-reference\": {\n                  \"version\": \"1.3.0\",\n                  \"resolved\": \"https://registry.npmjs.org/decode-named-character-reference/-/decode-named-character-reference-1.3.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"character-entities\": {\n                      \"version\": \"2.0.2\",\n                      \"resolved\": \"https://registry.npmjs.org/character-entities/-/character-entities-2.0.2.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"devlop\": {\n                  \"version\": \"1.1.0\",\n                  \"resolved\": \"https://registry.npmjs.org/devlop/-/devlop-1.1.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"dequal\": {\n                      \"version\": \"2.0.3\",\n                      \"resolved\": \"https://registry.npmjs.org/dequal/-/dequal-2.0.3.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"micromark-factory-destination\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-destination/-/micromark-factory-destination-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-label\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-label/-/micromark-factory-label-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"devlop\": {\n                      \"version\": \"1.1.0\"\n                    },\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-space/-/micromark-factory-space-2.1.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-title\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-title/-/micromark-factory-title-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-factory-space\": {\n                      \"version\": \"2.1.0\"\n                    },\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-whitespace\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-whitespace/-/micromark-factory-whitespace-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-factory-space\": {\n                      \"version\": \"2.1.0\"\n                    },\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-character/-/micromark-util-character-2.1.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-chunked\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-chunked/-/micromark-util-chunked-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-classify-character\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-classify-character/-/micromark-util-classify-character-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-html-tag-name\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-html-tag-name/-/micromark-util-html-tag-name-2.0.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromark-util-normalize-identifier\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-normalize-identifier/-/micromark-util-normalize-identifier-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-resolve-all\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-resolve-all/-/micromark-util-resolve-all-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-subtokenize\": {\n                  \"version\": \"2.1.0\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-subtokenize/-/micromark-util-subtokenize-2.1.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"devlop\": {\n                      \"version\": \"1.1.0\"\n                    },\n                    \"micromark-util-chunked\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-symbol/-/micromark-util-symbol-2.0.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-directive\": {\n              \"version\": \"4.0.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-directive/-/micromark-extension-directive-4.0.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-factory-whitespace\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                },\n                \"parse-entities\": {\n                  \"version\": \"4.0.2\",\n                  \"resolved\": \"https://registry.npmjs.org/parse-entities/-/parse-entities-4.0.2.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"@types/unist\": {\n                      \"version\": \"2.0.11\",\n                      \"resolved\": \"https://registry.npmjs.org/@types/unist/-/unist-2.0.11.tgz\",\n                      \"overridden\": false\n                    },\n                    \"character-entities-legacy\": {\n                      \"version\": \"3.0.0\",\n                      \"resolved\": \"https://registry.npmjs.org/character-entities-legacy/-/character-entities-legacy-3.0.0.tgz\",\n                      \"overridden\": false\n                    },\n                    \"character-reference-invalid\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/character-reference-invalid/-/character-reference-invalid-2.0.1.tgz\",\n                      \"overridden\": false\n                    },\n                    \"decode-named-character-reference\": {\n                      \"version\": \"1.3.0\"\n                    },\n                    \"is-alphanumerical\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/is-alphanumerical/-/is-alphanumerical-2.0.1.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"is-alphabetical\": {\n                          \"version\": \"2.0.1\",\n                          \"resolved\": \"https://registry.npmjs.org/is-alphabetical/-/is-alphabetical-2.0.1.tgz\",\n                          \"overridden\": false\n                        },\n                        \"is-decimal\": {\n                          \"version\": \"2.0.1\"\n                        }\n                      }\n                    },\n                    \"is-decimal\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/is-decimal/-/is-decimal-2.0.1.tgz\",\n                      \"overridden\": false\n                    },\n                    \"is-hexadecimal\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/is-hexadecimal/-/is-hexadecimal-2.0.1.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                }\n              }\n            },\n            \"micromark-extension-gfm-autolink-literal\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-gfm-autolink-literal/-/micromark-extension-gfm-autolink-literal-2.1.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-sanitize-uri\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-sanitize-uri/-/micromark-util-sanitize-uri-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-encode\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-gfm-footnote\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-gfm-footnote/-/micromark-extension-gfm-footnote-2.1.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-core-commonmark\": {\n                  \"version\": \"2.0.3\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-normalize-identifier\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-sanitize-uri\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-gfm-table\": {\n              \"version\": \"2.1.1\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-gfm-table/-/micromark-extension-gfm-table-2.1.1.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-math\": {\n              \"version\": \"3.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-math/-/micromark-extension-math-3.1.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"@types/katex\": {\n                  \"version\": \"0.16.8\",\n                  \"resolved\": \"https://registry.npmjs.org/@types/katex/-/katex-0.16.8.tgz\",\n                  \"overridden\": false\n                },\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"katex\": {\n                  \"version\": \"0.16.47\",\n                  \"resolved\": \"https://registry.npmjs.org/katex/-/katex-0.16.47.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"commander\": {\n                      \"version\": \"8.3.0\",\n                      \"resolved\": \"https://registry.npmjs.org/commander/-/commander-8.3.0.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-util-types\": {\n              \"version\": \"2.0.2\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-util-types/-/micromark-util-types-2.0.2.tgz\",\n              \"overridden\": false\n            },\n            \"micromark\": {\n              \"version\": \"4.0.2\",\n              \"resolved\": \"https://registry.npmjs.org/micromark/-/micromark-4.0.2.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"@types/debug\": {\n                  \"version\": \"4.1.13\",\n                  \"resolved\": \"https://registry.npmjs.org/@types/debug/-/debug-4.1.13.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"@types/ms\": {\n                      \"version\": \"2.1.0\",\n                      \"resolved\": \"https://registry.npmjs.org/@types/ms/-/ms-2.1.0.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"debug\": {\n                  \"version\": \"4.4.3\",\n                  \"resolved\": \"https://registry.npmjs.org/debug/-/debug-4.4.3.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"ms\": {\n                      \"version\": \"2.1.3\",\n                      \"resolved\": \"https://registry.npmjs.org/ms/-/ms-2.1.3.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"decode-named-character-reference\": {\n                  \"version\": \"1.3.0\"\n                },\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-core-commonmark\": {\n                  \"version\": \"2.0.3\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-chunked\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-combine-extensions\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-combine-extensions/-/micromark-util-combine-extensions-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-chunked\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-decode-numeric-character-reference\": {\n                  \"version\": \"2.0.2\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-decode-numeric-character-reference/-/micromark-util-decode-numeric-character-reference-2.0.2.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-encode\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-encode/-/micromark-util-encode-2.0.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromark-util-normalize-identifier\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-resolve-all\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-sanitize-uri\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-subtokenize\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"string-width\": {\n              \"version\": \"8.2.1\",\n              \"resolved\": \"https://registry.npmjs.org/string-width/-/string-width-8.2.1.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"get-east-asian-width\": {\n                  \"version\": \"1.7.0\",\n                  \"resolved\": \"https://registry.npmjs.org/get-east-asian-width/-/get-east-asian-width-1.7.0.tgz\",\n                  \"overridden\": false\n                },\n                \"strip-ansi\": {\n                  \"version\": \"7.2.0\",\n                  \"resolved\": \"https://registry.npmjs.org/strip-ansi/-/strip-ansi-7.2.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"ansi-regex\": {\n                      \"version\": \"6.5.0\",\n                      \"resolved\": \"https://registry.npmjs.org/ansi-regex/-/ansi-regex-6.5.0.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                }\n              }\n            }\n          }\n        },\n        \"micromatch\": {\n          \"version\": \"4.0.8\",\n          \"resolved\": \"https://registry.npmjs.org/micromatch/-/micromatch-4.0.8.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"braces\": {\n              \"version\": \"3.0.3\",\n              \"resolved\": \"https://registry.npmjs.org/braces/-/braces-3.0.3.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"fill-range\": {\n                  \"version\": \"7.1.1\",\n                  \"resolved\": \"https://registry.npmjs.org/fill-range/-/fill-range-7.1.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"to-regex-range\": {\n                      \"version\": \"5.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/to-regex-range/-/to-regex-range-5.0.1.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"is-number\": {\n                          \"version\": \"7.0.0\",\n                          \"resolved\": \"https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz\",\n                          \"overridden\": false\n                        }\n                      }\n                    }\n                  }\n                }\n              }\n            },\n            \"picomatch\": {\n              \"version\": \"2.3.2\",\n              \"resolved\": \"https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"smol-toml\": {\n          \"version\": \"1.7.0\",\n          \"resolved\": \"https://registry.npmjs.org/smol-toml/-/smol-toml-1.7.0.tgz\",\n          \"overridden\": false\n        }\n      }\n    },\n    \"pyright\": {\n      \"version\": \"1.1.414\",\n      \"resolved\": \"https://registry.npmjs.org/pyright/-/pyright-1.1.414.tgz\",\n      \"overridden\": false,\n      \"dependencies\": {\n        \"fsevents\": {}\n      }\n    }\n  }\n}\n",
+        "stderr": ""
+      },
+      {
+        "name": "runtime tests",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ".......................................................................................\n----------------------------------------------------------------------\nRan 87 tests in 0.256s\n\nOK\n"
+      },
+      {
+        "name": "tooling tests",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "scripts/tests"
+        ],
+        "exit_code": 0,
+        "stdout": "Checking fixture...\nChecking fixture...\n",
+        "stderr": "............................\n----------------------------------------------------------------------\nRan 28 tests in 0.512s\n\nOK\n"
+      },
+      {
+        "name": "demo",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+          "-m",
+          "spinaltap",
+          "--json"
+        ],
+        "exit_code": 0,
+        "stdout": "{\n  \"frames\": [\n    {\n      \"index\": 0,\n      \"elapsed_time\": 0.01,\n      \"fixed_steps\": 0,\n      \"accepted_steps\": 0,\n      \"refused_steps\": 0,\n      \"remainder\": 0.01,\n      \"overflow\": false\n    },\n    {\n      \"index\": 1,\n      \"elapsed_time\": 0.022,\n      \"fixed_steps\": 2,\n      \"accepted_steps\": 2,\n      \"refused_steps\": 0,\n      \"remainder\": 0.0,\n      \"overflow\": false\n    },\n    {\n      \"index\": 2,\n      \"elapsed_time\": 0.2,\n      \"fixed_steps\": 4,\n      \"accepted_steps\": 4,\n      \"refused_steps\": 0,\n      \"remainder\": 0.136,\n      \"overflow\": true\n    },\n    {\n      \"index\": 3,\n      \"elapsed_time\": 0.0,\n      \"fixed_steps\": 4,\n      \"accepted_steps\": 4,\n      \"refused_steps\": 0,\n      \"remainder\": 0.07200000000000001,\n      \"overflow\": true\n    },\n    {\n      \"index\": 4,\n      \"elapsed_time\": 0.0,\n      \"fixed_steps\": 4,\n      \"accepted_steps\": 4,\n      \"refused_steps\": 0,\n      \"remainder\": 0.008000000000000007,\n      \"overflow\": false\n    },\n    {\n      \"index\": 5,\n      \"elapsed_time\": 0.0,\n      \"fixed_steps\": 0,\n      \"accepted_steps\": 0,\n      \"refused_steps\": 0,\n      \"remainder\": 0.008000000000000007,\n      \"overflow\": false\n    }\n  ],\n  \"final_position\": 0.672,\n  \"final_state\": {\n    \"x\": 0.672,\n    \"y\": -0.336\n  },\n  \"worker_order\": [\n    \"vertebra:demo-lateral\",\n    \"vertebra:demo-motion\"\n  ],\n  \"oversized_delta_refused\": true,\n  \"guard_refusal_code\": \"constraint_violation\",\n  \"conflicting_writes_refused\": true,\n  \"conflict_refusal_code\": \"write_conflict\"\n}\n",
+        "stderr": ""
+      },
+      {
+        "name": "Pyright",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "node_modules/pyright/index.js",
+          "--warnings"
+        ],
+        "exit_code": 0,
+        "stdout": "0 errors, 0 warnings, 0 informations\n",
+        "stderr": ""
+      },
+      {
+        "name": "planning",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+          "scripts/check_planning.py"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS: 28 Markdown files, 34 task cards, 5 phases, 15 requirements; 0 issues.\nExcluded: .agents, .user_notes; CHANGELOG pseudo-citations. External URLs not fetched.\nChecks establish planning integrity only; run markdownlint and runtime/evidence checks separately.\n",
+        "stderr": ""
+      },
+      {
+        "name": "Markdown",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "node_modules/markdownlint-cli2/markdownlint-cli2-bin.mjs",
+          "README.md",
+          "TODO.md",
+          "docs/**/*.md",
+          "reports/**/*.md",
+          "research_notes/**/*.md"
+        ],
+        "exit_code": 0,
+        "stdout": "markdownlint-cli2 v0.23.1 (markdownlint v0.41.1)\nFinding: README.md TODO.md docs/**/*.md reports/**/*.md research_notes/**/*.md\nLinting: 28 files\nSummary: 0 issues in 0 files\n",
+        "stderr": ""
+      },
+      {
+        "name": "whitespace",
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "warning: in the working copy of '.agents/REFRESHER.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.agents/VALIDATE_WORKFLOW.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.agents/template/TEMPLATE_ONBOARDING.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.agents/template/TEMPLATE_VALIDATE_WORKFLOW.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.user_notes/depreciated_files/4GINEv02.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'TODO.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'VERIFICATION.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/design.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/live_research.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/logs/CHANGELOG.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/proposal.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/requirements.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/research_plan.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/sourcecode_plan.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/tasklist.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/application.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/contracts.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/governance.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/proof.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/signals.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/style.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/time.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/tooling.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/workers.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/__init__.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/__main__.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/context_weight.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/contract_kernel.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/contract_validation.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/demo.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/reconciliation.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/signal_spine.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/soft_proof.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/style_surface.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/time_packet.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/vertebra_delta.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_context_weight_governor.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_contract_kernel.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_contract_validation.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_demo.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_multi_worker_reconciliation.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_runtime_gates.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_signal_constraint_spine.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_soft_proof_lab.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_spinal_reconciliation.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_style_constraint_surface.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_time_packet_pump.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_vertebra_delta_worker.py', LF will be replaced by CRLF the next time Git touches it\n"
+      }
+    ],
+    "environment": {
+      "python": "3.13.18 (main, Oct 26 2026, 14:10:48) [MSC v.1944 64 bit (AMD64)]",
+      "executable": "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+      "base_prefix": "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\python\\cpython-3.13-windows-x86_64-none",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "uv": "0.13.7",
+      "node": "24.22.2",
+      "npm": "11.19.1"
+    },
+    "test_counts": {
+      "runtime tests": 87,
+      "tooling tests": 28
+    },
+    "demo": {
+      "frames": [
+        {
+          "index": 0,
+          "elapsed_time": 0.01,
+          "fixed_steps": 0,
+          "accepted_steps": 0,
+          "refused_steps": 0,
+          "remainder": 0.01,
+          "overflow": false
+        },
+        {
+          "index": 1,
+          "elapsed_time": 0.022,
+          "fixed_steps": 2,
+          "accepted_steps": 2,
+          "refused_steps": 0,
+          "remainder": 0.0,
+          "overflow": false
+        },
+        {
+          "index": 2,
+          "elapsed_time": 0.2,
+          "fixed_steps": 4,
+          "accepted_steps": 4,
+          "refused_steps": 0,
+          "remainder": 0.136,
+          "overflow": true
+        },
+        {
+          "index": 3,
+          "elapsed_time": 0.0,
+          "fixed_steps": 4,
+          "accepted_steps": 4,
+          "refused_steps": 0,
+          "remainder": 0.07200000000000001,
+          "overflow": true
+        },
+        {
+          "index": 4,
+          "elapsed_time": 0.0,
+          "fixed_steps": 4,
+          "accepted_steps": 4,
+          "refused_steps": 0,
+          "remainder": 0.008000000000000007,
+          "overflow": false
+        },
+        {
+          "index": 5,
+          "elapsed_time": 0.0,
+          "fixed_steps": 0,
+          "accepted_steps": 0,
+          "refused_steps": 0,
+          "remainder": 0.008000000000000007,
+          "overflow": false
+        }
+      ],
+      "final_position": 0.672,
+      "final_state": {
+        "x": 0.672,
+        "y": -0.336
+      },
+      "worker_order": [
+        "vertebra:demo-lateral",
+        "vertebra:demo-motion"
+      ],
+      "oversized_delta_refused": true,
+      "guard_refusal_code": "constraint_violation",
+      "conflicting_writes_refused": true,
+      "conflict_refusal_code": "write_conflict"
+    },
+    "source_hashes_after": {
+      ".agents/ONBOARDING.md": "2487228abd6db978a4e776afa2e13cb1f811fa78c4628e5d42c87b49c6babd25",
+      ".agents/REFRESHER.md": "a81154f7c82e2b1bad1a5d7c996dfc9c9dff2600efa2a074152b0b8caaefcd4e",
+      ".agents/VALIDATE_WORKFLOW.json": "827733efeab8f7c852d4b9d529a193a8dc60fc60fa0e26ff6a6988eab457c53f",
+      ".agents/template/TEMPLATE_ONBOARDING.md": "f28304e11829be543399a031c8e701144b2ab21d25260a413b89ae10e0c8884a",
+      ".agents/template/TEMPLATE_VALIDATE_WORKFLOW.json": "827733efeab8f7c852d4b9d529a193a8dc60fc60fa0e26ff6a6988eab457c53f",
+      ".gitignore": "f2a4d78beaa836a50d45a27ea2171136c03ec7eff3c9fa1d71ee07a92242aaad",
+      ".node-version": "9185b9f67843cabfa8054f65ce47ce0b52036b0bfe07ae5a6b834d97cc127140",
+      ".python-version": "57de572f10b591d6dcd9e25db9f59db260aa11f7afa3d6a4ddec4f00bb5f8838",
+      ".user_notes/depreciated_files/4GINE_v01.md": "6ca7ac4fcbee7618e90ea79551b74517a105d7388acaf94b7bcd4223bd507658",
+      ".user_notes/depreciated_files/4GINEv02.md": "3c446db85b1c5a2da748f06f18e71fdd90e75ad7d03090921aa875a961cf9f5c",
+      "Bootstrap.cmd": "9657c7c8797177713c7bed5a07731198600eb92ea1b5ab3736426c21cc565169",
+      "README.md": "bff83329fea4595ec421f16311e7c2db8a460dfe5c8456d132225a6fd64b1d1e",
+      "TODO.md": "79a3561243a6884175a74cba481a9b71d09006939f6970195b77f6334c213d33",
+      "VERIFICATION.md": "0ec3eb634e40bbffa4f51435a81e66cce8608b033b3d42ff0bc12f491ad15d39",
+      "Verify.cmd": "5ea1e7c04f9abd313cc8efc9685f1d42ca0c650e860aac7c810b2c5f91ae3ace",
+      "docs/README.md": "9004612c8e1900f8ea1ca2e722464655353df25f33cd0d1cae1bb8007384bff1",
+      "docs/decisions/prototype_toolchain.md": "a9abb57c622b427e2ffde41595c6a437ad1e2fdec9e193f4352470b35f996b42",
+      "docs/design.md": "3398b0d851364f5f6dadf6f297782d1ad7573f65d267fd579e9d8bf432e76f94",
+      "docs/development_workflow.md": "88c780a559129a91f4b7fca6d3fa47840b6c5d112d3892b7ce4e20be2777e7ff",
+      "docs/getting_started.md": "641291b7ba53bea31aa608c3f39e45337836faedab59de0086ad1de9c7283e52",
+      "docs/global_plan.md": "a7bd4596c73e465eefd8abd3e5ee6815aefc823ed0dddeaba95e5e96ad0821ab",
+      "docs/live_research.md": "330cdbb1e0e0a59e0311ac6157532dd026f8f325b695ac3bde67738b5ee00728",
+      "docs/logs/CHANGELOG.md": "044a465b9e2944f892fb4acd428401559d09f98812a07a6796ebb09d55676091",
+      "docs/proposal.md": "8834c174e7510c220d5f3e58aeb747a074216e3926eb0bf0c944e6624b1bd30b",
+      "docs/requirements.md": "c859211eaf474e40fa1ac921f787fcb6fbd18bc80f6b0fa81668cb33cf70d166",
+      "docs/research_plan.md": "bce05b8c2b6f4778b4d302b42e448a24570200e5fcd2e673d801efd8c209b951",
+      "docs/sourcecode_plan.md": "cdb2b0c0b1f0bc3c92bb25e3a0f7c84a0f833d31c6be4dbee9e0c00a6698f508",
+      "docs/tasklist.md": "f6de495fe7812bb43027c29d0fd95f330634c0574c355f1d01119e647630f228",
+      "docs/todos/application.md": "8cf309bf8f18d0e7a693128de0c69cd87c4fa51b051e8057b1f0006c6f91adb6",
+      "docs/todos/contracts.md": "9f28f18f2327543b0f0875613b5c4c3165104fa6514990b23bd66f01b8ab7a03",
+      "docs/todos/governance.md": "51b16ddb66dd6c5b5e1ca2b3e11f62e05156763b2c7f3a026f64fc69bcda4088",
+      "docs/todos/proof.md": "9faf8451431e994b775332a437c02688bbe801b1e79521a59a6b24fbf156f5c3",
+      "docs/todos/signals.md": "7f6b9cdc3d3e25da87712a1271e93e844f8eb541bdc6b35804d722cd6fe52e50",
+      "docs/todos/style.md": "eb566770d436b9df4e4b04e229c76435345299c01fab68ae518dc1f8c53025f4",
+      "docs/todos/time.md": "193dcb4303203b53c18ca4b9d64fca50134a2bb4d9b950aa4ec67dd3e54de3e2",
+      "docs/todos/tooling.md": "dd4d5841dfee591218c496ce769f350567c5db2c92a8042ef746c4a120a092ee",
+      "docs/todos/workers.md": "5dc5bc95b9f67fc0b5d03d04ab492b770f011fb0a95d951f54b42ea586a91439",
+      "linter_error_output.json": "ca0a1cf18d8433d6f84a7e7fb4c9e84555541f089f4508177c049e079190b2cd",
+      "package-lock.json": "78a426c408124792c1334aea572eec664e1ec7cb13b219ca41317a1e232160f2",
+      "package.json": "63d2a27008e8822004fdb4a0b17840cacac5a40526028a3bd2fd29a8d3ea9446",
+      "pyproject.toml": "2f6caf2608275ad0f4f592ca251b35ba06df38022961511ac9ad300515d971e7",
+      "reports/4GINE development realignment.md": "8b53545c0e0b6cb9f9f61d2af69a61922ea8c009a0cd0a864b89f805773f97bd",
+      "research_notes/4GINE development realignment/catalogue_inventory.json": "58addb9f01598cb818bf1c848e51d9a1974472adf5673d8606425876ac22cdc5",
+      "research_notes/4GINE development realignment/planning_review.md": "4822543533fbf60fde2418bb6bf7e9f39c8d8041a72c4a1b3b03d2773d759f0f",
+      "research_notes/4GINE development realignment/source_review.md": "c1340787f48b564d36ca7355d4326a666ff46f41af5612708f74fed3286a4696",
+      "research_notes/4GINE development realignment/technical_research.md": "fbe26242547445758d78e606723a9a2ed77dc0706ed0eb6f429762cc56ae545d",
+      "scripts/bootstrap.ps1": "25ff5bbd8cd165a228b23f98f8bc1735327a69db643130f5e976e0bdd4ef27fe",
+      "scripts/check_planning.py": "6750edeabe08d14befc4b57964221ad357e83240f638cd7eef2edc4a09ce5008",
+      "scripts/qualify_bootstrap.py": "8226d32a94121c3a2c14ff2d64f6ae787d73f39e23b534f914b1956535afb522",
+      "scripts/tests/test_check_planning.py": "35c77f8e5a0be1363e3f6e9e51168113c078e8a1cd14c86ea7534c73e4f6ab28",
+      "scripts/tests/test_verify.py": "906b4a9cf6c099d6a04f57ef624350da212cdf27d0a7654328b08e85912379df",
+      "scripts/toolchain-artifacts.json": "44521d1d2134ab98c87918799c2f42f942666bfaf29bd4a7d276adbd82c09746",
+      "scripts/verify.py": "533775eb94e9de15086d1b7740c4b8133e4115f66f66038c58dc389515abe588",
+      "spinaltap/__init__.py": "4d615e15b924e9e093b904d19d51c3f86f0af6c111e1a70c4df00f0d3a48c85e",
+      "spinaltap/__main__.py": "20863c42eccb0a7e6e830d03cfc4a88d578dab1a23be4ee5132fccbf113c25cf",
+      "spinaltap/context_weight.py": "83f8f63619a924d40847e5a329ff60de1b20d9bd3a12fd1cffc0796ba4e18f25",
+      "spinaltap/contract_kernel.py": "fafbb75889ccfe9614e1461cd8f858c0ed696d53ac3ee37787e757452ab03f45",
+      "spinaltap/contract_validation.py": "b69587ba1e88103580d417c1b1cbe1b3eff9deb95b70272c0ca843f1a31d4430",
+      "spinaltap/demo.py": "a0d37ec852de10e71da12144075215aa99f299fd2330705ad570c472b7af3657",
+      "spinaltap/reconciliation.py": "6ba03f797452e7d9d5a07f0a9a9aa2fc55bf57c51ae2476d85e6ba80770e5f94",
+      "spinaltap/signal_spine.py": "cb214d5dd8dfe81f3c555cac9b7a43f934e6223c28288b60734df14c86799e1f",
+      "spinaltap/soft_proof.py": "7ca6748e5b150086a584ab4aade30effafad4fd7291e485065286d18e9d90b29",
+      "spinaltap/style_surface.py": "351209e70cd13339f2fdfd0722965ecc28bc79632db4c2c02075da579547ad59",
+      "spinaltap/time_packet.py": "c9c17c25f91256c97943e64a57a067f44d61af1f8e8efc822e1ac68fe9c08bfd",
+      "spinaltap/vertebra_delta.py": "35fd3dbb627a48d81922005ade34a0c4cba811b0478ee35b4f88d2c41e1c7468",
+      "tests/test_context_weight_governor.py": "731a01a3b018b97c9304ed2ee313a57c39ee2edc49912c74425570a4f9db9323",
+      "tests/test_contract_kernel.py": "769f7ac0522b90ef394930cf9ffad5958feaa50332fd75c621ee62be2a51dc39",
+      "tests/test_contract_validation.py": "33dcc9976bd2e73c6a0e6d5e560f44682f892cc90f4458e44aa354eec74aacd1",
+      "tests/test_demo.py": "b86b98cfc9f3d49820fa188653c9aad63f54dd9e917f4f792d6e28f985adf0ba",
+      "tests/test_multi_worker_reconciliation.py": "982bf3fe79cdcc3c200207c3528d640f6534a3c6315ddca395fb62da64f8d385",
+      "tests/test_runtime_gates.py": "4a6476c4b63ab4c87138fb6033602950a80563b8ab2fe25d488ebfe08f7470b0",
+      "tests/test_signal_constraint_spine.py": "381ddb366ec51791e32c5f5996d05ebd3a041954fe7c200c92f16e4fdfb6a93e",
+      "tests/test_soft_proof_lab.py": "4b717463285114c25c18265cea4319a64f0fc3cdc3dc1276accc98688f241c22",
+      "tests/test_spinal_reconciliation.py": "7e9513ff0c90c54aead225ae9d16932ea52cb1b59649597f4829bbf420c1a2bd",
+      "tests/test_style_constraint_surface.py": "246e230f91ce7491fa5dc78dfea1ed82e6f2f8bb9512acd66751e363af507b50",
+      "tests/test_time_packet_pump.py": "f49cf784c40ab90fd865872f31b5a25c86a83b36a12f5fecd46bbb3c7045ef11",
+      "tests/test_vertebra_delta_worker.py": "001ba8392d2b23b3ecb540118f216bfe82e6d55bd4f696ba363085313a041ef4",
+      "uv.lock": "212c41a9fbe48ef2e2c0a531f1fb0db2d4928b61b20ce1943e108ed5807af6e1"
+    },
+    "status": "passed"
+  },
+  "python_build": "20261026",
+  "lock_hashes_before_repeat": {
+    ".python-version": "57de572f10b591d6dcd9e25db9f59db260aa11f7afa3d6a4ddec4f00bb5f8838",
+    ".node-version": "9185b9f67843cabfa8054f65ce47ce0b52036b0bfe07ae5a6b834d97cc127140",
+    "pyproject.toml": "2f6caf2608275ad0f4f592ca251b35ba06df38022961511ac9ad300515d971e7",
+    "uv.lock": "212c41a9fbe48ef2e2c0a531f1fb0db2d4928b61b20ce1943e108ed5807af6e1",
+    "package.json": "63d2a27008e8822004fdb4a0b17840cacac5a40526028a3bd2fd29a8d3ea9446",
+    "package-lock.json": "78a426c408124792c1334aea572eec664e1ec7cb13b219ca41317a1e232160f2"
+  },
+  "lock_hashes_after_repeat": {
+    ".python-version": "57de572f10b591d6dcd9e25db9f59db260aa11f7afa3d6a4ddec4f00bb5f8838",
+    ".node-version": "9185b9f67843cabfa8054f65ce47ce0b52036b0bfe07ae5a6b834d97cc127140",
+    "pyproject.toml": "2f6caf2608275ad0f4f592ca251b35ba06df38022961511ac9ad300515d971e7",
+    "uv.lock": "212c41a9fbe48ef2e2c0a531f1fb0db2d4928b61b20ce1943e108ed5807af6e1",
+    "package.json": "63d2a27008e8822004fdb4a0b17840cacac5a40526028a3bd2fd29a8d3ea9446",
+    "package-lock.json": "78a426c408124792c1334aea572eec664e1ec7cb13b219ca41317a1e232160f2"
+  },
+  "repeat_verification": {
+    "timestamp_utc": "2026-11-08T10:12:16.440183+00:00",
+    "root": "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces",
+    "revision": "8519d3c13aa6e6e574cd241aed0a79187a704905",
+    "working_tree": " M .agents/REFRESHER.md\n M .agents/VALIDATE_WORKFLOW.json\n M .agents/template/TEMPLATE_ONBOARDING.md\n M .agents/template/TEMPLATE_VALIDATE_WORKFLOW.json\n M .gitignore\n M .user_notes/depreciated_files/4GINEv02.md\n M README.md\n M TODO.md\n M VERIFICATION.md\n M docs/design.md\n M docs/live_research.md\n M docs/logs/CHANGELOG.md\n M docs/proposal.md\n M docs/requirements.md\n M docs/research_plan.md\n M docs/sourcecode_plan.md\n M docs/tasklist.md\n M docs/todos/application.md\n M docs/todos/contracts.md\n M docs/todos/governance.md\n M docs/todos/proof.md\n M docs/todos/signals.md\n M docs/todos/style.md\n M docs/todos/time.md\n M docs/todos/tooling.md\n M docs/todos/workers.md\n M scripts/check_planning.py\n M scripts/tests/test_check_planning.py\n M spinaltap/__init__.py\n M spinaltap/__main__.py\n M spinaltap/context_weight.py\n M spinaltap/contract_kernel.py\n M spinaltap/contract_validation.py\n M spinaltap/demo.py\n M spinaltap/reconciliation.py\n M spinaltap/signal_spine.py\n M spinaltap/soft_proof.py\n M spinaltap/style_surface.py\n M spinaltap/time_packet.py\n M spinaltap/vertebra_delta.py\n M tests/test_context_weight_governor.py\n M tests/test_contract_kernel.py\n M tests/test_contract_validation.py\n M tests/test_demo.py\n M tests/test_multi_worker_reconciliation.py\n M tests/test_runtime_gates.py\n M tests/test_signal_constraint_spine.py\n M tests/test_soft_proof_lab.py\n M tests/test_spinal_reconciliation.py\n M tests/test_style_constraint_surface.py\n M tests/test_time_packet_pump.py\n M tests/test_vertebra_delta_worker.py\n?? .node-version\n?? .python-version\n?? Bootstrap.cmd\n?? Verify.cmd\n?? docs/README.md\n?? docs/decisions/\n?? docs/development_workflow.md\n?? docs/getting_started.md\n?? docs/global_plan.md\n?? package-lock.json\n?? package.json\n?? pyproject.toml\n?? reports/\n?? scripts/bootstrap.ps1\n?? scripts/qualify_bootstrap.py\n?? scripts/tests/test_verify.py\n?? scripts/toolchain-artifacts.json\n?? scripts/verify.py\n?? uv.lock\n",
+    "source_hashes_before": {
+      ".agents/ONBOARDING.md": "2487228abd6db978a4e776afa2e13cb1f811fa78c4628e5d42c87b49c6babd25",
+      ".agents/REFRESHER.md": "a81154f7c82e2b1bad1a5d7c996dfc9c9dff2600efa2a074152b0b8caaefcd4e",
+      ".agents/VALIDATE_WORKFLOW.json": "827733efeab8f7c852d4b9d529a193a8dc60fc60fa0e26ff6a6988eab457c53f",
+      ".agents/template/TEMPLATE_ONBOARDING.md": "f28304e11829be543399a031c8e701144b2ab21d25260a413b89ae10e0c8884a",
+      ".agents/template/TEMPLATE_VALIDATE_WORKFLOW.json": "827733efeab8f7c852d4b9d529a193a8dc60fc60fa0e26ff6a6988eab457c53f",
+      ".gitignore": "f2a4d78beaa836a50d45a27ea2171136c03ec7eff3c9fa1d71ee07a92242aaad",
+      ".node-version": "9185b9f67843cabfa8054f65ce47ce0b52036b0bfe07ae5a6b834d97cc127140",
+      ".python-version": "57de572f10b591d6dcd9e25db9f59db260aa11f7afa3d6a4ddec4f00bb5f8838",
+      ".user_notes/depreciated_files/4GINE_v01.md": "6ca7ac4fcbee7618e90ea79551b74517a105d7388acaf94b7bcd4223bd507658",
+      ".user_notes/depreciated_files/4GINEv02.md": "3c446db85b1c5a2da748f06f18e71fdd90e75ad7d03090921aa875a961cf9f5c",
+      "Bootstrap.cmd": "9657c7c8797177713c7bed5a07731198600eb92ea1b5ab3736426c21cc565169",
+      "README.md": "bff83329fea4595ec421f16311e7c2db8a460dfe5c8456d132225a6fd64b1d1e",
+      "TODO.md": "79a3561243a6884175a74cba481a9b71d09006939f6970195b77f6334c213d33",
+      "VERIFICATION.md": "0ec3eb634e40bbffa4f51435a81e66cce8608b033b3d42ff0bc12f491ad15d39",
+      "Verify.cmd": "5ea1e7c04f9abd313cc8efc9685f1d42ca0c650e860aac7c810b2c5f91ae3ace",
+      "docs/README.md": "9004612c8e1900f8ea1ca2e722464655353df25f33cd0d1cae1bb8007384bff1",
+      "docs/decisions/prototype_toolchain.md": "a9abb57c622b427e2ffde41595c6a437ad1e2fdec9e193f4352470b35f996b42",
+      "docs/design.md": "3398b0d851364f5f6dadf6f297782d1ad7573f65d267fd579e9d8bf432e76f94",
+      "docs/development_workflow.md": "88c780a559129a91f4b7fca6d3fa47840b6c5d112d3892b7ce4e20be2777e7ff",
+      "docs/getting_started.md": "641291b7ba53bea31aa608c3f39e45337836faedab59de0086ad1de9c7283e52",
+      "docs/global_plan.md": "a7bd4596c73e465eefd8abd3e5ee6815aefc823ed0dddeaba95e5e96ad0821ab",
+      "docs/live_research.md": "330cdbb1e0e0a59e0311ac6157532dd026f8f325b695ac3bde67738b5ee00728",
+      "docs/logs/CHANGELOG.md": "044a465b9e2944f892fb4acd428401559d09f98812a07a6796ebb09d55676091",
+      "docs/proposal.md": "8834c174e7510c220d5f3e58aeb747a074216e3926eb0bf0c944e6624b1bd30b",
+      "docs/requirements.md": "c859211eaf474e40fa1ac921f787fcb6fbd18bc80f6b0fa81668cb33cf70d166",
+      "docs/research_plan.md": "bce05b8c2b6f4778b4d302b42e448a24570200e5fcd2e673d801efd8c209b951",
+      "docs/sourcecode_plan.md": "cdb2b0c0b1f0bc3c92bb25e3a0f7c84a0f833d31c6be4dbee9e0c00a6698f508",
+      "docs/tasklist.md": "f6de495fe7812bb43027c29d0fd95f330634c0574c355f1d01119e647630f228",
+      "docs/todos/application.md": "8cf309bf8f18d0e7a693128de0c69cd87c4fa51b051e8057b1f0006c6f91adb6",
+      "docs/todos/contracts.md": "9f28f18f2327543b0f0875613b5c4c3165104fa6514990b23bd66f01b8ab7a03",
+      "docs/todos/governance.md": "51b16ddb66dd6c5b5e1ca2b3e11f62e05156763b2c7f3a026f64fc69bcda4088",
+      "docs/todos/proof.md": "9faf8451431e994b775332a437c02688bbe801b1e79521a59a6b24fbf156f5c3",
+      "docs/todos/signals.md": "7f6b9cdc3d3e25da87712a1271e93e844f8eb541bdc6b35804d722cd6fe52e50",
+      "docs/todos/style.md": "eb566770d436b9df4e4b04e229c76435345299c01fab68ae518dc1f8c53025f4",
+      "docs/todos/time.md": "193dcb4303203b53c18ca4b9d64fca50134a2bb4d9b950aa4ec67dd3e54de3e2",
+      "docs/todos/tooling.md": "dd4d5841dfee591218c496ce769f350567c5db2c92a8042ef746c4a120a092ee",
+      "docs/todos/workers.md": "5dc5bc95b9f67fc0b5d03d04ab492b770f011fb0a95d951f54b42ea586a91439",
+      "linter_error_output.json": "ca0a1cf18d8433d6f84a7e7fb4c9e84555541f089f4508177c049e079190b2cd",
+      "package-lock.json": "78a426c408124792c1334aea572eec664e1ec7cb13b219ca41317a1e232160f2",
+      "package.json": "63d2a27008e8822004fdb4a0b17840cacac5a40526028a3bd2fd29a8d3ea9446",
+      "pyproject.toml": "2f6caf2608275ad0f4f592ca251b35ba06df38022961511ac9ad300515d971e7",
+      "reports/4GINE development realignment.md": "8b53545c0e0b6cb9f9f61d2af69a61922ea8c009a0cd0a864b89f805773f97bd",
+      "research_notes/4GINE development realignment/catalogue_inventory.json": "58addb9f01598cb818bf1c848e51d9a1974472adf5673d8606425876ac22cdc5",
+      "research_notes/4GINE development realignment/planning_review.md": "4822543533fbf60fde2418bb6bf7e9f39c8d8041a72c4a1b3b03d2773d759f0f",
+      "research_notes/4GINE development realignment/source_review.md": "c1340787f48b564d36ca7355d4326a666ff46f41af5612708f74fed3286a4696",
+      "research_notes/4GINE development realignment/technical_research.md": "fbe26242547445758d78e606723a9a2ed77dc0706ed0eb6f429762cc56ae545d",
+      "scripts/bootstrap.ps1": "25ff5bbd8cd165a228b23f98f8bc1735327a69db643130f5e976e0bdd4ef27fe",
+      "scripts/check_planning.py": "6750edeabe08d14befc4b57964221ad357e83240f638cd7eef2edc4a09ce5008",
+      "scripts/qualify_bootstrap.py": "8226d32a94121c3a2c14ff2d64f6ae787d73f39e23b534f914b1956535afb522",
+      "scripts/tests/test_check_planning.py": "35c77f8e5a0be1363e3f6e9e51168113c078e8a1cd14c86ea7534c73e4f6ab28",
+      "scripts/tests/test_verify.py": "906b4a9cf6c099d6a04f57ef624350da212cdf27d0a7654328b08e85912379df",
+      "scripts/toolchain-artifacts.json": "44521d1d2134ab98c87918799c2f42f942666bfaf29bd4a7d276adbd82c09746",
+      "scripts/verify.py": "533775eb94e9de15086d1b7740c4b8133e4115f66f66038c58dc389515abe588",
+      "spinaltap/__init__.py": "4d615e15b924e9e093b904d19d51c3f86f0af6c111e1a70c4df00f0d3a48c85e",
+      "spinaltap/__main__.py": "20863c42eccb0a7e6e830d03cfc4a88d578dab1a23be4ee5132fccbf113c25cf",
+      "spinaltap/context_weight.py": "83f8f63619a924d40847e5a329ff60de1b20d9bd3a12fd1cffc0796ba4e18f25",
+      "spinaltap/contract_kernel.py": "fafbb75889ccfe9614e1461cd8f858c0ed696d53ac3ee37787e757452ab03f45",
+      "spinaltap/contract_validation.py": "b69587ba1e88103580d417c1b1cbe1b3eff9deb95b70272c0ca843f1a31d4430",
+      "spinaltap/demo.py": "a0d37ec852de10e71da12144075215aa99f299fd2330705ad570c472b7af3657",
+      "spinaltap/reconciliation.py": "6ba03f797452e7d9d5a07f0a9a9aa2fc55bf57c51ae2476d85e6ba80770e5f94",
+      "spinaltap/signal_spine.py": "cb214d5dd8dfe81f3c555cac9b7a43f934e6223c28288b60734df14c86799e1f",
+      "spinaltap/soft_proof.py": "7ca6748e5b150086a584ab4aade30effafad4fd7291e485065286d18e9d90b29",
+      "spinaltap/style_surface.py": "351209e70cd13339f2fdfd0722965ecc28bc79632db4c2c02075da579547ad59",
+      "spinaltap/time_packet.py": "c9c17c25f91256c97943e64a57a067f44d61af1f8e8efc822e1ac68fe9c08bfd",
+      "spinaltap/vertebra_delta.py": "35fd3dbb627a48d81922005ade34a0c4cba811b0478ee35b4f88d2c41e1c7468",
+      "tests/test_context_weight_governor.py": "731a01a3b018b97c9304ed2ee313a57c39ee2edc49912c74425570a4f9db9323",
+      "tests/test_contract_kernel.py": "769f7ac0522b90ef394930cf9ffad5958feaa50332fd75c621ee62be2a51dc39",
+      "tests/test_contract_validation.py": "33dcc9976bd2e73c6a0e6d5e560f44682f892cc90f4458e44aa354eec74aacd1",
+      "tests/test_demo.py": "b86b98cfc9f3d49820fa188653c9aad63f54dd9e917f4f792d6e28f985adf0ba",
+      "tests/test_multi_worker_reconciliation.py": "982bf3fe79cdcc3c200207c3528d640f6534a3c6315ddca395fb62da64f8d385",
+      "tests/test_runtime_gates.py": "4a6476c4b63ab4c87138fb6033602950a80563b8ab2fe25d488ebfe08f7470b0",
+      "tests/test_signal_constraint_spine.py": "381ddb366ec51791e32c5f5996d05ebd3a041954fe7c200c92f16e4fdfb6a93e",
+      "tests/test_soft_proof_lab.py": "4b717463285114c25c18265cea4319a64f0fc3cdc3dc1276accc98688f241c22",
+      "tests/test_spinal_reconciliation.py": "7e9513ff0c90c54aead225ae9d16932ea52cb1b59649597f4829bbf420c1a2bd",
+      "tests/test_style_constraint_surface.py": "246e230f91ce7491fa5dc78dfea1ed82e6f2f8bb9512acd66751e363af507b50",
+      "tests/test_time_packet_pump.py": "f49cf784c40ab90fd865872f31b5a25c86a83b36a12f5fecd46bbb3c7045ef11",
+      "tests/test_vertebra_delta_worker.py": "001ba8392d2b23b3ecb540118f216bfe82e6d55bd4f696ba363085313a041ef4",
+      "uv.lock": "212c41a9fbe48ef2e2c0a531f1fb0db2d4928b61b20ce1943e108ed5807af6e1"
+    },
+    "stages": [
+      {
+        "name": "uv version",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\uv-0.13.7\\uv.exe",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "uv 0.13.7 (316c827e0 2026-11-03 x86_64-pc-windows-msvc)\n",
+        "stderr": ""
+      },
+      {
+        "name": "Node version",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "v24.22.2\n",
+        "stderr": ""
+      },
+      {
+        "name": "npm version",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "11.19.1\n",
+        "stderr": ""
+      },
+      {
+        "name": "Python lock freshness",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\uv-0.13.7\\uv.exe",
+          "lock",
+          "--check",
+          "--managed-python",
+          "--config-file",
+          ".tools/uv.toml"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Resolved 1 package in 0.74ms\n"
+      },
+      {
+        "name": "npm lock freshness",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+          "ci",
+          "--dry-run",
+          "--ignore-scripts",
+          "--offline",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "exit_code": 0,
+        "stdout": "\nup to date in 504ms\n",
+        "stderr": ""
+      },
+      {
+        "name": "installed npm tree",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+          "ls",
+          "--all",
+          "--json"
+        ],
+        "exit_code": 0,
+        "stdout": "{\n  \"version\": \"0.0.0\",\n  \"name\": \"4gine-development\",\n  \"dependencies\": {\n    \"markdownlint-cli2\": {\n      \"version\": \"0.23.1\",\n      \"resolved\": \"https://registry.npmjs.org/markdownlint-cli2/-/markdownlint-cli2-0.23.1.tgz\",\n      \"overridden\": false,\n      \"dependencies\": {\n        \"globby\": {\n          \"version\": \"16.2.1\",\n          \"resolved\": \"https://registry.npmjs.org/globby/-/globby-16.2.1.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"@sindresorhus/merge-streams\": {\n              \"version\": \"4.0.0\",\n              \"resolved\": \"https://registry.npmjs.org/@sindresorhus/merge-streams/-/merge-streams-4.0.0.tgz\",\n              \"overridden\": false\n            },\n            \"fast-glob\": {\n              \"version\": \"3.3.3\",\n              \"resolved\": \"https://registry.npmjs.org/fast-glob/-/fast-glob-3.3.3.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"@nodelib/fs.stat\": {\n                  \"version\": \"2.0.5\",\n                  \"resolved\": \"https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz\",\n                  \"overridden\": false\n                },\n                \"@nodelib/fs.walk\": {\n                  \"version\": \"1.2.8\",\n                  \"resolved\": \"https://registry.npmjs.org/@nodelib/fs.walk/-/fs.walk-1.2.8.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"@nodelib/fs.scandir\": {\n                      \"version\": \"2.1.5\",\n                      \"resolved\": \"https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"@nodelib/fs.stat\": {\n                          \"version\": \"2.0.5\"\n                        },\n                        \"run-parallel\": {\n                          \"version\": \"1.2.0\",\n                          \"resolved\": \"https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz\",\n                          \"overridden\": false,\n                          \"dependencies\": {\n                            \"queue-microtask\": {\n                              \"version\": \"1.2.3\",\n                              \"resolved\": \"https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz\",\n                              \"overridden\": false\n                            }\n                          }\n                        }\n                      }\n                    },\n                    \"fastq\": {\n                      \"version\": \"1.20.3\",\n                      \"resolved\": \"https://registry.npmjs.org/fastq/-/fastq-1.20.3.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"reusify\": {\n                          \"version\": \"1.1.0\",\n                          \"resolved\": \"https://registry.npmjs.org/reusify/-/reusify-1.1.0.tgz\",\n                          \"overridden\": false\n                        }\n                      }\n                    }\n                  }\n                },\n                \"glob-parent\": {\n                  \"version\": \"5.1.2\",\n                  \"resolved\": \"https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"is-glob\": {\n                      \"version\": \"4.0.3\",\n                      \"resolved\": \"https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"is-extglob\": {\n                          \"version\": \"2.1.1\",\n                          \"resolved\": \"https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz\",\n                          \"overridden\": false\n                        }\n                      }\n                    }\n                  }\n                },\n                \"merge2\": {\n                  \"version\": \"1.4.1\",\n                  \"resolved\": \"https://registry.npmjs.org/merge2/-/merge2-1.4.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromatch\": {\n                  \"version\": \"4.0.8\"\n                }\n              }\n            },\n            \"ignore\": {\n              \"version\": \"7.0.14\",\n              \"resolved\": \"https://registry.npmjs.org/ignore/-/ignore-7.0.14.tgz\",\n              \"overridden\": false\n            },\n            \"is-path-inside\": {\n              \"version\": \"4.0.0\",\n              \"resolved\": \"https://registry.npmjs.org/is-path-inside/-/is-path-inside-4.0.0.tgz\",\n              \"overridden\": false\n            },\n            \"slash\": {\n              \"version\": \"5.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/slash/-/slash-5.1.0.tgz\",\n              \"overridden\": false\n            },\n            \"unicorn-magic\": {\n              \"version\": \"0.4.1\",\n              \"resolved\": \"https://registry.npmjs.org/unicorn-magic/-/unicorn-magic-0.4.1.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"js-yaml\": {\n          \"version\": \"5.2.1\",\n          \"resolved\": \"https://registry.npmjs.org/js-yaml/-/js-yaml-5.2.1.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"argparse\": {\n              \"version\": \"2.0.1\",\n              \"resolved\": \"https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"jsonc-parser\": {\n          \"version\": \"3.3.1\",\n          \"resolved\": \"https://registry.npmjs.org/jsonc-parser/-/jsonc-parser-3.3.1.tgz\",\n          \"overridden\": false\n        },\n        \"jsonpointer\": {\n          \"version\": \"5.0.1\",\n          \"resolved\": \"https://registry.npmjs.org/jsonpointer/-/jsonpointer-5.0.1.tgz\",\n          \"overridden\": false\n        },\n        \"markdown-it\": {\n          \"version\": \"14.3.0\",\n          \"resolved\": \"https://registry.npmjs.org/markdown-it/-/markdown-it-14.3.0.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"argparse\": {\n              \"version\": \"2.0.1\"\n            },\n            \"entities\": {\n              \"version\": \"4.5.0\",\n              \"resolved\": \"https://registry.npmjs.org/entities/-/entities-4.5.0.tgz\",\n              \"overridden\": false\n            },\n            \"linkify-it\": {\n              \"version\": \"5.0.2\",\n              \"resolved\": \"https://registry.npmjs.org/linkify-it/-/linkify-it-5.0.2.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"uc.micro\": {\n                  \"version\": \"2.1.0\"\n                }\n              }\n            },\n            \"mdurl\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/mdurl/-/mdurl-2.1.0.tgz\",\n              \"overridden\": false\n            },\n            \"punycode.js\": {\n              \"version\": \"2.3.1\",\n              \"resolved\": \"https://registry.npmjs.org/punycode.js/-/punycode.js-2.3.1.tgz\",\n              \"overridden\": false\n            },\n            \"uc.micro\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/uc.micro/-/uc.micro-2.1.0.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"markdownlint-cli2-formatter-default\": {\n          \"version\": \"0.0.6\",\n          \"resolved\": \"https://registry.npmjs.org/markdownlint-cli2-formatter-default/-/markdownlint-cli2-formatter-default-0.0.6.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"markdownlint-cli2\": {\n              \"version\": \"0.23.1\"\n            }\n          }\n        },\n        \"markdownlint\": {\n          \"version\": \"0.41.1\",\n          \"resolved\": \"https://registry.npmjs.org/markdownlint/-/markdownlint-0.41.1.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"micromark-core-commonmark\": {\n              \"version\": \"2.0.3\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-core-commonmark/-/micromark-core-commonmark-2.0.3.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"decode-named-character-reference\": {\n                  \"version\": \"1.3.0\",\n                  \"resolved\": \"https://registry.npmjs.org/decode-named-character-reference/-/decode-named-character-reference-1.3.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"character-entities\": {\n                      \"version\": \"2.0.2\",\n                      \"resolved\": \"https://registry.npmjs.org/character-entities/-/character-entities-2.0.2.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"devlop\": {\n                  \"version\": \"1.1.0\",\n                  \"resolved\": \"https://registry.npmjs.org/devlop/-/devlop-1.1.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"dequal\": {\n                      \"version\": \"2.0.3\",\n                      \"resolved\": \"https://registry.npmjs.org/dequal/-/dequal-2.0.3.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"micromark-factory-destination\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-destination/-/micromark-factory-destination-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-label\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-label/-/micromark-factory-label-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"devlop\": {\n                      \"version\": \"1.1.0\"\n                    },\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-space/-/micromark-factory-space-2.1.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-title\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-title/-/micromark-factory-title-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-factory-space\": {\n                      \"version\": \"2.1.0\"\n                    },\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-whitespace\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-whitespace/-/micromark-factory-whitespace-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-factory-space\": {\n                      \"version\": \"2.1.0\"\n                    },\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-character/-/micromark-util-character-2.1.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-chunked\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-chunked/-/micromark-util-chunked-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-classify-character\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-classify-character/-/micromark-util-classify-character-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-html-tag-name\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-html-tag-name/-/micromark-util-html-tag-name-2.0.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromark-util-normalize-identifier\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-normalize-identifier/-/micromark-util-normalize-identifier-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-resolve-all\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-resolve-all/-/micromark-util-resolve-all-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-subtokenize\": {\n                  \"version\": \"2.1.0\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-subtokenize/-/micromark-util-subtokenize-2.1.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"devlop\": {\n                      \"version\": \"1.1.0\"\n                    },\n                    \"micromark-util-chunked\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-symbol/-/micromark-util-symbol-2.0.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-directive\": {\n              \"version\": \"4.0.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-directive/-/micromark-extension-directive-4.0.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-factory-whitespace\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                },\n                \"parse-entities\": {\n                  \"version\": \"4.0.2\",\n                  \"resolved\": \"https://registry.npmjs.org/parse-entities/-/parse-entities-4.0.2.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"@types/unist\": {\n                      \"version\": \"2.0.11\",\n                      \"resolved\": \"https://registry.npmjs.org/@types/unist/-/unist-2.0.11.tgz\",\n                      \"overridden\": false\n                    },\n                    \"character-entities-legacy\": {\n                      \"version\": \"3.0.0\",\n                      \"resolved\": \"https://registry.npmjs.org/character-entities-legacy/-/character-entities-legacy-3.0.0.tgz\",\n                      \"overridden\": false\n                    },\n                    \"character-reference-invalid\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/character-reference-invalid/-/character-reference-invalid-2.0.1.tgz\",\n                      \"overridden\": false\n                    },\n                    \"decode-named-character-reference\": {\n                      \"version\": \"1.3.0\"\n                    },\n                    \"is-alphanumerical\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/is-alphanumerical/-/is-alphanumerical-2.0.1.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"is-alphabetical\": {\n                          \"version\": \"2.0.1\",\n                          \"resolved\": \"https://registry.npmjs.org/is-alphabetical/-/is-alphabetical-2.0.1.tgz\",\n                          \"overridden\": false\n                        },\n                        \"is-decimal\": {\n                          \"version\": \"2.0.1\"\n                        }\n                      }\n                    },\n                    \"is-decimal\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/is-decimal/-/is-decimal-2.0.1.tgz\",\n                      \"overridden\": false\n                    },\n                    \"is-hexadecimal\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/is-hexadecimal/-/is-hexadecimal-2.0.1.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                }\n              }\n            },\n            \"micromark-extension-gfm-autolink-literal\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-gfm-autolink-literal/-/micromark-extension-gfm-autolink-literal-2.1.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-sanitize-uri\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-sanitize-uri/-/micromark-util-sanitize-uri-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-encode\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-gfm-footnote\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-gfm-footnote/-/micromark-extension-gfm-footnote-2.1.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-core-commonmark\": {\n                  \"version\": \"2.0.3\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-normalize-identifier\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-sanitize-uri\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-gfm-table\": {\n              \"version\": \"2.1.1\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-gfm-table/-/micromark-extension-gfm-table-2.1.1.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-math\": {\n              \"version\": \"3.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-math/-/micromark-extension-math-3.1.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"@types/katex\": {\n                  \"version\": \"0.16.8\",\n                  \"resolved\": \"https://registry.npmjs.org/@types/katex/-/katex-0.16.8.tgz\",\n                  \"overridden\": false\n                },\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"katex\": {\n                  \"version\": \"0.16.47\",\n                  \"resolved\": \"https://registry.npmjs.org/katex/-/katex-0.16.47.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"commander\": {\n                      \"version\": \"8.3.0\",\n                      \"resolved\": \"https://registry.npmjs.org/commander/-/commander-8.3.0.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-util-types\": {\n              \"version\": \"2.0.2\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-util-types/-/micromark-util-types-2.0.2.tgz\",\n              \"overridden\": false\n            },\n            \"micromark\": {\n              \"version\": \"4.0.2\",\n              \"resolved\": \"https://registry.npmjs.org/micromark/-/micromark-4.0.2.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"@types/debug\": {\n                  \"version\": \"4.1.13\",\n                  \"resolved\": \"https://registry.npmjs.org/@types/debug/-/debug-4.1.13.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"@types/ms\": {\n                      \"version\": \"2.1.0\",\n                      \"resolved\": \"https://registry.npmjs.org/@types/ms/-/ms-2.1.0.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"debug\": {\n                  \"version\": \"4.4.3\",\n                  \"resolved\": \"https://registry.npmjs.org/debug/-/debug-4.4.3.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"ms\": {\n                      \"version\": \"2.1.3\",\n                      \"resolved\": \"https://registry.npmjs.org/ms/-/ms-2.1.3.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"decode-named-character-reference\": {\n                  \"version\": \"1.3.0\"\n                },\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-core-commonmark\": {\n                  \"version\": \"2.0.3\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-chunked\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-combine-extensions\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-combine-extensions/-/micromark-util-combine-extensions-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-chunked\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-decode-numeric-character-reference\": {\n                  \"version\": \"2.0.2\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-decode-numeric-character-reference/-/micromark-util-decode-numeric-character-reference-2.0.2.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-encode\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-encode/-/micromark-util-encode-2.0.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromark-util-normalize-identifier\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-resolve-all\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-sanitize-uri\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-subtokenize\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"string-width\": {\n              \"version\": \"8.2.1\",\n              \"resolved\": \"https://registry.npmjs.org/string-width/-/string-width-8.2.1.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"get-east-asian-width\": {\n                  \"version\": \"1.7.0\",\n                  \"resolved\": \"https://registry.npmjs.org/get-east-asian-width/-/get-east-asian-width-1.7.0.tgz\",\n                  \"overridden\": false\n                },\n                \"strip-ansi\": {\n                  \"version\": \"7.2.0\",\n                  \"resolved\": \"https://registry.npmjs.org/strip-ansi/-/strip-ansi-7.2.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"ansi-regex\": {\n                      \"version\": \"6.5.0\",\n                      \"resolved\": \"https://registry.npmjs.org/ansi-regex/-/ansi-regex-6.5.0.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                }\n              }\n            }\n          }\n        },\n        \"micromatch\": {\n          \"version\": \"4.0.8\",\n          \"resolved\": \"https://registry.npmjs.org/micromatch/-/micromatch-4.0.8.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"braces\": {\n              \"version\": \"3.0.3\",\n              \"resolved\": \"https://registry.npmjs.org/braces/-/braces-3.0.3.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"fill-range\": {\n                  \"version\": \"7.1.1\",\n                  \"resolved\": \"https://registry.npmjs.org/fill-range/-/fill-range-7.1.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"to-regex-range\": {\n                      \"version\": \"5.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/to-regex-range/-/to-regex-range-5.0.1.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"is-number\": {\n                          \"version\": \"7.0.0\",\n                          \"resolved\": \"https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz\",\n                          \"overridden\": false\n                        }\n                      }\n                    }\n                  }\n                }\n              }\n            },\n            \"picomatch\": {\n              \"version\": \"2.3.2\",\n              \"resolved\": \"https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"smol-toml\": {\n          \"version\": \"1.7.0\",\n          \"resolved\": \"https://registry.npmjs.org/smol-toml/-/smol-toml-1.7.0.tgz\",\n          \"overridden\": false\n        }\n      }\n    },\n    \"pyright\": {\n      \"version\": \"1.1.414\",\n      \"resolved\": \"https://registry.npmjs.org/pyright/-/pyright-1.1.414.tgz\",\n      \"overridden\": false,\n      \"dependencies\": {\n        \"fsevents\": {}\n      }\n    }\n  }\n}\n",
+        "stderr": ""
+      },
+      {
+        "name": "runtime tests",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ".......................................................................................\n----------------------------------------------------------------------\nRan 87 tests in 0.285s\n\nOK\n"
+      },
+      {
+        "name": "tooling tests",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "scripts/tests"
+        ],
+        "exit_code": 0,
+        "stdout": "Checking fixture...\nChecking fixture...\n",
+        "stderr": "............................\n----------------------------------------------------------------------\nRan 28 tests in 0.459s\n\nOK\n"
+      },
+      {
+        "name": "demo",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+          "-m",
+          "spinaltap",
+          "--json"
+        ],
+        "exit_code": 0,
+        "stdout": "{\n  \"frames\": [\n    {\n      \"index\": 0,\n      \"elapsed_time\": 0.01,\n      \"fixed_steps\": 0,\n      \"accepted_steps\": 0,\n      \"refused_steps\": 0,\n      \"remainder\": 0.01,\n      \"overflow\": false\n    },\n    {\n      \"index\": 1,\n      \"elapsed_time\": 0.022,\n      \"fixed_steps\": 2,\n      \"accepted_steps\": 2,\n      \"refused_steps\": 0,\n      \"remainder\": 0.0,\n      \"overflow\": false\n    },\n    {\n      \"index\": 2,\n      \"elapsed_time\": 0.2,\n      \"fixed_steps\": 4,\n      \"accepted_steps\": 4,\n      \"refused_steps\": 0,\n      \"remainder\": 0.136,\n      \"overflow\": true\n    },\n    {\n      \"index\": 3,\n      \"elapsed_time\": 0.0,\n      \"fixed_steps\": 4,\n      \"accepted_steps\": 4,\n      \"refused_steps\": 0,\n      \"remainder\": 0.07200000000000001,\n      \"overflow\": true\n    },\n    {\n      \"index\": 4,\n      \"elapsed_time\": 0.0,\n      \"fixed_steps\": 4,\n      \"accepted_steps\": 4,\n      \"refused_steps\": 0,\n      \"remainder\": 0.008000000000000007,\n      \"overflow\": false\n    },\n    {\n      \"index\": 5,\n      \"elapsed_time\": 0.0,\n      \"fixed_steps\": 0,\n      \"accepted_steps\": 0,\n      \"refused_steps\": 0,\n      \"remainder\": 0.008000000000000007,\n      \"overflow\": false\n    }\n  ],\n  \"final_position\": 0.672,\n  \"final_state\": {\n    \"x\": 0.672,\n    \"y\": -0.336\n  },\n  \"worker_order\": [\n    \"vertebra:demo-lateral\",\n    \"vertebra:demo-motion\"\n  ],\n  \"oversized_delta_refused\": true,\n  \"guard_refusal_code\": \"constraint_violation\",\n  \"conflicting_writes_refused\": true,\n  \"conflict_refusal_code\": \"write_conflict\"\n}\n",
+        "stderr": ""
+      },
+      {
+        "name": "Pyright",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "node_modules/pyright/index.js",
+          "--warnings"
+        ],
+        "exit_code": 0,
+        "stdout": "0 errors, 0 warnings, 0 informations\n",
+        "stderr": ""
+      },
+      {
+        "name": "planning",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+          "scripts/check_planning.py"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS: 28 Markdown files, 34 task cards, 5 phases, 15 requirements; 0 issues.\nExcluded: .agents, .user_notes; CHANGELOG pseudo-citations. External URLs not fetched.\nChecks establish planning integrity only; run markdownlint and runtime/evidence checks separately.\n",
+        "stderr": ""
+      },
+      {
+        "name": "Markdown",
+        "command": [
+          "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\node-v24.22.2-win-x64\\node.exe",
+          "node_modules/markdownlint-cli2/markdownlint-cli2-bin.mjs",
+          "README.md",
+          "TODO.md",
+          "docs/**/*.md",
+          "reports/**/*.md",
+          "research_notes/**/*.md"
+        ],
+        "exit_code": 0,
+        "stdout": "markdownlint-cli2 v0.23.1 (markdownlint v0.41.1)\nFinding: README.md TODO.md docs/**/*.md reports/**/*.md research_notes/**/*.md\nLinting: 28 files\nSummary: 0 issues in 0 files\n",
+        "stderr": ""
+      },
+      {
+        "name": "whitespace",
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "warning: in the working copy of '.agents/REFRESHER.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.agents/VALIDATE_WORKFLOW.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.agents/template/TEMPLATE_ONBOARDING.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.agents/template/TEMPLATE_VALIDATE_WORKFLOW.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.user_notes/depreciated_files/4GINEv02.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'TODO.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'VERIFICATION.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/design.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/live_research.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/logs/CHANGELOG.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/proposal.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/requirements.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/research_plan.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/sourcecode_plan.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/tasklist.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/application.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/contracts.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/governance.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/proof.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/signals.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/style.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/time.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/tooling.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/workers.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/__init__.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/__main__.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/context_weight.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/contract_kernel.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/contract_validation.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/demo.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/reconciliation.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/signal_spine.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/soft_proof.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/style_surface.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/time_packet.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/vertebra_delta.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_context_weight_governor.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_contract_kernel.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_contract_validation.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_demo.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_multi_worker_reconciliation.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_runtime_gates.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_signal_constraint_spine.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_soft_proof_lab.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_spinal_reconciliation.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_style_constraint_surface.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_time_packet_pump.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_vertebra_delta_worker.py', LF will be replaced by CRLF the next time Git touches it\n"
+      }
+    ],
+    "environment": {
+      "python": "3.13.18 (main, Oct 26 2026, 14:10:48) [MSC v.1944 64 bit (AMD64)]",
+      "executable": "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.venv\\Scripts\\python.exe",
+      "base_prefix": "C:\\github\\4GINE\\.qualification\\ST-002 cold checkout 3429b3c96d\\path with spaces\\.tools\\python\\cpython-3.13-windows-x86_64-none",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "uv": "0.13.7",
+      "node": "24.22.2",
+      "npm": "11.19.1"
+    },
+    "test_counts": {
+      "runtime tests": 87,
+      "tooling tests": 28
+    },
+    "demo": {
+      "frames": [
+        {
+          "index": 0,
+          "elapsed_time": 0.01,
+          "fixed_steps": 0,
+          "accepted_steps": 0,
+          "refused_steps": 0,
+          "remainder": 0.01,
+          "overflow": false
+        },
+        {
+          "index": 1,
+          "elapsed_time": 0.022,
+          "fixed_steps": 2,
+          "accepted_steps": 2,
+          "refused_steps": 0,
+          "remainder": 0.0,
+          "overflow": false
+        },
+        {
+          "index": 2,
+          "elapsed_time": 0.2,
+          "fixed_steps": 4,
+          "accepted_steps": 4,
+          "refused_steps": 0,
+          "remainder": 0.136,
+          "overflow": true
+        },
+        {
+          "index": 3,
+          "elapsed_time": 0.0,
+          "fixed_steps": 4,
+          "accepted_steps": 4,
+          "refused_steps": 0,
+          "remainder": 0.07200000000000001,
+          "overflow": true
+        },
+        {
+          "index": 4,
+          "elapsed_time": 0.0,
+          "fixed_steps": 4,
+          "accepted_steps": 4,
+          "refused_steps": 0,
+          "remainder": 0.008000000000000007,
+          "overflow": false
+        },
+        {
+          "index": 5,
+          "elapsed_time": 0.0,
+          "fixed_steps": 0,
+          "accepted_steps": 0,
+          "refused_steps": 0,
+          "remainder": 0.008000000000000007,
+          "overflow": false
+        }
+      ],
+      "final_position": 0.672,
+      "final_state": {
+        "x": 0.672,
+        "y": -0.336
+      },
+      "worker_order": [
+        "vertebra:demo-lateral",
+        "vertebra:demo-motion"
+      ],
+      "oversized_delta_refused": true,
+      "guard_refusal_code": "constraint_violation",
+      "conflicting_writes_refused": true,
+      "conflict_refusal_code": "write_conflict"
+    },
+    "source_hashes_after": {
+      ".agents/ONBOARDING.md": "2487228abd6db978a4e776afa2e13cb1f811fa78c4628e5d42c87b49c6babd25",
+      ".agents/REFRESHER.md": "a81154f7c82e2b1bad1a5d7c996dfc9c9dff2600efa2a074152b0b8caaefcd4e",
+      ".agents/VALIDATE_WORKFLOW.json": "827733efeab8f7c852d4b9d529a193a8dc60fc60fa0e26ff6a6988eab457c53f",
+      ".agents/template/TEMPLATE_ONBOARDING.md": "f28304e11829be543399a031c8e701144b2ab21d25260a413b89ae10e0c8884a",
+      ".agents/template/TEMPLATE_VALIDATE_WORKFLOW.json": "827733efeab8f7c852d4b9d529a193a8dc60fc60fa0e26ff6a6988eab457c53f",
+      ".gitignore": "f2a4d78beaa836a50d45a27ea2171136c03ec7eff3c9fa1d71ee07a92242aaad",
+      ".node-version": "9185b9f67843cabfa8054f65ce47ce0b52036b0bfe07ae5a6b834d97cc127140",
+      ".python-version": "57de572f10b591d6dcd9e25db9f59db260aa11f7afa3d6a4ddec4f00bb5f8838",
+      ".user_notes/depreciated_files/4GINE_v01.md": "6ca7ac4fcbee7618e90ea79551b74517a105d7388acaf94b7bcd4223bd507658",
+      ".user_notes/depreciated_files/4GINEv02.md": "3c446db85b1c5a2da748f06f18e71fdd90e75ad7d03090921aa875a961cf9f5c",
+      "Bootstrap.cmd": "9657c7c8797177713c7bed5a07731198600eb92ea1b5ab3736426c21cc565169",
+      "README.md": "bff83329fea4595ec421f16311e7c2db8a460dfe5c8456d132225a6fd64b1d1e",
+      "TODO.md": "79a3561243a6884175a74cba481a9b71d09006939f6970195b77f6334c213d33",
+      "VERIFICATION.md": "0ec3eb634e40bbffa4f51435a81e66cce8608b033b3d42ff0bc12f491ad15d39",
+      "Verify.cmd": "5ea1e7c04f9abd313cc8efc9685f1d42ca0c650e860aac7c810b2c5f91ae3ace",
+      "docs/README.md": "9004612c8e1900f8ea1ca2e722464655353df25f33cd0d1cae1bb8007384bff1",
+      "docs/decisions/prototype_toolchain.md": "a9abb57c622b427e2ffde41595c6a437ad1e2fdec9e193f4352470b35f996b42",
+      "docs/design.md": "3398b0d851364f5f6dadf6f297782d1ad7573f65d267fd579e9d8bf432e76f94",
+      "docs/development_workflow.md": "88c780a559129a91f4b7fca6d3fa47840b6c5d112d3892b7ce4e20be2777e7ff",
+      "docs/getting_started.md": "641291b7ba53bea31aa608c3f39e45337836faedab59de0086ad1de9c7283e52",
+      "docs/global_plan.md": "a7bd4596c73e465eefd8abd3e5ee6815aefc823ed0dddeaba95e5e96ad0821ab",
+      "docs/live_research.md": "330cdbb1e0e0a59e0311ac6157532dd026f8f325b695ac3bde67738b5ee00728",
+      "docs/logs/CHANGELOG.md": "044a465b9e2944f892fb4acd428401559d09f98812a07a6796ebb09d55676091",
+      "docs/proposal.md": "8834c174e7510c220d5f3e58aeb747a074216e3926eb0bf0c944e6624b1bd30b",
+      "docs/requirements.md": "c859211eaf474e40fa1ac921f787fcb6fbd18bc80f6b0fa81668cb33cf70d166",
+      "docs/research_plan.md": "bce05b8c2b6f4778b4d302b42e448a24570200e5fcd2e673d801efd8c209b951",
+      "docs/sourcecode_plan.md": "cdb2b0c0b1f0bc3c92bb25e3a0f7c84a0f833d31c6be4dbee9e0c00a6698f508",
+      "docs/tasklist.md": "f6de495fe7812bb43027c29d0fd95f330634c0574c355f1d01119e647630f228",
+      "docs/todos/application.md": "8cf309bf8f18d0e7a693128de0c69cd87c4fa51b051e8057b1f0006c6f91adb6",
+      "docs/todos/contracts.md": "9f28f18f2327543b0f0875613b5c4c3165104fa6514990b23bd66f01b8ab7a03",
+      "docs/todos/governance.md": "51b16ddb66dd6c5b5e1ca2b3e11f62e05156763b2c7f3a026f64fc69bcda4088",
+      "docs/todos/proof.md": "9faf8451431e994b775332a437c02688bbe801b1e79521a59a6b24fbf156f5c3",
+      "docs/todos/signals.md": "7f6b9cdc3d3e25da87712a1271e93e844f8eb541bdc6b35804d722cd6fe52e50",
+      "docs/todos/style.md": "eb566770d436b9df4e4b04e229c76435345299c01fab68ae518dc1f8c53025f4",
+      "docs/todos/time.md": "193dcb4303203b53c18ca4b9d64fca50134a2bb4d9b950aa4ec67dd3e54de3e2",
+      "docs/todos/tooling.md": "dd4d5841dfee591218c496ce769f350567c5db2c92a8042ef746c4a120a092ee",
+      "docs/todos/workers.md": "5dc5bc95b9f67fc0b5d03d04ab492b770f011fb0a95d951f54b42ea586a91439",
+      "linter_error_output.json": "ca0a1cf18d8433d6f84a7e7fb4c9e84555541f089f4508177c049e079190b2cd",
+      "package-lock.json": "78a426c408124792c1334aea572eec664e1ec7cb13b219ca41317a1e232160f2",
+      "package.json": "63d2a27008e8822004fdb4a0b17840cacac5a40526028a3bd2fd29a8d3ea9446",
+      "pyproject.toml": "2f6caf2608275ad0f4f592ca251b35ba06df38022961511ac9ad300515d971e7",
+      "reports/4GINE development realignment.md": "8b53545c0e0b6cb9f9f61d2af69a61922ea8c009a0cd0a864b89f805773f97bd",
+      "research_notes/4GINE development realignment/catalogue_inventory.json": "58addb9f01598cb818bf1c848e51d9a1974472adf5673d8606425876ac22cdc5",
+      "research_notes/4GINE development realignment/planning_review.md": "4822543533fbf60fde2418bb6bf7e9f39c8d8041a72c4a1b3b03d2773d759f0f",
+      "research_notes/4GINE development realignment/source_review.md": "c1340787f48b564d36ca7355d4326a666ff46f41af5612708f74fed3286a4696",
+      "research_notes/4GINE development realignment/technical_research.md": "fbe26242547445758d78e606723a9a2ed77dc0706ed0eb6f429762cc56ae545d",
+      "scripts/bootstrap.ps1": "25ff5bbd8cd165a228b23f98f8bc1735327a69db643130f5e976e0bdd4ef27fe",
+      "scripts/check_planning.py": "6750edeabe08d14befc4b57964221ad357e83240f638cd7eef2edc4a09ce5008",
+      "scripts/qualify_bootstrap.py": "8226d32a94121c3a2c14ff2d64f6ae787d73f39e23b534f914b1956535afb522",
+      "scripts/tests/test_check_planning.py": "35c77f8e5a0be1363e3f6e9e51168113c078e8a1cd14c86ea7534c73e4f6ab28",
+      "scripts/tests/test_verify.py": "906b4a9cf6c099d6a04f57ef624350da212cdf27d0a7654328b08e85912379df",
+      "scripts/toolchain-artifacts.json": "44521d1d2134ab98c87918799c2f42f942666bfaf29bd4a7d276adbd82c09746",
+      "scripts/verify.py": "533775eb94e9de15086d1b7740c4b8133e4115f66f66038c58dc389515abe588",
+      "spinaltap/__init__.py": "4d615e15b924e9e093b904d19d51c3f86f0af6c111e1a70c4df00f0d3a48c85e",
+      "spinaltap/__main__.py": "20863c42eccb0a7e6e830d03cfc4a88d578dab1a23be4ee5132fccbf113c25cf",
+      "spinaltap/context_weight.py": "83f8f63619a924d40847e5a329ff60de1b20d9bd3a12fd1cffc0796ba4e18f25",
+      "spinaltap/contract_kernel.py": "fafbb75889ccfe9614e1461cd8f858c0ed696d53ac3ee37787e757452ab03f45",
+      "spinaltap/contract_validation.py": "b69587ba1e88103580d417c1b1cbe1b3eff9deb95b70272c0ca843f1a31d4430",
+      "spinaltap/demo.py": "a0d37ec852de10e71da12144075215aa99f299fd2330705ad570c472b7af3657",
+      "spinaltap/reconciliation.py": "6ba03f797452e7d9d5a07f0a9a9aa2fc55bf57c51ae2476d85e6ba80770e5f94",
+      "spinaltap/signal_spine.py": "cb214d5dd8dfe81f3c555cac9b7a43f934e6223c28288b60734df14c86799e1f",
+      "spinaltap/soft_proof.py": "7ca6748e5b150086a584ab4aade30effafad4fd7291e485065286d18e9d90b29",
+      "spinaltap/style_surface.py": "351209e70cd13339f2fdfd0722965ecc28bc79632db4c2c02075da579547ad59",
+      "spinaltap/time_packet.py": "c9c17c25f91256c97943e64a57a067f44d61af1f8e8efc822e1ac68fe9c08bfd",
+      "spinaltap/vertebra_delta.py": "35fd3dbb627a48d81922005ade34a0c4cba811b0478ee35b4f88d2c41e1c7468",
+      "tests/test_context_weight_governor.py": "731a01a3b018b97c9304ed2ee313a57c39ee2edc49912c74425570a4f9db9323",
+      "tests/test_contract_kernel.py": "769f7ac0522b90ef394930cf9ffad5958feaa50332fd75c621ee62be2a51dc39",
+      "tests/test_contract_validation.py": "33dcc9976bd2e73c6a0e6d5e560f44682f892cc90f4458e44aa354eec74aacd1",
+      "tests/test_demo.py": "b86b98cfc9f3d49820fa188653c9aad63f54dd9e917f4f792d6e28f985adf0ba",
+      "tests/test_multi_worker_reconciliation.py": "982bf3fe79cdcc3c200207c3528d640f6534a3c6315ddca395fb62da64f8d385",
+      "tests/test_runtime_gates.py": "4a6476c4b63ab4c87138fb6033602950a80563b8ab2fe25d488ebfe08f7470b0",
+      "tests/test_signal_constraint_spine.py": "381ddb366ec51791e32c5f5996d05ebd3a041954fe7c200c92f16e4fdfb6a93e",
+      "tests/test_soft_proof_lab.py": "4b717463285114c25c18265cea4319a64f0fc3cdc3dc1276accc98688f241c22",
+      "tests/test_spinal_reconciliation.py": "7e9513ff0c90c54aead225ae9d16932ea52cb1b59649597f4829bbf420c1a2bd",
+      "tests/test_style_constraint_surface.py": "246e230f91ce7491fa5dc78dfea1ed82e6f2f8bb9512acd66751e363af507b50",
+      "tests/test_time_packet_pump.py": "f49cf784c40ab90fd865872f31b5a25c86a83b36a12f5fecd46bbb3c7045ef11",
+      "tests/test_vertebra_delta_worker.py": "001ba8392d2b23b3ecb540118f216bfe82e6d55bd4f696ba363085313a041ef4",
+      "uv.lock": "212c41a9fbe48ef2e2c0a531f1fb0db2d4928b61b20ce1943e108ed5807af6e1"
+    },
+    "status": "passed"
+  },
+  "python_registry_after": {
+    "Software\\Python\\Astral": [
+      "('DisplayName', 'Astral Software Inc.', 1)",
+      "('SupportUrl', 'https://github.com/astral-sh/uv', 1)"
+    ],
+    "Software\\Python\\Astral\\CPython3.11.14": [
+      "('DisplayName', 'CPython 3.11.14 (64-bit)', 1)",
+      "('SupportUrl', 'https://github.com/astral-sh/uv', 1)",
+      "('Version', '3.11.14', 1)",
+      "('SysVersion', '3.11.14', 1)",
+      "('SysArchitecture', '64bit', 1)",
+      "('DownloadUrl', 'https://github.com/astral-sh/python-build-standalone/releases/download/20251014/cpython-3.11.14%2B20251014-x86_64-pc-windows-msvc-install_only_stripped.tar.gz', 1)",
+      "('DownloadSha256', 'c2a7b0bb86eb9f1cc094a01bdabef7ddc77f89f8e45161fa7819f2b4a7ba7bc1', 1)"
+    ],
+    "Software\\Python\\Astral\\CPython3.11.14\\InstallPath": [
+      "('', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.11.14-windows-x86_64-none', 1)",
+      "('ExecutablePath', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.11.14-windows-x86_64-none\\\\python.exe', 1)",
+      "('WindowedExecutablePath', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.11.14-windows-x86_64-none\\\\pythonw.exe', 1)"
+    ],
+    "Software\\Python\\Astral\\CPython3.13.9": [
+      "('DisplayName', 'CPython 3.13.9 (64-bit)', 1)",
+      "('SupportUrl', 'https://github.com/astral-sh/uv', 1)",
+      "('Version', '3.13.9', 1)",
+      "('SysVersion', '3.13.9', 1)",
+      "('SysArchitecture', '64bit', 1)",
+      "('DownloadUrl', 'https://github.com/astral-sh/python-build-standalone/releases/download/20251014/cpython-3.13.9%2B20251014-x86_64-pc-windows-msvc-install_only_stripped.tar.gz', 1)",
+      "('DownloadSha256', '76e0a9749c4deeb975a4b6b36d54be4e43f0c2a4c654bedab5d2e4d62dbc3006', 1)"
+    ],
+    "Software\\Python\\Astral\\CPython3.13.9\\InstallPath": [
+      "('', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.13.9-windows-x86_64-none', 1)",
+      "('ExecutablePath', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.13.9-windows-x86_64-none\\\\python.exe', 1)",
+      "('WindowedExecutablePath', 'C:\\\\Users\\\\ryanf\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.13.9-windows-x86_64-none\\\\pythonw.exe', 1)"
+    ]
+  },
+  "status": "passed"
+}

@@ -1,5 +1,75 @@
 # (A) 4GINE SOURCE TODO: RUNNABLE CONTRACT PROTOTYPE [DOC]
 
+Current work is governed by the [global plan](docs/global_plan.md) and
+[canonical workstream cards](docs/README.md). This file is the next-task
+pointer plus the preserved source/diagnostic history. The historical checkboxes
+below are snapshots, not a second mutable backlog.
+
+## (0) Current development queue
+
+> Goal: [GL04] - PRESERVE_FORWARD_WORK_FOR_NEXT_AGENT
+> Dependency: [DP04] - CURRENT_SLICE_LIMITS
+> Requirement: [RQ04] - KEEP_PENDING_INTEGRATION_VISIBLE
+
+Next task: ST-003
+
+Start with
+[ST-003: Automate the accepted repository checks](docs/todos/tooling.md#st-003-automate-the-accepted-repository-checks).
+Its card owns status, scope, dependencies, acceptance and evidence.
+Follow the [development workflow](docs/development_workflow.md), updating this
+pointer when the selected task finishes.
+
+| Workstream | Current task authority |
+| --- | --- |
+| Tooling and alignment | [Tooling TODO](docs/todos/tooling.md) |
+| Contracts and schemas | [Contract TODO](docs/todos/contracts.md) |
+| Source influence | [Governance TODO](docs/todos/governance.md) |
+| Time and replay | [Time TODO](docs/todos/time.md) |
+| Local workers | [Worker TODO](docs/todos/workers.md) |
+| Signals and reconciliation | [Signal TODO](docs/todos/signals.md) |
+| Measurable style | [Style TODO](docs/todos/style.md) |
+| Proof and evidence | [Proof TODO](docs/todos/proof.md) |
+| Interactive application | [Application TODO](docs/todos/application.md) |
+
+### Legacy task migration
+
+The qualified identifiers below refer only to this root TODO's old TK records.
+Same-numbered TK entries in docs/tasklist.md are separate completed docspec
+tasks. Completed slices keep their original evidence; their successors are new
+work, not a retroactive change to the old checked state.
+
+| Historical source task | Canonical continuation |
+| --- | --- |
+| TODO.md::TK01 | [ST-001/ST-002](docs/todos/tooling.md): tooling decision and bootstrap |
+| TODO.md::TK02 | [ST-001/ST-002](docs/todos/tooling.md): select required type gates and configure them |
+| TODO.md::TK03 | [ST-004](docs/todos/tooling.md): optional IDE snapshot refresh/retirement |
+| TODO.md::TK04 | Preserve ingress slice; [ST-005/ST-006](docs/todos/contracts.md) handle evolution |
+| TODO.md::TK05 | [ST-007/ST-008/ST-009](docs/todos/governance.md): policy, outcomes and provenance |
+| TODO.md::TK06 | Preserve fixed-step slice; [ST-010/ST-011/ST-012](docs/todos/time.md) extend evidence |
+| TODO.md::TK07 | Preserve scalar constraints; [ST-013-ST-016](docs/todos/workers.md) extend scoped workers |
+| TODO.md::TK08 | Preserve hooks; [ST-017/ST-018](docs/todos/signals.md) extend authority/adoption |
+| TODO.md::TK09 | [ST-020/ST-021/ST-022](docs/todos/style.md): numeric schema and rendered evidence |
+| TODO.md::TK10 | [ST-023/ST-024](docs/todos/proof.md): proof semantics and evidence ledger |
+| TODO.md::TK11 | Preserve scalar candidate atomicity; [ST-017/ST-018](docs/todos/signals.md) extend it |
+| TODO.md::TK12 | Preserve recorded alignment pass; [ST-034](docs/todos/tooling.md) and ongoing workflow |
+
+### Historical snapshot boundary
+
+Sections (1)-(6), their context definitions and recorded checkboxes below
+preserve the earlier source continuation and IDE intake. Their original
+remaining-work language does not make every listed extension a current release
+requirement. In particular, durable commits, additive merges, concurrency and
+hook isolation now require a scoped use case under ST-019.
+
+The old MO06 measurable-limit status label describes text-field validation;
+numeric style enforcement is still pending. The current proof specimen checks
+planning text and does not validate an executed artifact. See the
+[current README](README.md) and [dated review](reports/4GINE%20development%20realignment.md)
+for the corrected current interpretation. Older tool paths/results remain
+historical; fresh evidence is recorded separately.
+
+Historical introduction follows:
+
 This TODO is the agent-facing status ledger for the current SPINALTAP source
 slice. It preserves the `linter_error_output.json` intake [IN01], [LS] and
 records the 2026-11-05 mapping validation, fixed-step runtime, and multi-worker
