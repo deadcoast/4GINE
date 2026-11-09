@@ -106,8 +106,9 @@ identities are integer fields and do not accept float representations.
 These fields do not verify source provenance or empirically calibrate scores.
 The [governor policy](governor_policy.md) selects minimum aggregation,
 implemented under ST-008. Versioned ingress remains structural and does not
-assert which governor policy produced stored output fields. Fresh evaluation and its policy
-identity are separate from literal decoding/migration of historical records.
+assert which governor policy produced stored output fields. Fresh evaluation
+and its policy identity are separate from literal decoding/migration of
+historical records.
 No DC01 revision 1 field, range, vocabulary or acceptance rule changes here.
 
 ### DC02: TimePacket
