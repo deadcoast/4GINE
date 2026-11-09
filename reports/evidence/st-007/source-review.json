@@ -1,0 +1,1131 @@
+{
+  "scope": "ST-007 current-source observations and arithmetic comparison; selected policy is not executed",
+  "timestamp_utc": "2026-11-09T10:35:01.979725+00:00",
+  "python": "3.13.18 (main, Oct 26 2026, 14:10:48) [MSC v.1944 64 bit (AMD64)]",
+  "base_revision": "d7c789bc8090f4290163534317939a752aafaeab",
+  "source_hashes": {
+    "spinaltap/context_weight.py": "83f8f63619a924d40847e5a329ff60de1b20d9bd3a12fd1cffc0796ba4e18f25",
+    "spinaltap/contract_kernel.py": "fafbb75889ccfe9614e1461cd8f858c0ed696d53ac3ee37787e757452ab03f45",
+    "spinaltap/contract_validation.py": "e044b9dcd68ca7674facb9e4ae1038c596deb9c7d039b13c41995a28b5837bf7",
+    "tests/test_context_weight_governor.py": "731a01a3b018b97c9304ed2ee313a57c39ee2edc49912c74425570a4f9db9323",
+    "tests/test_contract_validation.py": "33dcc9976bd2e73c6a0e6d5e560f44682f892cc90f4458e44aa354eec74aacd1",
+    "docs/examples/governor_policy.json": "4f5394526cf7d7e1765d43d8d8d86f226f665fa33eee97d30481b56c23c67d4f",
+    "reports/evidence/st-007/observe_governor.py": "56959c015d86c4abca1a55f4e205123a0015e0e7fff4c2931121518d41adf9f8"
+  },
+  "observations": [
+    {
+      "id": "full_support",
+      "arithmetic_mean": 1.0,
+      "raw_minimum": 1,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "allow",
+        "influence_weight": 1,
+        "risk_flag": "none"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "zero_authority",
+      "arithmetic_mean": 0.75,
+      "raw_minimum": 0,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "zero_support"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.75,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "zero_fit_divergence",
+      "arithmetic_mean": 0.75,
+      "raw_minimum": 0,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "zero_support"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.75,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "zero_reach",
+      "arithmetic_mean": 0.75,
+      "raw_minimum": 0,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "zero_support"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.75,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "all_zero",
+      "arithmetic_mean": 0.0,
+      "raw_minimum": 0,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "low_originality"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "block",
+          "influence_weight": 0.0,
+          "risk_flag": "low_originality"
+        }
+      }
+    },
+    {
+      "id": "balanced_half",
+      "arithmetic_mean": 0.5,
+      "raw_minimum": 0.5,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.5,
+        "risk_flag": "limited_support"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.5,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "tied_limits",
+      "arithmetic_mean": 0.7,
+      "raw_minimum": 0.4,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.4,
+        "risk_flag": "limited_support"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.7,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "weak_positive_fit",
+      "arithmetic_mean": 0.7625,
+      "raw_minimum": 0.05,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.05,
+        "risk_flag": "limited_support"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.7625,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "smallest_positive_fit",
+      "arithmetic_mean": 0.75,
+      "raw_minimum": 5e-324,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "down_weight",
+        "influence_weight": 5e-324,
+        "risk_flag": "limited_support"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.75,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "below_full_support",
+      "arithmetic_mean": 1.0,
+      "raw_minimum": 0.9999999999999999,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.9999999999999999,
+        "risk_flag": "limited_support"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "below_originality_floor",
+      "arithmetic_mean": 0.8,
+      "raw_minimum": 0.19999999999999998,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "low_originality"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "block",
+          "influence_weight": 0.0,
+          "risk_flag": "low_originality"
+        }
+      }
+    },
+    {
+      "id": "at_originality_floor",
+      "arithmetic_mean": 0.8,
+      "raw_minimum": 0.2,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.2,
+        "risk_flag": "limited_support"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.8,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "above_originality_floor",
+      "arithmetic_mean": 0.8,
+      "raw_minimum": 0.20000000000000004,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.20000000000000004,
+        "risk_flag": "limited_support"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.8,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "low_originality_before_zero_support",
+      "arithmetic_mean": 0.525,
+      "raw_minimum": 0,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "low_originality"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "block",
+          "influence_weight": 0.0,
+          "risk_flag": "low_originality"
+        }
+      }
+    },
+    {
+      "id": "null_attribution",
+      "arithmetic_mean": 1.0,
+      "raw_minimum": 1,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "hidden_influence"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "block",
+          "influence_weight": 0.0,
+          "risk_flag": "hidden_influence"
+        }
+      }
+    },
+    {
+      "id": "empty_attribution",
+      "arithmetic_mean": 1.0,
+      "raw_minimum": 1,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "hidden_influence"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "block",
+          "influence_weight": 0.0,
+          "risk_flag": "hidden_influence"
+        }
+      }
+    },
+    {
+      "id": "blank_attribution",
+      "arithmetic_mean": 1.0,
+      "raw_minimum": 1,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "hidden_influence"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "block",
+          "influence_weight": 0.0,
+          "risk_flag": "hidden_influence"
+        }
+      }
+    },
+    {
+      "id": "missing_before_originality",
+      "arithmetic_mean": 0.775,
+      "raw_minimum": 0.1,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "hidden_influence"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "block",
+          "influence_weight": 0.0,
+          "risk_flag": "hidden_influence"
+        }
+      }
+    },
+    {
+      "id": "unresolved_attribution",
+      "arithmetic_mean": 1.0,
+      "raw_minimum": 1,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "allow",
+        "influence_weight": 1,
+        "risk_flag": "none"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "reevaluate_existing_outputs",
+      "arithmetic_mean": 0.75,
+      "raw_minimum": 0.6,
+      "selected_policy_outcome_not_executed": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.6,
+        "risk_flag": "limited_support"
+      },
+      "legacy_ingress": {
+        "status": "decoded"
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.75,
+          "risk_flag": "none"
+        }
+      }
+    }
+  ],
+  "invalid_input_observations": [
+    {
+      "id": "source_authority_boolean",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.source_authority: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "source_authority_numeric_string",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.source_authority: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.875,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "source_authority_negative",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.source_authority: number must be at least 0.0",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.725,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "source_authority_above_one",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.source_authority: number must be at most 1.0",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "source_authority_null",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.source_authority: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "exception",
+        "type": "TypeError",
+        "message": "float() argument must be a string or a real number, not 'NoneType'"
+      }
+    },
+    {
+      "id": "source_authority_nan",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.source_authority: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "source_authority_positive_infinity",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.source_authority: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "source_authority_negative_infinity",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.source_authority: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "claim_fit_boolean",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.claim_fit: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "claim_fit_numeric_string",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.claim_fit: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.875,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "claim_fit_negative",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.claim_fit: number must be at least 0.0",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.725,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "claim_fit_above_one",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.claim_fit: number must be at most 1.0",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "claim_fit_null",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.claim_fit: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "exception",
+        "type": "TypeError",
+        "message": "float() argument must be a string or a real number, not 'NoneType'"
+      }
+    },
+    {
+      "id": "claim_fit_nan",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.claim_fit: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "claim_fit_positive_infinity",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.claim_fit: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "claim_fit_negative_infinity",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.claim_fit: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "originality_distance_boolean",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.originality_distance: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "originality_distance_numeric_string",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.originality_distance: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.875,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "originality_distance_negative",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.originality_distance: number must be at least 0.0",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "block",
+          "influence_weight": 0.0,
+          "risk_flag": "low_originality"
+        }
+      }
+    },
+    {
+      "id": "originality_distance_above_one",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.originality_distance: number must be at most 1.0",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "originality_distance_null",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.originality_distance: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "exception",
+        "type": "TypeError",
+        "message": "float() argument must be a string or a real number, not 'NoneType'"
+      }
+    },
+    {
+      "id": "originality_distance_nan",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.originality_distance: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "originality_distance_positive_infinity",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.originality_distance: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "originality_distance_negative_infinity",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.originality_distance: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "block",
+          "influence_weight": 0.0,
+          "risk_flag": "low_originality"
+        }
+      }
+    },
+    {
+      "id": "validation_reach_boolean",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.validation_reach: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "validation_reach_numeric_string",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.validation_reach: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.875,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "validation_reach_negative",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.validation_reach: number must be at least 0.0",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.725,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "validation_reach_above_one",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.validation_reach: number must be at most 1.0",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "validation_reach_null",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.validation_reach: expected a finite number, excluding booleans",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "exception",
+        "type": "TypeError",
+        "message": "float() argument must be a string or a real number, not 'NoneType'"
+      }
+    },
+    {
+      "id": "validation_reach_nan",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.validation_reach: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "validation_reach_positive_infinity",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.validation_reach: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 1.0,
+          "risk_flag": "none"
+        }
+      }
+    },
+    {
+      "id": "validation_reach_negative_infinity",
+      "legacy_ingress": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "refusal": {
+          "contract": "DC01",
+          "gate": "VG01",
+          "code": "invalid_payload",
+          "reason": "DC01.validation_reach: expected a finite number",
+          "promotion_state": "blocked"
+        }
+      },
+      "direct_governor": {
+        "status": "returned",
+        "outcome": {
+          "governor_decision": "allow",
+          "influence_weight": 0.0,
+          "risk_flag": "none"
+        }
+      }
+    }
+  ]
+}

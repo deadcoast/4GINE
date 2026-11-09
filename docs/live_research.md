@@ -7,6 +7,13 @@ The [new technical review](../research_notes/4GINE%20development%20realignment/t
 records refreshed sources and the unresolved FR05 minimum-versus-runtime-mean
 decision; it does not silently replace this historical formulation.
 
+2026-11-09 supersession note: the
+[governor policy decision](decisions/governor_policy.md) retains FR05's minimum
+and supplies the authoritative outcome partition, input validation, risk flags
+and exact threshold behavior for ST-008. It supersedes the incomplete
+operational policy here and the current runtime mean, while preserving this
+research snapshot and its original source dates.
+
 This document records the first live research pass authorized on 2026-05-26
 [DOC]. It follows the approved research plan's rule that research is evidence
 pressure, not a copy source [WL02], [GR], [TR].

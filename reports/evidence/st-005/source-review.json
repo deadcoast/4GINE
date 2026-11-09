@@ -1,0 +1,84 @@
+{
+  "timestamp_utc": "2026-11-09T09:30:48.527825+00:00",
+  "source_revision": "d7c789bc8090f4290163534317939a752aafaeab",
+  "scope": "Current runtime observations plus specification inventory; no versioned decoder executed",
+  "source_hashes": {
+    "spinaltap/contract_kernel.py": "fafbb75889ccfe9614e1461cd8f858c0ed696d53ac3ee37787e757452ab03f45",
+    "spinaltap/contract_validation.py": "b69587ba1e88103580d417c1b1cbe1b3eff9deb95b70272c0ca843f1a31d4430",
+    "tests/test_contract_validation.py": "33dcc9976bd2e73c6a0e6d5e560f44682f892cc90f4458e44aa354eec74aacd1"
+  },
+  "example_file_sha256": "9156e378316e49eeadefbfb6f8605037c5e05738da00023157d7cfa90da1e3fe",
+  "accepted_envelope_specimens": 6,
+  "specified_refusal_cases": 18,
+  "observations": [
+    {
+      "case": "DC01 legacy body",
+      "result": "SourceClaim"
+    },
+    {
+      "case": "DC02 legacy body",
+      "result": "TimePacket"
+    },
+    {
+      "case": "DC03 legacy body",
+      "result": "SignalBundle"
+    },
+    {
+      "case": "DC04 legacy body",
+      "result": "DeltaPacket"
+    },
+    {
+      "case": "DC05 legacy body",
+      "result": "StyleLimits"
+    },
+    {
+      "case": "DC06 legacy body",
+      "result": "ProofRecord"
+    },
+    {
+      "case": "DC01 versioned envelope against current legacy API",
+      "result": "refused",
+      "field": "DC01.source_ref"
+    },
+    {
+      "case": "DC02 versioned envelope against current legacy API",
+      "result": "refused",
+      "field": "DC02.elapsed_time"
+    },
+    {
+      "case": "DC03 versioned envelope against current legacy API",
+      "result": "refused",
+      "field": "DC03.owner"
+    },
+    {
+      "case": "DC04 versioned envelope against current legacy API",
+      "result": "refused",
+      "field": "DC04.local_state_slice"
+    },
+    {
+      "case": "DC05 versioned envelope against current legacy API",
+      "result": "refused",
+      "field": "DC05.geometry_limit"
+    },
+    {
+      "case": "DC06 versioned envelope against current legacy API",
+      "result": "refused",
+      "field": "DC06.claim_ref"
+    },
+    {
+      "case": "missing nullable field",
+      "result": "refused",
+      "field": "DC02.overflow_risk"
+    },
+    {
+      "case": "trusted constructor can create invalid record; revalidation rejects it",
+      "result": "refused",
+      "field": "DC02.packet_count"
+    },
+    {
+      "case": "shallow snapshot",
+      "nested_value_shared": true,
+      "top_level_write_refused": true
+    }
+  ]
+}

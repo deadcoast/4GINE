@@ -61,7 +61,12 @@ removed [KN].
 > Requirement: [RQ03] - MODULES_HAVE_CONTRACTS
 
 - [REQ04] The Context-Weight Governor [MG01] must receive source-pressured
-  claims and emit influence weight plus replication risk [DC01].
+  claims and emit influence weight plus replication risk [DC01]. The selected
+  [governor policy](decisions/governor_policy.md) requires complete input
+  revalidation, attribution/originality gates and minimum aggregation; each
+  retained outcome has an explicit reachable boundary.
+  [ST-008 evidence](../reports/ST-008%20governor%20implementation.md) covers these
+  outcomes and invalid-input refusals; source provenance remains ST-009 work.
 - [REQ05] The Time Packet Pump [MG02] must convert elapsed time into fixed
   simulation packets before any solver consumes time [DC02].
 - [REQ06] The Signal-Constraint Spine [MG03] must route state changes through
@@ -107,6 +112,16 @@ Exact required fields:
 - [DC06] fields: `claim_ref`, `contract_ref`, `specimen_plan`,
   `failure_path`, `promotion_state`, `evidence_tier`.
 
+The [contract identity decision](decisions/contract_identity.md) refines these
+boundaries under ST-005. Versioned ingress must name an exact contract/revision,
+require every body field including nullable fields, reject unsupported nested
+identities and record deliberate legacy migration. The separate strict entry
+point and explicit baseline migration now have
+[ST-006 execution evidence](../reports/ST-006%20versioned%20ingress.md).
+Existing unversioned APIs remain explicit internal/compatibility paths.
+Evidence identifies the subject revision separately from a proof record's own
+schema; naming a revision cannot satisfy [REQ09] or [REQ15] by itself.
+
 ## (5) Validation requirements [VG]
 
 > Goal: [GL05] - REQUIRE_VALIDATION_GATES
@@ -132,6 +147,12 @@ input, the permitted output, the refusal condition, and the promotion rule:
 - [VG01] originality specimen: one source-pressured claim from [DC01] is scored
   for source authority, claim fit, originality distance, and validation reach.
   The only permitted outcomes are allow, down-weight, or block [REQ10].
+  Under governor-minimum-v1, after valid-input, attribution and originality
+  gates, zero support blocks, partial support down-weights and full support
+  allows. Exactly 0.20 originality passes its floor; values below it block.
+  The [policy corpus](examples/governor_policy.json) specifies divergent,
+  boundary and invalid-score cases. Scores are caller-declared project rubric
+  values; this decision does not prove originality or provenance.
 - [VG02] time specimen: one raw elapsed-time value is converted into fixed
   packets, accumulator remainder, interpolation state, and overflow risk before
   solver access [REQ11], [DC02].

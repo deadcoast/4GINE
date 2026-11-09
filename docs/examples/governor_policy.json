@@ -1,0 +1,851 @@
+{
+  "scope": "ST-007 selected policy specification; these target outcomes are not yet implemented by ContextWeightGovernor",
+  "policy_id": "governor-minimum-v1",
+  "record_identity": {
+    "contract": "DC01",
+    "schema_revision": 1
+  },
+  "score_order": [
+    "source_authority",
+    "claim_fit",
+    "originality_distance",
+    "validation_reach"
+  ],
+  "originality_floor": 0.2,
+  "float_fixture_encoding": "Objects with special_float encode Python nonfinite floats only in this fixture format, not in DC01 transport.",
+  "cases": [
+    {
+      "id": "full_support",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 1,
+        "originality_distance": 1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "allow",
+        "influence_weight": 1,
+        "risk_flag": "none"
+      }
+    },
+    {
+      "id": "zero_authority",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 0,
+        "claim_fit": 1,
+        "originality_distance": 1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "zero_support"
+      }
+    },
+    {
+      "id": "zero_fit_divergence",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 0,
+        "originality_distance": 1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "zero_support"
+      }
+    },
+    {
+      "id": "zero_reach",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 1,
+        "originality_distance": 1,
+        "validation_reach": 0,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "zero_support"
+      }
+    },
+    {
+      "id": "all_zero",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 0,
+        "claim_fit": 0,
+        "originality_distance": 0,
+        "validation_reach": 0,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "low_originality"
+      }
+    },
+    {
+      "id": "balanced_half",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 0.5,
+        "claim_fit": 0.5,
+        "originality_distance": 0.5,
+        "validation_reach": 0.5,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.5,
+        "risk_flag": "limited_support"
+      }
+    },
+    {
+      "id": "tied_limits",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 0.4,
+        "claim_fit": 0.4,
+        "originality_distance": 1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.4,
+        "risk_flag": "limited_support"
+      }
+    },
+    {
+      "id": "weak_positive_fit",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 0.05,
+        "originality_distance": 1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.05,
+        "risk_flag": "limited_support"
+      }
+    },
+    {
+      "id": "smallest_positive_fit",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 5e-324,
+        "originality_distance": 1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "down_weight",
+        "influence_weight": 5e-324,
+        "risk_flag": "limited_support"
+      }
+    },
+    {
+      "id": "below_full_support",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 0.9999999999999999,
+        "originality_distance": 1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.9999999999999999,
+        "risk_flag": "limited_support"
+      }
+    },
+    {
+      "id": "below_originality_floor",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 1,
+        "originality_distance": 0.19999999999999998,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "low_originality"
+      }
+    },
+    {
+      "id": "at_originality_floor",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 1,
+        "originality_distance": 0.2,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.2,
+        "risk_flag": "limited_support"
+      }
+    },
+    {
+      "id": "above_originality_floor",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 1,
+        "originality_distance": 0.20000000000000004,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.20000000000000004,
+        "risk_flag": "limited_support"
+      }
+    },
+    {
+      "id": "low_originality_before_zero_support",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 0,
+        "claim_fit": 1,
+        "originality_distance": 0.1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "low_originality"
+      }
+    },
+    {
+      "id": "null_attribution",
+      "payload": {
+        "source_ref": null,
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 1,
+        "originality_distance": 1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "hidden_influence"
+      }
+    },
+    {
+      "id": "empty_attribution",
+      "payload": {
+        "source_ref": "",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 1,
+        "originality_distance": 1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "hidden_influence"
+      }
+    },
+    {
+      "id": "blank_attribution",
+      "payload": {
+        "source_ref": "  ",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 1,
+        "originality_distance": 1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "hidden_influence"
+      }
+    },
+    {
+      "id": "missing_before_originality",
+      "payload": {
+        "source_ref": null,
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 1,
+        "originality_distance": 0.1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "block",
+        "influence_weight": 0,
+        "risk_flag": "hidden_influence"
+      }
+    },
+    {
+      "id": "unresolved_attribution",
+      "payload": {
+        "source_ref": "source:not-in-a-registry",
+        "claim_text": "bounded source influence",
+        "source_authority": 1,
+        "claim_fit": 1,
+        "originality_distance": 1,
+        "validation_reach": 1,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "allow",
+        "influence_weight": 1,
+        "risk_flag": "none"
+      }
+    },
+    {
+      "id": "reevaluate_existing_outputs",
+      "payload": {
+        "source_ref": "source:policy-specimen",
+        "claim_text": "bounded source influence",
+        "source_authority": 0.9,
+        "claim_fit": 0.8,
+        "originality_distance": 0.7,
+        "validation_reach": 0.6,
+        "influence_weight": 0.75,
+        "risk_flag": "none",
+        "governor_decision": "allow"
+      },
+      "selected_policy_outcome": {
+        "governor_decision": "down_weight",
+        "influence_weight": 0.6,
+        "risk_flag": "limited_support"
+      }
+    }
+  ],
+  "invalid_input_base": {
+    "source_ref": "source:policy-specimen",
+    "claim_text": "bounded source influence",
+    "source_authority": 1.0,
+    "claim_fit": 1.0,
+    "originality_distance": 1.0,
+    "validation_reach": 1.0,
+    "influence_weight": null,
+    "risk_flag": null,
+    "governor_decision": null
+  },
+  "invalid_inputs": [
+    {
+      "id": "source_authority_boolean",
+      "field": "source_authority",
+      "value": true,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "source_authority_numeric_string",
+      "field": "source_authority",
+      "value": "0.5",
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "source_authority_negative",
+      "field": "source_authority",
+      "value": -0.1,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "source_authority_above_one",
+      "field": "source_authority",
+      "value": 1.1,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "source_authority_null",
+      "field": "source_authority",
+      "value": null,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "source_authority_nan",
+      "field": "source_authority",
+      "value": {
+        "special_float": "nan"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "source_authority_positive_infinity",
+      "field": "source_authority",
+      "value": {
+        "special_float": "inf"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "source_authority_negative_infinity",
+      "field": "source_authority",
+      "value": {
+        "special_float": "-inf"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.source_authority",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "claim_fit_boolean",
+      "field": "claim_fit",
+      "value": true,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "claim_fit_numeric_string",
+      "field": "claim_fit",
+      "value": "0.5",
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "claim_fit_negative",
+      "field": "claim_fit",
+      "value": -0.1,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "claim_fit_above_one",
+      "field": "claim_fit",
+      "value": 1.1,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "claim_fit_null",
+      "field": "claim_fit",
+      "value": null,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "claim_fit_nan",
+      "field": "claim_fit",
+      "value": {
+        "special_float": "nan"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "claim_fit_positive_infinity",
+      "field": "claim_fit",
+      "value": {
+        "special_float": "inf"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "claim_fit_negative_infinity",
+      "field": "claim_fit",
+      "value": {
+        "special_float": "-inf"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.claim_fit",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "originality_distance_boolean",
+      "field": "originality_distance",
+      "value": true,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "originality_distance_numeric_string",
+      "field": "originality_distance",
+      "value": "0.5",
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "originality_distance_negative",
+      "field": "originality_distance",
+      "value": -0.1,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "originality_distance_above_one",
+      "field": "originality_distance",
+      "value": 1.1,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "originality_distance_null",
+      "field": "originality_distance",
+      "value": null,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "originality_distance_nan",
+      "field": "originality_distance",
+      "value": {
+        "special_float": "nan"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "originality_distance_positive_infinity",
+      "field": "originality_distance",
+      "value": {
+        "special_float": "inf"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "originality_distance_negative_infinity",
+      "field": "originality_distance",
+      "value": {
+        "special_float": "-inf"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.originality_distance",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "validation_reach_boolean",
+      "field": "validation_reach",
+      "value": true,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "validation_reach_numeric_string",
+      "field": "validation_reach",
+      "value": "0.5",
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "validation_reach_negative",
+      "field": "validation_reach",
+      "value": -0.1,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "validation_reach_above_one",
+      "field": "validation_reach",
+      "value": 1.1,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "validation_reach_null",
+      "field": "validation_reach",
+      "value": null,
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "validation_reach_nan",
+      "field": "validation_reach",
+      "value": {
+        "special_float": "nan"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "validation_reach_positive_infinity",
+      "field": "validation_reach",
+      "value": {
+        "special_float": "inf"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    },
+    {
+      "id": "validation_reach_negative_infinity",
+      "field": "validation_reach",
+      "value": {
+        "special_float": "-inf"
+      },
+      "selected_policy_outcome": {
+        "status": "refused",
+        "field": "DC01.validation_reach",
+        "contract": "DC01",
+        "gate": "VG01",
+        "code": "invalid_payload",
+        "promotion_state": "blocked"
+      }
+    }
+  ]
+}

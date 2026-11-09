@@ -1,0 +1,300 @@
+{
+  "scope": "ST-006 local accepted checks before task closure; exact implementation hashes and complete stage outputs. Not hosted CI, provenance verification, or engine acceptance.",
+  "timestamp_utc": "2026-11-09T10:02:07.850885+00:00",
+  "base_revision": "d7c789bc8090f4290163534317939a752aafaeab",
+  "working_tree": " M README.md\n M TODO.md\n M docs/README.md\n M docs/design.md\n M docs/global_plan.md\n M docs/logs/CHANGELOG.md\n M docs/requirements.md\n M docs/todos/contracts.md\n M docs/todos/proof.md\n M docs/todos/tooling.md\n M spinaltap/contract_validation.py\n?? docs/decisions/contract_identity.md\n?? docs/examples/\n?? \"reports/ST-005 contract identity review.md\"\n?? \"reports/ST-006 versioned ingress.md\"\n?? reports/evidence/st-005/\n?? reports/evidence/st-006/\n?? tests/fixtures/\n?? tests/test_contract_versioning.py\n",
+  "status": "passed",
+  "environment": {
+    "python": "3.13.18 (main, Oct 26 2026, 14:10:48) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "C:\\github\\4GINE\\.venv\\Scripts\\python.exe",
+    "base_prefix": "C:\\github\\4GINE\\.tools\\python\\cpython-3.13-windows-x86_64-none",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "uv": "0.13.7",
+    "node": "24.22.2",
+    "npm": "11.19.1"
+  },
+  "test_counts": {
+    "runtime tests": 117,
+    "tooling tests": 31
+  },
+  "contract_identities": [
+    {
+      "contract": "DC01",
+      "schema_revision": 1
+    },
+    {
+      "contract": "DC02",
+      "schema_revision": 1
+    },
+    {
+      "contract": "DC03",
+      "schema_revision": 1
+    },
+    {
+      "contract": "DC04",
+      "schema_revision": 1
+    },
+    {
+      "contract": "DC05",
+      "schema_revision": 1
+    },
+    {
+      "contract": "DC06",
+      "schema_revision": 1
+    }
+  ],
+  "corpus_cases": {
+    "accepted_envelopes": 6,
+    "specified_refusals": 18,
+    "migration_fixtures": 8,
+    "migration_input_forms_per_fixture": 2
+  },
+  "source_hashes": {
+    "spinaltap/contract_kernel.py": "fafbb75889ccfe9614e1461cd8f858c0ed696d53ac3ee37787e757452ab03f45",
+    "spinaltap/contract_validation.py": "e044b9dcd68ca7674facb9e4ae1038c596deb9c7d039b13c41995a28b5837bf7",
+    "tests/test_contract_validation.py": "33dcc9976bd2e73c6a0e6d5e560f44682f892cc90f4458e44aa354eec74aacd1",
+    "tests/test_contract_versioning.py": "fc4c56b9195fb1e293a49883d03cdeeaf42fa1b1c376e393c7b5e6552c66b5e4",
+    "tests/fixtures/legacy_contract_migrations.json": "47cbeaf072554d5a7fdbdd61081c9db65228dd8036fb94ee35ecfaa67f5e9454",
+    "docs/decisions/contract_identity.md": "85753188221cdb1d4fff34a6db224971ed6157ee3a5172c984ecf745d9bcd484",
+    "docs/examples/contract_identity.json": "9156e378316e49eeadefbfb6f8605037c5e05738da00023157d7cfa90da1e3fe",
+    "scripts/verify.py": "533775eb94e9de15086d1b7740c4b8133e4115f66f66038c58dc389515abe588",
+    "pyproject.toml": "2f6caf2608275ad0f4f592ca251b35ba06df38022961511ac9ad300515d971e7",
+    "uv.lock": "212c41a9fbe48ef2e2c0a531f1fb0db2d4928b61b20ce1943e108ed5807af6e1",
+    "package-lock.json": "78a426c408124792c1334aea572eec664e1ec7cb13b219ca41317a1e232160f2"
+  },
+  "project_inputs_unchanged_during_verification": true,
+  "stages": [
+    {
+      "name": "uv version",
+      "command": [
+        "C:\\github\\4GINE\\.tools\\uv-0.13.7\\uv.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "uv 0.13.7 (316c827e0 2026-11-03 x86_64-pc-windows-msvc)\n",
+      "stderr": ""
+    },
+    {
+      "name": "Node version",
+      "command": [
+        "C:\\github\\4GINE\\.tools\\node-v24.22.2-win-x64\\node.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "v24.22.2\n",
+      "stderr": ""
+    },
+    {
+      "name": "npm version",
+      "command": [
+        "C:\\github\\4GINE\\.tools\\node-v24.22.2-win-x64\\node.exe",
+        "C:\\github\\4GINE\\.tools\\node-v24.22.2-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "11.19.1\n",
+      "stderr": ""
+    },
+    {
+      "name": "Python lock freshness",
+      "command": [
+        "C:\\github\\4GINE\\.tools\\uv-0.13.7\\uv.exe",
+        "lock",
+        "--check",
+        "--managed-python",
+        "--config-file",
+        ".tools/uv.toml"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 1 package in 0.73ms\n"
+    },
+    {
+      "name": "npm lock freshness",
+      "command": [
+        "C:\\github\\4GINE\\.tools\\node-v24.22.2-win-x64\\node.exe",
+        "C:\\github\\4GINE\\.tools\\node-v24.22.2-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "ci",
+        "--dry-run",
+        "--ignore-scripts",
+        "--offline",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit_code": 0,
+      "stdout": "\nup to date in 519ms\n",
+      "stderr": ""
+    },
+    {
+      "name": "installed npm tree",
+      "command": [
+        "C:\\github\\4GINE\\.tools\\node-v24.22.2-win-x64\\node.exe",
+        "C:\\github\\4GINE\\.tools\\node-v24.22.2-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "ls",
+        "--all",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"version\": \"0.0.0\",\n  \"name\": \"4gine-development\",\n  \"dependencies\": {\n    \"markdownlint-cli2\": {\n      \"version\": \"0.23.1\",\n      \"resolved\": \"https://registry.npmjs.org/markdownlint-cli2/-/markdownlint-cli2-0.23.1.tgz\",\n      \"overridden\": false,\n      \"dependencies\": {\n        \"globby\": {\n          \"version\": \"16.2.1\",\n          \"resolved\": \"https://registry.npmjs.org/globby/-/globby-16.2.1.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"@sindresorhus/merge-streams\": {\n              \"version\": \"4.0.0\",\n              \"resolved\": \"https://registry.npmjs.org/@sindresorhus/merge-streams/-/merge-streams-4.0.0.tgz\",\n              \"overridden\": false\n            },\n            \"fast-glob\": {\n              \"version\": \"3.3.3\",\n              \"resolved\": \"https://registry.npmjs.org/fast-glob/-/fast-glob-3.3.3.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"@nodelib/fs.stat\": {\n                  \"version\": \"2.0.5\",\n                  \"resolved\": \"https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz\",\n                  \"overridden\": false\n                },\n                \"@nodelib/fs.walk\": {\n                  \"version\": \"1.2.8\",\n                  \"resolved\": \"https://registry.npmjs.org/@nodelib/fs.walk/-/fs.walk-1.2.8.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"@nodelib/fs.scandir\": {\n                      \"version\": \"2.1.5\",\n                      \"resolved\": \"https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"@nodelib/fs.stat\": {\n                          \"version\": \"2.0.5\"\n                        },\n                        \"run-parallel\": {\n                          \"version\": \"1.2.0\",\n                          \"resolved\": \"https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz\",\n                          \"overridden\": false,\n                          \"dependencies\": {\n                            \"queue-microtask\": {\n                              \"version\": \"1.2.3\",\n                              \"resolved\": \"https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz\",\n                              \"overridden\": false\n                            }\n                          }\n                        }\n                      }\n                    },\n                    \"fastq\": {\n                      \"version\": \"1.20.3\",\n                      \"resolved\": \"https://registry.npmjs.org/fastq/-/fastq-1.20.3.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"reusify\": {\n                          \"version\": \"1.1.0\",\n                          \"resolved\": \"https://registry.npmjs.org/reusify/-/reusify-1.1.0.tgz\",\n                          \"overridden\": false\n                        }\n                      }\n                    }\n                  }\n                },\n                \"glob-parent\": {\n                  \"version\": \"5.1.2\",\n                  \"resolved\": \"https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"is-glob\": {\n                      \"version\": \"4.0.3\",\n                      \"resolved\": \"https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"is-extglob\": {\n                          \"version\": \"2.1.1\",\n                          \"resolved\": \"https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz\",\n                          \"overridden\": false\n                        }\n                      }\n                    }\n                  }\n                },\n                \"merge2\": {\n                  \"version\": \"1.4.1\",\n                  \"resolved\": \"https://registry.npmjs.org/merge2/-/merge2-1.4.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromatch\": {\n                  \"version\": \"4.0.8\"\n                }\n              }\n            },\n            \"ignore\": {\n              \"version\": \"7.0.14\",\n              \"resolved\": \"https://registry.npmjs.org/ignore/-/ignore-7.0.14.tgz\",\n              \"overridden\": false\n            },\n            \"is-path-inside\": {\n              \"version\": \"4.0.0\",\n              \"resolved\": \"https://registry.npmjs.org/is-path-inside/-/is-path-inside-4.0.0.tgz\",\n              \"overridden\": false\n            },\n            \"slash\": {\n              \"version\": \"5.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/slash/-/slash-5.1.0.tgz\",\n              \"overridden\": false\n            },\n            \"unicorn-magic\": {\n              \"version\": \"0.4.1\",\n              \"resolved\": \"https://registry.npmjs.org/unicorn-magic/-/unicorn-magic-0.4.1.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"js-yaml\": {\n          \"version\": \"5.2.1\",\n          \"resolved\": \"https://registry.npmjs.org/js-yaml/-/js-yaml-5.2.1.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"argparse\": {\n              \"version\": \"2.0.1\",\n              \"resolved\": \"https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"jsonc-parser\": {\n          \"version\": \"3.3.1\",\n          \"resolved\": \"https://registry.npmjs.org/jsonc-parser/-/jsonc-parser-3.3.1.tgz\",\n          \"overridden\": false\n        },\n        \"jsonpointer\": {\n          \"version\": \"5.0.1\",\n          \"resolved\": \"https://registry.npmjs.org/jsonpointer/-/jsonpointer-5.0.1.tgz\",\n          \"overridden\": false\n        },\n        \"markdown-it\": {\n          \"version\": \"14.3.0\",\n          \"resolved\": \"https://registry.npmjs.org/markdown-it/-/markdown-it-14.3.0.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"argparse\": {\n              \"version\": \"2.0.1\"\n            },\n            \"entities\": {\n              \"version\": \"4.5.0\",\n              \"resolved\": \"https://registry.npmjs.org/entities/-/entities-4.5.0.tgz\",\n              \"overridden\": false\n            },\n            \"linkify-it\": {\n              \"version\": \"5.0.2\",\n              \"resolved\": \"https://registry.npmjs.org/linkify-it/-/linkify-it-5.0.2.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"uc.micro\": {\n                  \"version\": \"2.1.0\"\n                }\n              }\n            },\n            \"mdurl\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/mdurl/-/mdurl-2.1.0.tgz\",\n              \"overridden\": false\n            },\n            \"punycode.js\": {\n              \"version\": \"2.3.1\",\n              \"resolved\": \"https://registry.npmjs.org/punycode.js/-/punycode.js-2.3.1.tgz\",\n              \"overridden\": false\n            },\n            \"uc.micro\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/uc.micro/-/uc.micro-2.1.0.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"markdownlint-cli2-formatter-default\": {\n          \"version\": \"0.0.6\",\n          \"resolved\": \"https://registry.npmjs.org/markdownlint-cli2-formatter-default/-/markdownlint-cli2-formatter-default-0.0.6.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"markdownlint-cli2\": {\n              \"version\": \"0.23.1\"\n            }\n          }\n        },\n        \"markdownlint\": {\n          \"version\": \"0.41.1\",\n          \"resolved\": \"https://registry.npmjs.org/markdownlint/-/markdownlint-0.41.1.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"micromark-core-commonmark\": {\n              \"version\": \"2.0.3\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-core-commonmark/-/micromark-core-commonmark-2.0.3.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"decode-named-character-reference\": {\n                  \"version\": \"1.3.0\",\n                  \"resolved\": \"https://registry.npmjs.org/decode-named-character-reference/-/decode-named-character-reference-1.3.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"character-entities\": {\n                      \"version\": \"2.0.2\",\n                      \"resolved\": \"https://registry.npmjs.org/character-entities/-/character-entities-2.0.2.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"devlop\": {\n                  \"version\": \"1.1.0\",\n                  \"resolved\": \"https://registry.npmjs.org/devlop/-/devlop-1.1.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"dequal\": {\n                      \"version\": \"2.0.3\",\n                      \"resolved\": \"https://registry.npmjs.org/dequal/-/dequal-2.0.3.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"micromark-factory-destination\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-destination/-/micromark-factory-destination-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-label\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-label/-/micromark-factory-label-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"devlop\": {\n                      \"version\": \"1.1.0\"\n                    },\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-space/-/micromark-factory-space-2.1.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-title\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-title/-/micromark-factory-title-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-factory-space\": {\n                      \"version\": \"2.1.0\"\n                    },\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-factory-whitespace\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-factory-whitespace/-/micromark-factory-whitespace-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-factory-space\": {\n                      \"version\": \"2.1.0\"\n                    },\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-character/-/micromark-util-character-2.1.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-chunked\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-chunked/-/micromark-util-chunked-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-classify-character\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-classify-character/-/micromark-util-classify-character-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-html-tag-name\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-html-tag-name/-/micromark-util-html-tag-name-2.0.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromark-util-normalize-identifier\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-normalize-identifier/-/micromark-util-normalize-identifier-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-resolve-all\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-resolve-all/-/micromark-util-resolve-all-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-subtokenize\": {\n                  \"version\": \"2.1.0\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-subtokenize/-/micromark-util-subtokenize-2.1.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"devlop\": {\n                      \"version\": \"1.1.0\"\n                    },\n                    \"micromark-util-chunked\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-symbol/-/micromark-util-symbol-2.0.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-directive\": {\n              \"version\": \"4.0.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-directive/-/micromark-extension-directive-4.0.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-factory-whitespace\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                },\n                \"parse-entities\": {\n                  \"version\": \"4.0.2\",\n                  \"resolved\": \"https://registry.npmjs.org/parse-entities/-/parse-entities-4.0.2.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"@types/unist\": {\n                      \"version\": \"2.0.11\",\n                      \"resolved\": \"https://registry.npmjs.org/@types/unist/-/unist-2.0.11.tgz\",\n                      \"overridden\": false\n                    },\n                    \"character-entities-legacy\": {\n                      \"version\": \"3.0.0\",\n                      \"resolved\": \"https://registry.npmjs.org/character-entities-legacy/-/character-entities-legacy-3.0.0.tgz\",\n                      \"overridden\": false\n                    },\n                    \"character-reference-invalid\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/character-reference-invalid/-/character-reference-invalid-2.0.1.tgz\",\n                      \"overridden\": false\n                    },\n                    \"decode-named-character-reference\": {\n                      \"version\": \"1.3.0\"\n                    },\n                    \"is-alphanumerical\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/is-alphanumerical/-/is-alphanumerical-2.0.1.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"is-alphabetical\": {\n                          \"version\": \"2.0.1\",\n                          \"resolved\": \"https://registry.npmjs.org/is-alphabetical/-/is-alphabetical-2.0.1.tgz\",\n                          \"overridden\": false\n                        },\n                        \"is-decimal\": {\n                          \"version\": \"2.0.1\"\n                        }\n                      }\n                    },\n                    \"is-decimal\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/is-decimal/-/is-decimal-2.0.1.tgz\",\n                      \"overridden\": false\n                    },\n                    \"is-hexadecimal\": {\n                      \"version\": \"2.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/is-hexadecimal/-/is-hexadecimal-2.0.1.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                }\n              }\n            },\n            \"micromark-extension-gfm-autolink-literal\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-gfm-autolink-literal/-/micromark-extension-gfm-autolink-literal-2.1.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-sanitize-uri\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-sanitize-uri/-/micromark-util-sanitize-uri-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-character\": {\n                      \"version\": \"2.1.1\"\n                    },\n                    \"micromark-util-encode\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-gfm-footnote\": {\n              \"version\": \"2.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-gfm-footnote/-/micromark-extension-gfm-footnote-2.1.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-core-commonmark\": {\n                  \"version\": \"2.0.3\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-normalize-identifier\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-sanitize-uri\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-gfm-table\": {\n              \"version\": \"2.1.1\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-gfm-table/-/micromark-extension-gfm-table-2.1.1.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-extension-math\": {\n              \"version\": \"3.1.0\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-extension-math/-/micromark-extension-math-3.1.0.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"@types/katex\": {\n                  \"version\": \"0.16.8\",\n                  \"resolved\": \"https://registry.npmjs.org/@types/katex/-/katex-0.16.8.tgz\",\n                  \"overridden\": false\n                },\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"katex\": {\n                  \"version\": \"0.16.47\",\n                  \"resolved\": \"https://registry.npmjs.org/katex/-/katex-0.16.47.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"commander\": {\n                      \"version\": \"8.3.0\",\n                      \"resolved\": \"https://registry.npmjs.org/commander/-/commander-8.3.0.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"micromark-util-types\": {\n              \"version\": \"2.0.2\",\n              \"resolved\": \"https://registry.npmjs.org/micromark-util-types/-/micromark-util-types-2.0.2.tgz\",\n              \"overridden\": false\n            },\n            \"micromark\": {\n              \"version\": \"4.0.2\",\n              \"resolved\": \"https://registry.npmjs.org/micromark/-/micromark-4.0.2.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"@types/debug\": {\n                  \"version\": \"4.1.13\",\n                  \"resolved\": \"https://registry.npmjs.org/@types/debug/-/debug-4.1.13.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"@types/ms\": {\n                      \"version\": \"2.1.0\",\n                      \"resolved\": \"https://registry.npmjs.org/@types/ms/-/ms-2.1.0.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"debug\": {\n                  \"version\": \"4.4.3\",\n                  \"resolved\": \"https://registry.npmjs.org/debug/-/debug-4.4.3.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"ms\": {\n                      \"version\": \"2.1.3\",\n                      \"resolved\": \"https://registry.npmjs.org/ms/-/ms-2.1.3.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                },\n                \"decode-named-character-reference\": {\n                  \"version\": \"1.3.0\"\n                },\n                \"devlop\": {\n                  \"version\": \"1.1.0\"\n                },\n                \"micromark-core-commonmark\": {\n                  \"version\": \"2.0.3\"\n                },\n                \"micromark-factory-space\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-character\": {\n                  \"version\": \"2.1.1\"\n                },\n                \"micromark-util-chunked\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-combine-extensions\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-combine-extensions/-/micromark-util-combine-extensions-2.0.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-chunked\": {\n                      \"version\": \"2.0.1\"\n                    },\n                    \"micromark-util-types\": {\n                      \"version\": \"2.0.2\"\n                    }\n                  }\n                },\n                \"micromark-util-decode-numeric-character-reference\": {\n                  \"version\": \"2.0.2\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-decode-numeric-character-reference/-/micromark-util-decode-numeric-character-reference-2.0.2.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"micromark-util-symbol\": {\n                      \"version\": \"2.0.1\"\n                    }\n                  }\n                },\n                \"micromark-util-encode\": {\n                  \"version\": \"2.0.1\",\n                  \"resolved\": \"https://registry.npmjs.org/micromark-util-encode/-/micromark-util-encode-2.0.1.tgz\",\n                  \"overridden\": false\n                },\n                \"micromark-util-normalize-identifier\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-resolve-all\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-sanitize-uri\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-subtokenize\": {\n                  \"version\": \"2.1.0\"\n                },\n                \"micromark-util-symbol\": {\n                  \"version\": \"2.0.1\"\n                },\n                \"micromark-util-types\": {\n                  \"version\": \"2.0.2\"\n                }\n              }\n            },\n            \"string-width\": {\n              \"version\": \"8.2.1\",\n              \"resolved\": \"https://registry.npmjs.org/string-width/-/string-width-8.2.1.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"get-east-asian-width\": {\n                  \"version\": \"1.7.0\",\n                  \"resolved\": \"https://registry.npmjs.org/get-east-asian-width/-/get-east-asian-width-1.7.0.tgz\",\n                  \"overridden\": false\n                },\n                \"strip-ansi\": {\n                  \"version\": \"7.2.0\",\n                  \"resolved\": \"https://registry.npmjs.org/strip-ansi/-/strip-ansi-7.2.0.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"ansi-regex\": {\n                      \"version\": \"6.5.0\",\n                      \"resolved\": \"https://registry.npmjs.org/ansi-regex/-/ansi-regex-6.5.0.tgz\",\n                      \"overridden\": false\n                    }\n                  }\n                }\n              }\n            }\n          }\n        },\n        \"micromatch\": {\n          \"version\": \"4.0.8\",\n          \"resolved\": \"https://registry.npmjs.org/micromatch/-/micromatch-4.0.8.tgz\",\n          \"overridden\": false,\n          \"dependencies\": {\n            \"braces\": {\n              \"version\": \"3.0.3\",\n              \"resolved\": \"https://registry.npmjs.org/braces/-/braces-3.0.3.tgz\",\n              \"overridden\": false,\n              \"dependencies\": {\n                \"fill-range\": {\n                  \"version\": \"7.1.1\",\n                  \"resolved\": \"https://registry.npmjs.org/fill-range/-/fill-range-7.1.1.tgz\",\n                  \"overridden\": false,\n                  \"dependencies\": {\n                    \"to-regex-range\": {\n                      \"version\": \"5.0.1\",\n                      \"resolved\": \"https://registry.npmjs.org/to-regex-range/-/to-regex-range-5.0.1.tgz\",\n                      \"overridden\": false,\n                      \"dependencies\": {\n                        \"is-number\": {\n                          \"version\": \"7.0.0\",\n                          \"resolved\": \"https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz\",\n                          \"overridden\": false\n                        }\n                      }\n                    }\n                  }\n                }\n              }\n            },\n            \"picomatch\": {\n              \"version\": \"2.3.2\",\n              \"resolved\": \"https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz\",\n              \"overridden\": false\n            }\n          }\n        },\n        \"smol-toml\": {\n          \"version\": \"1.7.0\",\n          \"resolved\": \"https://registry.npmjs.org/smol-toml/-/smol-toml-1.7.0.tgz\",\n          \"overridden\": false\n        }\n      }\n    },\n    \"pyright\": {\n      \"version\": \"1.1.414\",\n      \"resolved\": \"https://registry.npmjs.org/pyright/-/pyright-1.1.414.tgz\",\n      \"overridden\": false,\n      \"dependencies\": {\n        \"fsevents\": {}\n      }\n    }\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "runtime tests",
+      "command": [
+        "C:\\github\\4GINE\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ".....................................................................................................................\n----------------------------------------------------------------------\nRan 117 tests in 0.166s\n\nOK\n"
+    },
+    {
+      "name": "tooling tests",
+      "command": [
+        "C:\\github\\4GINE\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts/tests"
+      ],
+      "exit_code": 0,
+      "stdout": "Checking fixture...\nChecking fixture...\n",
+      "stderr": "...............................\n----------------------------------------------------------------------\nRan 31 tests in 0.441s\n\nOK\n"
+    },
+    {
+      "name": "demo",
+      "command": [
+        "C:\\github\\4GINE\\.venv\\Scripts\\python.exe",
+        "-m",
+        "spinaltap",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"frames\": [\n    {\n      \"index\": 0,\n      \"elapsed_time\": 0.01,\n      \"fixed_steps\": 0,\n      \"accepted_steps\": 0,\n      \"refused_steps\": 0,\n      \"remainder\": 0.01,\n      \"overflow\": false\n    },\n    {\n      \"index\": 1,\n      \"elapsed_time\": 0.022,\n      \"fixed_steps\": 2,\n      \"accepted_steps\": 2,\n      \"refused_steps\": 0,\n      \"remainder\": 0.0,\n      \"overflow\": false\n    },\n    {\n      \"index\": 2,\n      \"elapsed_time\": 0.2,\n      \"fixed_steps\": 4,\n      \"accepted_steps\": 4,\n      \"refused_steps\": 0,\n      \"remainder\": 0.136,\n      \"overflow\": true\n    },\n    {\n      \"index\": 3,\n      \"elapsed_time\": 0.0,\n      \"fixed_steps\": 4,\n      \"accepted_steps\": 4,\n      \"refused_steps\": 0,\n      \"remainder\": 0.07200000000000001,\n      \"overflow\": true\n    },\n    {\n      \"index\": 4,\n      \"elapsed_time\": 0.0,\n      \"fixed_steps\": 4,\n      \"accepted_steps\": 4,\n      \"refused_steps\": 0,\n      \"remainder\": 0.008000000000000007,\n      \"overflow\": false\n    },\n    {\n      \"index\": 5,\n      \"elapsed_time\": 0.0,\n      \"fixed_steps\": 0,\n      \"accepted_steps\": 0,\n      \"refused_steps\": 0,\n      \"remainder\": 0.008000000000000007,\n      \"overflow\": false\n    }\n  ],\n  \"final_position\": 0.672,\n  \"final_state\": {\n    \"x\": 0.672,\n    \"y\": -0.336\n  },\n  \"worker_order\": [\n    \"vertebra:demo-lateral\",\n    \"vertebra:demo-motion\"\n  ],\n  \"oversized_delta_refused\": true,\n  \"guard_refusal_code\": \"constraint_violation\",\n  \"conflicting_writes_refused\": true,\n  \"conflict_refusal_code\": \"write_conflict\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "Pyright",
+      "command": [
+        "C:\\github\\4GINE\\.tools\\node-v24.22.2-win-x64\\node.exe",
+        "node_modules/pyright/index.js",
+        "--warnings"
+      ],
+      "exit_code": 0,
+      "stdout": "0 errors, 0 warnings, 0 informations\n",
+      "stderr": ""
+    },
+    {
+      "name": "planning",
+      "command": [
+        "C:\\github\\4GINE\\.venv\\Scripts\\python.exe",
+        "scripts/check_planning.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: 34 Markdown files, 34 task cards, 5 phases, 15 requirements; 0 issues.\nExcluded: .agents, .user_notes; CHANGELOG pseudo-citations. External URLs not fetched.\nChecks establish planning integrity only; run markdownlint and runtime/evidence checks separately.\n",
+      "stderr": ""
+    },
+    {
+      "name": "Markdown",
+      "command": [
+        "C:\\github\\4GINE\\.tools\\node-v24.22.2-win-x64\\node.exe",
+        "node_modules/markdownlint-cli2/markdownlint-cli2-bin.mjs",
+        "README.md",
+        "TODO.md",
+        "docs/**/*.md",
+        "reports/**/*.md",
+        "research_notes/**/*.md"
+      ],
+      "exit_code": 0,
+      "stdout": "markdownlint-cli2 v0.23.1 (markdownlint v0.41.1)\nFinding: README.md TODO.md docs/**/*.md reports/**/*.md research_notes/**/*.md\nLinting: 34 files\nSummary: 0 issues in 0 files\n",
+      "stderr": ""
+    },
+    {
+      "name": "whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'TODO.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/README.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/design.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/global_plan.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/logs/CHANGELOG.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/requirements.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/contracts.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/proof.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/todos/tooling.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'spinaltap/contract_validation.py', LF will be replaced by CRLF the next time Git touches it\n"
+    }
+  ],
+  "demo": {
+    "frames": [
+      {
+        "index": 0,
+        "elapsed_time": 0.01,
+        "fixed_steps": 0,
+        "accepted_steps": 0,
+        "refused_steps": 0,
+        "remainder": 0.01,
+        "overflow": false
+      },
+      {
+        "index": 1,
+        "elapsed_time": 0.022,
+        "fixed_steps": 2,
+        "accepted_steps": 2,
+        "refused_steps": 0,
+        "remainder": 0.0,
+        "overflow": false
+      },
+      {
+        "index": 2,
+        "elapsed_time": 0.2,
+        "fixed_steps": 4,
+        "accepted_steps": 4,
+        "refused_steps": 0,
+        "remainder": 0.136,
+        "overflow": true
+      },
+      {
+        "index": 3,
+        "elapsed_time": 0.0,
+        "fixed_steps": 4,
+        "accepted_steps": 4,
+        "refused_steps": 0,
+        "remainder": 0.07200000000000001,
+        "overflow": true
+      },
+      {
+        "index": 4,
+        "elapsed_time": 0.0,
+        "fixed_steps": 4,
+        "accepted_steps": 4,
+        "refused_steps": 0,
+        "remainder": 0.008000000000000007,
+        "overflow": false
+      },
+      {
+        "index": 5,
+        "elapsed_time": 0.0,
+        "fixed_steps": 0,
+        "accepted_steps": 0,
+        "refused_steps": 0,
+        "remainder": 0.008000000000000007,
+        "overflow": false
+      }
+    ],
+    "final_position": 0.672,
+    "final_state": {
+      "x": 0.672,
+      "y": -0.336
+    },
+    "worker_order": [
+      "vertebra:demo-lateral",
+      "vertebra:demo-motion"
+    ],
+    "oversized_delta_refused": true,
+    "guard_refusal_code": "constraint_violation",
+    "conflicting_writes_refused": true,
+    "conflict_refusal_code": "write_conflict"
+  }
+}

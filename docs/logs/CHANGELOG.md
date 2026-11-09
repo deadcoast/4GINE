@@ -222,3 +222,60 @@ tag/reference model and bottom `(Z) Context-Citations` registry pattern.
   [hosted report](../../reports/ST-003%20automated%20checks.md) and durable evidence.
 * Closed ST-003, reviewed P1 exit and selected ST-005 contract identity policy.
   The qualification branch is unmerged; runtime behavior remains unchanged.
+
+---
+
+09: 2026-11-09 CI branch merge and contract identity specification
+
+* Fast-forward merged codex/st-003-accepted-checks into main at d7c789b and
+  verified its successful main-branch workflow. Aligned the matching local
+  checkout without rewriting working files; retained the source branch.
+* Added the [identity decision](../decisions/contract_identity.md): exact
+  per-contract revisions, nested pins, complete required-field inventory,
+  explicit legacy migration, evidence identity and deferred schema export.
+* Added six versioned envelope examples and 18 specified refusal cases, with
+  current-runtime observations clearly separated from future parser behavior.
+* Aligned requirements, design, catalogue and contract/proof handoffs. Versioned
+  ingress remains ST-006 work; runtime source and existing tests are unchanged.
+* The [review record](../../reports/ST-005%20contract%20identity%20review.md)
+  preserves merge identity, source hashes, evidence limits and verification.
+* Closed ST-005 and selected ST-006 after 87 runtime tests, 31 tooling tests
+  and all required gates passed, including 33 scoped Markdown documents.
+
+---
+
+10: 2026-11-09 versioned ingress and explicit legacy migration
+
+* Implemented the strict envelope API for DC01-DC06 revision 1, exact immutable
+  registry descriptors, nested revision pins and complete wire-path refusals.
+* Preserved the unversioned internal API and domain gates. Added an explicit
+  adapter for the registered d7c789b baseline, immutable attribution receipts
+  and shallow value preservation without automatic migration or proof promotion.
+* Executed the six accepted and 18 refused ST-005 examples. Added eight
+  migration fixtures and 30 versioning methods alongside the 87 legacy tests.
+* Updated API examples, requirements/design, README and catalogue. The
+  [implementation report](../../reports/ST-006%20versioned%20ingress.md) records
+  source hashes, compatibility limits and local verification evidence.
+* Closed ST-006 after 117 runtime tests, 31 tooling tests, demo, Pyright and
+  all accepted checks passed across 34 scoped Markdown documents. Selected
+  ST-007 governor policy; P2 remains open and runtime dependencies stay empty.
+
+---
+
+11: 2026-11-09 governor aggregation and outcome policy
+
+* Selected the [governor policy](../decisions/governor_policy.md): minimum of
+  four validated rubric scores, retained attribution/originality blocks,
+  zero-support block, positive partial-support down-weight and full-support
+  allow. Defined exact equality, precedence and risk strings for ST-008.
+* Specified complete revalidation and idempotent rescoring after observing
+  malformed trusted dataclasses bypass the current governor's ingress checks.
+* Added 20 target outcomes and 32 invalid-score cases, plus an observer and
+  [dated source review](../../reports/ST-007%20governor%20policy%20review.md).
+  Current mean-based runtime observations remain separate from selected rules.
+* Aligned requirements/design, README, catalogue and the global plan. Added
+  historical supersession without replacing FR05 or earlier evidence. Kept
+  policy identity separate from DC01 structural decoding and migration.
+* Closed ST-007 after 117 runtime tests, 31 tooling tests and all accepted
+  checks across 36 documents. Runtime/test/tool sources remain unchanged;
+  ST-008 is the next implementation task and P2 remains open.

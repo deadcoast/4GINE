@@ -89,7 +89,11 @@ context markers are local to this document.
   diff whitespace. Invalid planning/Markdown fixtures exited 1 as expected.
   Run 42481417652 proves a real check failure fails the job and retains logs.
   Source/tool identities and both artifacts are preserved; PR/manual triggers
-  are configured but not separately exercised. Branch remains unmerged.
+  are configured but not separately exercised. The qualification branch was
+  unmerged at that review. On 2026-11-09 it was fast-forwarded into main at
+  d7c789b and main run 42592497332 passed; the
+  [merge record](../../reports/ST-005%20contract%20identity%20review.md) preserves
+  the adoption and local checkout alignment evidence.
 
 ### ST-004: Refresh or retire the historical IDE diagnostic intake
 

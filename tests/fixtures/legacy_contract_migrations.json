@@ -1,0 +1,493 @@
+{
+  "scope": "ST-006 explicit migration input and expected wire shape; no provenance or execution evidence is implied",
+  "source_revision": "d7c789bc8090f4290163534317939a752aafaeab",
+  "adapter_id": "legacy-d7c789b-to-r1",
+  "cases": [
+    {
+      "id": "DC01",
+      "contract": "DC01",
+      "source_ref": "fixture:legacy/DC01",
+      "source_identity": {
+        "contract": "DC01",
+        "schema_revision": "legacy-0"
+      },
+      "target_identity": {
+        "contract": "DC01",
+        "schema_revision": 1
+      },
+      "legacy_payload": {
+        "source_ref": "source:engine-pattern",
+        "claim_text": "bounded source influence",
+        "source_authority": 0.9,
+        "claim_fit": 0.8,
+        "originality_distance": 0.7,
+        "validation_reach": 0.6,
+        "influence_weight": null,
+        "risk_flag": null,
+        "governor_decision": null
+      },
+      "expected_envelope": {
+        "contract": "DC01",
+        "schema_revision": 1,
+        "payload": {
+          "source_ref": "source:engine-pattern",
+          "claim_text": "bounded source influence",
+          "source_authority": 0.9,
+          "claim_fit": 0.8,
+          "originality_distance": 0.7,
+          "validation_reach": 0.6,
+          "influence_weight": null,
+          "risk_flag": null,
+          "governor_decision": null
+        }
+      }
+    },
+    {
+      "id": "DC02",
+      "contract": "DC02",
+      "source_ref": "fixture:legacy/DC02",
+      "source_identity": {
+        "contract": "DC02",
+        "schema_revision": "legacy-0"
+      },
+      "target_identity": {
+        "contract": "DC02",
+        "schema_revision": 1
+      },
+      "legacy_payload": {
+        "elapsed_time": 0.04,
+        "fixed_packet_size": 0.016,
+        "packet_count": 2,
+        "accumulator_remainder": 0.008,
+        "interpolation_state": 0.5,
+        "overflow_risk": null
+      },
+      "expected_envelope": {
+        "contract": "DC02",
+        "schema_revision": 1,
+        "payload": {
+          "elapsed_time": 0.04,
+          "fixed_packet_size": 0.016,
+          "packet_count": 2,
+          "accumulator_remainder": 0.008,
+          "interpolation_state": 0.5,
+          "overflow_risk": null
+        }
+      }
+    },
+    {
+      "id": "DC03",
+      "contract": "DC03",
+      "source_ref": "fixture:legacy/DC03",
+      "source_identity": {
+        "contract": "DC03",
+        "schema_revision": "legacy-0"
+      },
+      "target_identity": {
+        "contract": "DC03",
+        "schema_revision": 1
+      },
+      "legacy_payload": {
+        "owner": "vertebra:motion",
+        "channel": "motion.delta",
+        "ordered_signal_bundle": [
+          {
+            "local_state_slice": {
+              "x": 4
+            },
+            "constraint_set": {
+              "max_delta": 2
+            },
+            "time_packet": {
+              "elapsed_time": 0.04,
+              "fixed_packet_size": 0.016,
+              "packet_count": 2,
+              "accumulator_remainder": 0.008,
+              "interpolation_state": 0.5,
+              "overflow_risk": null
+            },
+            "bounded_delta": {
+              "x": 1
+            },
+            "residual_risk": null
+          }
+        ],
+        "constraint_envelope": {
+          "max_delta": 2
+        },
+        "validation_hook": "VG03",
+        "residual_risk": null
+      },
+      "expected_envelope": {
+        "contract": "DC03",
+        "schema_revision": 1,
+        "payload": {
+          "owner": "vertebra:motion",
+          "channel": "motion.delta",
+          "ordered_signal_bundle": [
+            {
+              "contract": "DC04",
+              "schema_revision": 1,
+              "payload": {
+                "local_state_slice": {
+                  "x": 4
+                },
+                "constraint_set": {
+                  "max_delta": 2
+                },
+                "time_packet": {
+                  "contract": "DC02",
+                  "schema_revision": 1,
+                  "payload": {
+                    "elapsed_time": 0.04,
+                    "fixed_packet_size": 0.016,
+                    "packet_count": 2,
+                    "accumulator_remainder": 0.008,
+                    "interpolation_state": 0.5,
+                    "overflow_risk": null
+                  }
+                },
+                "bounded_delta": {
+                  "x": 1
+                },
+                "residual_risk": null
+              }
+            }
+          ],
+          "constraint_envelope": {
+            "max_delta": 2
+          },
+          "validation_hook": "VG03",
+          "residual_risk": null
+        }
+      }
+    },
+    {
+      "id": "DC04",
+      "contract": "DC04",
+      "source_ref": "fixture:legacy/DC04",
+      "source_identity": {
+        "contract": "DC04",
+        "schema_revision": "legacy-0"
+      },
+      "target_identity": {
+        "contract": "DC04",
+        "schema_revision": 1
+      },
+      "legacy_payload": {
+        "local_state_slice": {
+          "x": 4
+        },
+        "constraint_set": {
+          "max_delta": 2
+        },
+        "time_packet": {
+          "elapsed_time": 0.04,
+          "fixed_packet_size": 0.016,
+          "packet_count": 2,
+          "accumulator_remainder": 0.008,
+          "interpolation_state": 0.5,
+          "overflow_risk": null
+        },
+        "bounded_delta": {
+          "x": 1
+        },
+        "residual_risk": null
+      },
+      "expected_envelope": {
+        "contract": "DC04",
+        "schema_revision": 1,
+        "payload": {
+          "local_state_slice": {
+            "x": 4
+          },
+          "constraint_set": {
+            "max_delta": 2
+          },
+          "time_packet": {
+            "contract": "DC02",
+            "schema_revision": 1,
+            "payload": {
+              "elapsed_time": 0.04,
+              "fixed_packet_size": 0.016,
+              "packet_count": 2,
+              "accumulator_remainder": 0.008,
+              "interpolation_state": 0.5,
+              "overflow_risk": null
+            }
+          },
+          "bounded_delta": {
+            "x": 1
+          },
+          "residual_risk": null
+        }
+      }
+    },
+    {
+      "id": "DC05",
+      "contract": "DC05",
+      "source_ref": "fixture:legacy/DC05",
+      "source_identity": {
+        "contract": "DC05",
+        "schema_revision": "legacy-0"
+      },
+      "target_identity": {
+        "contract": "DC05",
+        "schema_revision": 1
+      },
+      "legacy_payload": {
+        "geometry_limit": "specified_limit",
+        "lighting_limit": "specified_limit",
+        "texture_limit": "specified_limit",
+        "color_limit": "specified_limit",
+        "fog_limit": "specified_limit",
+        "alpha_limit": "specified_limit",
+        "depth_limit": "specified_limit",
+        "camera_limit": "specified_limit",
+        "animation_cadence": "specified_limit",
+        "artifact_limits": "specified_limit"
+      },
+      "expected_envelope": {
+        "contract": "DC05",
+        "schema_revision": 1,
+        "payload": {
+          "geometry_limit": "specified_limit",
+          "lighting_limit": "specified_limit",
+          "texture_limit": "specified_limit",
+          "color_limit": "specified_limit",
+          "fog_limit": "specified_limit",
+          "alpha_limit": "specified_limit",
+          "depth_limit": "specified_limit",
+          "camera_limit": "specified_limit",
+          "animation_cadence": "specified_limit",
+          "artifact_limits": "specified_limit"
+        }
+      }
+    },
+    {
+      "id": "DC06",
+      "contract": "DC06",
+      "source_ref": "fixture:legacy/DC06",
+      "source_identity": {
+        "contract": "DC06",
+        "schema_revision": "legacy-0"
+      },
+      "target_identity": {
+        "contract": "DC06",
+        "schema_revision": 1
+      },
+      "legacy_payload": {
+        "claim_ref": "claim:signal-spine-orders-deltas",
+        "contract_ref": "DC03",
+        "specimen_plan": "run signal spine ordering specimen",
+        "failure_path": "fails if direct global mutation is accepted",
+        "promotion_state": "candidate",
+        "evidence_tier": "unit-specimen"
+      },
+      "expected_envelope": {
+        "contract": "DC06",
+        "schema_revision": 1,
+        "payload": {
+          "claim_ref": "claim:signal-spine-orders-deltas",
+          "contract_ref": "DC03",
+          "specimen_plan": "run signal spine ordering specimen",
+          "failure_path": "fails if direct global mutation is accepted",
+          "promotion_state": "candidate",
+          "evidence_tier": "unit-specimen"
+        }
+      }
+    },
+    {
+      "id": "ordered_refusal_bundle",
+      "contract": "DC03",
+      "source_ref": "fixture:legacy/ordered_refusal_bundle",
+      "source_identity": {
+        "contract": "DC03",
+        "schema_revision": "legacy-0"
+      },
+      "target_identity": {
+        "contract": "DC03",
+        "schema_revision": 1
+      },
+      "legacy_payload": {
+        "owner": "",
+        "channel": "motion.delta",
+        "ordered_signal_bundle": [
+          {
+            "local_state_slice": {
+              "x": 4
+            },
+            "constraint_set": {
+              "max_delta": 2
+            },
+            "time_packet": {
+              "elapsed_time": 0.04,
+              "fixed_packet_size": 0.016,
+              "packet_count": 2,
+              "accumulator_remainder": 0.008,
+              "interpolation_state": 0.5,
+              "overflow_risk": null
+            },
+            "bounded_delta": {
+              "x": 1
+            },
+            "residual_risk": null
+          },
+          {
+            "local_state_slice": {
+              "x": 4
+            },
+            "constraint_set": {
+              "max_delta": 2
+            },
+            "time_packet": {
+              "elapsed_time": 0.04,
+              "fixed_packet_size": 0.016,
+              "packet_count": 2,
+              "accumulator_remainder": 0.008,
+              "interpolation_state": 0.5,
+              "overflow_risk": null
+            },
+            "bounded_delta": {
+              "z": 2
+            },
+            "residual_risk": {
+              "contract": "DC04",
+              "gate": "VG04",
+              "code": "outside_local_slice",
+              "reason": "z outside local slice",
+              "promotion_state": "blocked"
+            }
+          }
+        ],
+        "constraint_envelope": {
+          "max_delta": 2
+        },
+        "validation_hook": "VG03",
+        "residual_risk": {
+          "contract": "DC04",
+          "gate": "VG04",
+          "code": "outside_local_slice",
+          "reason": "z outside local slice",
+          "promotion_state": "blocked"
+        }
+      },
+      "expected_envelope": {
+        "contract": "DC03",
+        "schema_revision": 1,
+        "payload": {
+          "owner": "",
+          "channel": "motion.delta",
+          "ordered_signal_bundle": [
+            {
+              "contract": "DC04",
+              "schema_revision": 1,
+              "payload": {
+                "local_state_slice": {
+                  "x": 4
+                },
+                "constraint_set": {
+                  "max_delta": 2
+                },
+                "time_packet": {
+                  "contract": "DC02",
+                  "schema_revision": 1,
+                  "payload": {
+                    "elapsed_time": 0.04,
+                    "fixed_packet_size": 0.016,
+                    "packet_count": 2,
+                    "accumulator_remainder": 0.008,
+                    "interpolation_state": 0.5,
+                    "overflow_risk": null
+                  }
+                },
+                "bounded_delta": {
+                  "x": 1
+                },
+                "residual_risk": null
+              }
+            },
+            {
+              "contract": "DC04",
+              "schema_revision": 1,
+              "payload": {
+                "local_state_slice": {
+                  "x": 4
+                },
+                "constraint_set": {
+                  "max_delta": 2
+                },
+                "time_packet": {
+                  "contract": "DC02",
+                  "schema_revision": 1,
+                  "payload": {
+                    "elapsed_time": 0.04,
+                    "fixed_packet_size": 0.016,
+                    "packet_count": 2,
+                    "accumulator_remainder": 0.008,
+                    "interpolation_state": 0.5,
+                    "overflow_risk": null
+                  }
+                },
+                "bounded_delta": {
+                  "z": 2
+                },
+                "residual_risk": {
+                  "contract": "DC04",
+                  "gate": "VG04",
+                  "code": "outside_local_slice",
+                  "reason": "z outside local slice",
+                  "promotion_state": "blocked"
+                }
+              }
+            }
+          ],
+          "constraint_envelope": {
+            "max_delta": 2
+          },
+          "validation_hook": "VG03",
+          "residual_risk": {
+            "contract": "DC04",
+            "gate": "VG04",
+            "code": "outside_local_slice",
+            "reason": "z outside local slice",
+            "promotion_state": "blocked"
+          }
+        }
+      }
+    },
+    {
+      "id": "proof_promotion_preserved",
+      "contract": "DC06",
+      "source_ref": "fixture:legacy/proof_promotion_preserved",
+      "source_identity": {
+        "contract": "DC06",
+        "schema_revision": "legacy-0"
+      },
+      "target_identity": {
+        "contract": "DC06",
+        "schema_revision": 1
+      },
+      "legacy_payload": {
+        "claim_ref": "claim:signal-spine-orders-deltas",
+        "contract_ref": "DC03",
+        "specimen_plan": "run signal spine ordering specimen",
+        "failure_path": "fails if direct global mutation is accepted",
+        "promotion_state": "implementation_ready",
+        "evidence_tier": "unit-specimen"
+      },
+      "expected_envelope": {
+        "contract": "DC06",
+        "schema_revision": 1,
+        "payload": {
+          "claim_ref": "claim:signal-spine-orders-deltas",
+          "contract_ref": "DC03",
+          "specimen_plan": "run signal spine ordering specimen",
+          "failure_path": "fails if direct global mutation is accepted",
+          "promotion_state": "implementation_ready",
+          "evidence_tier": "unit-specimen"
+        }
+      }
+    }
+  ]
+}

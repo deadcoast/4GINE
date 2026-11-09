@@ -1,7 +1,8 @@
 # Contract kernel and schema evolution [DOC]
 
-The six ingress schemas are implemented. Future changes need explicit version
-and migration policy while preserving structured refusals.
+The six revision 1 ingress schemas and explicit baseline migration are
+implemented. Future changes follow the accepted identity policy and preserve
+structured refusals.
 
 > Goal: [GL01] - DELIVER_BOUNDED_TRACEABLE_SLICES
 > Dependency: [DP01] - GLOBAL_PLAN_AND_TECHNICAL_CONTRACTS
@@ -19,12 +20,15 @@ context markers are local to this document.
 - [Ingress](../../spinaltap/contract_validation.py)
 - [Kernel tests](../../tests/test_contract_kernel.py)
 - [Ingress tests](../../tests/test_contract_validation.py)
+- [Versioning tests](../../tests/test_contract_versioning.py)
+- [Migration fixtures](../../tests/fixtures/legacy_contract_migrations.json)
+- [Identity policy and APIs](../decisions/contract_identity.md)
 
 ## Individual TODOs
 
 ### ST-005: Specify contract identity and schema evolution
 
-- Status: ready
+- Status: done
 - Phase: P2
 - Requirements: REQ03, REQ04, REQ05, REQ06, REQ07, REQ08, REQ09
 - Depends on: ST-001
@@ -37,24 +41,48 @@ context markers are local to this document.
   contract revision. Include old/current/unknown-version examples and a
   decision on schema export; avoid promising deep immutability for
   unconstrained nested values.
-- Evidence: pending
+- Evidence: 2026-11-09 [accepted decision](../decisions/contract_identity.md)
+  and [source/merge review](../../reports/ST-005%20contract%20identity%20review.md).
+  Complete six-contract field inventory, strict envelope/nested revisions,
+  explicit legacy migration, evidence identity and schema-export deferral.
+  Six envelope and 18 refusal specifications are separate from 15 executed
+  current-runtime observations. Verify.cmd passed 87 runtime tests, 31 tooling
+  tests, demo, Pyright and planning/Markdown checks for 33 documents. Runtime
+  and test sources are unchanged; versioned decoding remains ST-006 work.
 
 ### ST-006: Implement version-aware ingress and migration fixtures
 
-- Status: planned
+- Status: done
 - Phase: P2
 - Requirements: REQ03, REQ04, REQ05, REQ06, REQ07, REQ08, REQ09
 - Depends on: ST-002, ST-005
 - Owner: contracts
 - Legacy: Extends TODO.md::TK04
 - Scope: Apply the accepted compatibility policy to the bounded prototype and
-  preserve field-path refusals.
+  preserve field-path refusals. Follow the
+  [identity decision](../decisions/contract_identity.md): a separate strict
+  envelope API, exact nested revision pins, explicit legacy migration/receipt
+  and the preserved legacy/internal path. Runtime dependencies stay empty;
+  schema export remains deferred.
 - Acceptance: Known payloads decode through the declared version path.
   Missing/unknown versions and incompatible fields fail as specified; nullable
   required fields, nonfinite values, booleans-as-numbers and nested errors
   remain covered. Attach migration fixtures and exact test results; document
-  compatibility changes.
-- Evidence: pending
+  compatibility changes. Exercise all six
+  [specified envelope examples](../examples/contract_identity.json), missing
+  and unknown revisions, mixed/unversioned nested records and explicit
+  migration attribution. Keep legacy tests passing and distinguish shallow
+  snapshots and trusted constructors from validation guarantees.
+- Evidence: 2026-11-09 [implementation and verification record](../../reports/ST-006%20versioned%20ingress.md)
+  and [retained outputs/hashes](../../reports/evidence/st-006/verification.json).
+  Exact revision registry, strict envelope API, nested pins and explicit
+  baseline migration/receipt implemented. Thirty new methods exercise six
+  specified envelopes, 18 specified refusals and eight migration fixtures as
+  mappings and dataclasses, plus numeric, nested, shallow-value and domain
+  boundaries. Verify.cmd passed 117 runtime tests, 31 tooling tests, demo,
+  Pyright, planning/Markdown for 34 documents, lock/version and whitespace
+  checks. Legacy runtime tests and dependencies are unchanged. Local evidence
+  does not imply hosted CI, provenance verification or proof promotion.
 
 ### ST-033: Reconcile the full prototype requirement evidence matrix
 

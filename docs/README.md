@@ -27,6 +27,15 @@ the research, prototype and future application horizons [GL01].
 | [Proposal](proposal.md) | Initial bounded prototype scope and module rationale | Original proposal, not the current work queue |
 | [Requirements](requirements.md) | REQ01-REQ15 and prototype acceptance | Technical requirement authority; not a full product spec |
 | [Design](design.md) | MG modules, DC contracts, VG gates and runtime boundaries | Current technical design |
+| [Contract identity](decisions/contract_identity.md) | Revisions, migration and field inventory | Accepted policy and implemented Python API |
+| [Identity examples](examples/contract_identity.json) | Six envelopes and refusal cases | Specification corpus; not executed version-parser evidence |
+| [Identity review](../reports/ST-005%20contract%20identity%20review.md) | Merge, source observations and policy evidence | Runtime implementation remains separate |
+| [Versioned ingress](../reports/ST-006%20versioned%20ingress.md) | Strict decoding, explicit migration and checks | Local runtime evidence; no proof or provenance promotion |
+| [Migration fixtures](../tests/fixtures/legacy_contract_migrations.json) | Eight legacy inputs and expected envelopes | All six contracts, ordering, refusals and proof-state preservation |
+| [Governor policy](decisions/governor_policy.md) | Minimum, thresholds, outcomes and compatibility | Accepted policy implemented under ST-008 |
+| [Governor examples](examples/governor_policy.json) | 20 outcomes and 32 invalid-score cases | Preserved ST-007 corpus; execution evidence in ST-008 |
+| [Governor review](../reports/ST-007%20governor%20policy%20review.md) | Runtime observations, rationale and verification | Current source behavior separated from policy targets |
+| [Governor implementation](../reports/ST-008%20governor%20implementation.md) | Reachable decisions, revalidation and compatibility | Executed policy evidence; provenance remains separate |
 | [Docspec tasklist](tasklist.md) | TK01-TK18 planning completion | Historical docspec work, not engine completion |
 | [Initial source plan](sourcecode_plan.md) | Eight original slices and later scalar boundaries | Implementation history and traceability |
 | [Changelog](logs/CHANGELOG.md) | Historical documentation changes | Append history; never treat old checks as current |
@@ -123,8 +132,8 @@ module meanings. They differ from the research plan's conceptual MO taxonomy.
 | Source file | Root TODO module | Design contract/gate | Responsibility |
 | --- | --- | --- | --- |
 | [contract_kernel.py](../spinaltap/contract_kernel.py) | MO01 | DC01-DC06 / VG01-VG06 | Records, refusal types, field registry, proof-shape hook |
-| [contract_validation.py](../spinaltap/contract_validation.py) | MO01 | DC01-DC06 / VG01-VG06 | Strict mapping/dataclass ingress |
-| [context_weight.py](../spinaltap/context_weight.py) | MO02 / MG01 | DC01 / VG01 | Source-score policy specimen |
+| [contract_validation.py](../spinaltap/contract_validation.py) | MO01 | DC01-DC06 / VG01-VG06 | Strict envelope registry, migration and explicit legacy ingress |
+| [context_weight.py](../spinaltap/context_weight.py) | MO02 / MG01 | DC01 / VG01 | Minimum-policy evaluation and whole-record revalidation |
 | [time_packet.py](../spinaltap/time_packet.py) | MO03 / MG02 | DC02 / VG02 | Fixed packets and canonical solver steps |
 | [vertebra_delta.py](../spinaltap/vertebra_delta.py) | MO04 / MG04 | DC04 / VG04 | Local scalar proposal validation |
 | [signal_spine.py](../spinaltap/signal_spine.py) | MO05 / MG03 | DC03 / VG03 | Mandatory checks and synchronous hooks |
@@ -139,7 +148,8 @@ module meanings. They differ from the research plan's conceptual MO taxonomy.
 | --- | ---: | --- |
 | [test_contract_kernel.py](../tests/test_contract_kernel.py) | 4 | Field registry and proof-shape refusal |
 | [test_contract_validation.py](../tests/test_contract_validation.py) | 23 | Six ingress schemas and malformed inputs |
-| [test_context_weight_governor.py](../tests/test_context_weight_governor.py) | 2 | Missing source and low originality blocks |
+| [test_contract_versioning.py](../tests/test_contract_versioning.py) | 30 | Exact revisions, wire refusals, nested pins and migration |
+| [test_context_weight_governor.py](../tests/test_context_weight_governor.py) | 15 | Policy corpus, complete revalidation and explicit rescoring |
 | [test_time_packet_pump.py](../tests/test_time_packet_pump.py) | 2 | Expansion and overflow |
 | [test_vertebra_delta_worker.py](../tests/test_vertebra_delta_worker.py) | 2 | Local slice and outside-slice refusal |
 | [test_signal_constraint_spine.py](../tests/test_signal_constraint_spine.py) | 3 | Ordered routing and mutation refusal |
@@ -150,7 +160,8 @@ module meanings. They differ from the research plan's conceptual MO taxonomy.
 | [test_demo.py](../tests/test_demo.py) | 5 | Scripted final state, coupled refusal and CLI |
 | [test_multi_worker_reconciliation.py](../tests/test_multi_worker_reconciliation.py) | 18 | Snapshot, ordering, conflicts and all-or-nothing return |
 
-The 87 methods are a dated baseline count, not a permanent target.
+The original 87 methods, 30 versioning methods and 13 added governor methods
+give 130 runtime methods at ST-008. These are dated counts, not permanent targets.
 [Planning-checker tests](../scripts/tests/test_check_planning.py) exercise the
 documentation workflow separately. [Verifier tests](../scripts/tests/test_verify.py)
 exercise failure propagation, lock drift, discovery and demo validation. See

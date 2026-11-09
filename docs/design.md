@@ -4,9 +4,12 @@ Current scope (2026-11-07): this file owns technical contract meaning and
 the documented scalar runtime boundaries. The [global plan](global_plan.md)
 owns delivery sequencing; [workstream cards](README.md) own current task status.
 The original prototype is implemented only within its stated limits.
-Proof promotion still checks planning text, style still checks nonblank
-strings, and governor aggregation differs from historical FR05. Their policy
-and implementation decisions are tracked explicitly before broader claims.
+Proof promotion still checks planning text and style still checks nonblank
+strings. Their policy and implementation decisions are tracked explicitly
+before broader claims.
+The [2026-11-09 governor decision](decisions/governor_policy.md) selects the
+minimum and explicit outcome boundaries, implemented and verified under
+[ST-008](../reports/ST-008%20governor%20implementation.md).
 
 Direct internal tests establish only their tested behavior. Durable commits,
 concurrent publication, conflict merging and hook isolation require accepted
@@ -85,6 +88,25 @@ Outputs: influence weight, replication risk, and allowed downstream use.
 
 Failure behavior: if originality distance is low, the governor must output
 LOW influence or block model influence [VG01].
+
+The [selected governor policy](decisions/governor_policy.md),
+governor-minimum-v1, makes that behavior precise. Revalidate the complete DC01
+record first; invalid values receive field-path refusals. For valid claims,
+missing attribution blocks with hidden_influence; originality strictly below
+0.20 blocks with low_originality. Otherwise use the minimum of all four scores:
+zero blocks with zero_support, a positive weight below 1 returns down_weight
+with limited_support, and exactly 1 returns allow with none. Recompute derived
+fields without mutating the input or compounding a previous weight.
+
+This retains the historical FR05 minimum and supersedes both its incomplete
+operational rules and the former runtime's mean/allow-only policy.
+[ST-008 evidence](../reports/ST-008%20governor%20implementation.md) records
+the implemented behavior, validation order and preserved historical specimens.
+DC01 revision 1 ingress still validates record structure independently of the
+domain policy; old scored records remain decodable without reinterpretation.
+Evidence names the policy and implementation source separately from the record
+identity. Scores and the retained 0.20 floor are a project rubric, not measured
+originality or verified source provenance.
 
 ### (3.2) Time Packet Pump [MG02]
 
@@ -239,11 +261,45 @@ The ingress rules are:
 
 The style surface, specimen hooks, workers, and spine use this boundary.
 Direct dataclass constructors remain trusted internal APIs; workers and the
-spine revalidate records before acceptance. Other external callers must use
-`parse_contract` before invoking typed modules. Shape validation does not
+spine revalidate records before acceptance. External callers needing version
+guarantees use the envelope boundary below. Shape validation does not
 execute a specimen, establish source authority, or grant publication rights.
 The proof lab also refuses a validation gate that belongs to another reviewed
 contract [VG01], [VG03], [VG06].
+
+#### (4.1.1) Versioned contract ingress
+
+> Goal: [GL04] - DEFINE_DATA_MODEL
+> Dependency: [DP04] - CONTRACT_SET
+> Requirement: [RQ04] - DATA_IS_EXPLICIT
+
+The [ST-005 decision](decisions/contract_identity.md) specifies exact
+(contract, schema_revision) identities and a three-field envelope containing
+contract, schema_revision and payload. Initial selected revisions are 1 for
+DC01-DC06. A DC03 revision 1 envelope pins its DC04 children to revision 1;
+DC04 revision 1 pins its DC02 time packet to revision 1.
+
+parse_contract_envelope returns DecodedContract(identity, record) using the
+exact immutable CONTRACT_SCHEMAS registry. Required field lists, enum
+vocabularies and child pins are fixed for revision 1. Body and nested records
+must be mappings with their own envelopes; trusted dataclasses are accepted
+only by the separate legacy/internal path (and the refusal helper).
+
+migrate_legacy_contract validates a complete legacy record, wraps its nested
+contracts, validates the versioned result and returns a MigratedContract with
+a decoded record and immutable MigrationReceipt. Only the exact reviewed
+d7c789b commit is registered. Source attribution is caller supplied, not
+verified. Missing/unknown revisions, identity mismatches, omitted nullable
+fields and unsupported nested revisions fail without fallback. The complete
+field inventory, error paths and old/current/unknown
+[examples](examples/contract_identity.json) live with the decision;
+[ST-006 evidence](../reports/ST-006%20versioned%20ingress.md) covers execution.
+
+Domain constructors stay trusted and snapshots stay shallow. Evidence must
+distinguish a DC06 record's schema identity from its subject and dependency
+revisions; version metadata alone never proves execution. New normative field,
+type or acceptance meanings require reviewed revisions. JSON Schema export is
+deferred until an external value/serialization profile is specified.
 
 ### (4.2) Fixed-step solver boundary [DC02]
 

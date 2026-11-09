@@ -11,10 +11,10 @@ below are snapshots, not a second mutable backlog.
 > Dependency: [DP04] - CURRENT_SLICE_LIMITS
 > Requirement: [RQ04] - KEEP_PENDING_INTEGRATION_VISIBLE
 
-Next task: ST-005
+Next task: ST-008
 
 Start with
-[ST-005: Specify contract identity and schema evolution](docs/todos/contracts.md#st-005-specify-contract-identity-and-schema-evolution).
+[ST-008: Implement and test the selected governor outcomes](docs/todos/governance.md#st-008-implement-and-test-the-selected-governor-outcomes).
 Its card owns status, scope, dependencies, acceptance and evidence.
 Follow the [development workflow](docs/development_workflow.md), updating this
 pointer when the selected task finishes.

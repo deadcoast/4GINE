@@ -36,7 +36,10 @@ context markers are local to this document.
   revision, environment, command, artifact and review decision. Text-only
   plans cannot satisfy execution. State migration treatment for existing
   records and the evidence-tier vocabulary. Never infer command execution
-  authority from arbitrary plan text.
+  authority from arbitrary plan text. Use the
+  [identity policy](../decisions/contract_identity.md) for distinct record,
+  subject and dependency revisions; do not infer a subject revision from
+  DC06's envelope or relabel legacy evidence as current.
 - Evidence: pending
 
 ### ST-024: Implement evidence records and promotion checks

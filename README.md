@@ -48,8 +48,8 @@ The queue is the sole current next-task pointer. The
 [workflow](docs/development_workflow.md) explains how to keep every change tied
 to its phase, requirements and acceptance evidence.
 
-- Maintain reproducible setup and automate the accepted checks.
-- Resolve proof-state semantics and the governor minimum-versus-mean policy.
+- Maintain reproducible setup and automated checks.
+- Resolve proof-state semantics and source provenance.
 - Add the scoped timing, authority and whole-candidate evidence gates.
 - Replace string-only style descriptions with typed, measurable limits.
 - Define and qualify one interactive 3D application before wider engine work.
@@ -82,18 +82,36 @@ authority is [requirements.md](docs/requirements.md) and
 [contract_kernel.py](spinaltap/contract_kernel.py) defines frozen record fields,
 contract/gate identifiers, refusals and the proof-shape hook.
 [contract_validation.py](spinaltap/contract_validation.py) validates complete
-external mappings and revalidates matching dataclasses. Missing/unknown fields,
+versioned envelopes through parse_contract_envelope. The explicit legacy API,
+parse_contract, still accepts mappings and revalidates matching dataclasses.
+Missing/unknown fields,
 wrong types, booleans used as numbers, nonfinite values and invalid nested
 records receive field-path refusals. Mapping snapshots are shallow. Frozen
 records do not make arbitrary nested values immutable; direct constructors
 remain trusted internal APIs.
 
-[context_weight.py](spinaltap/context_weight.py) blocks missing attribution and
-originality below 0.20, otherwise allowing a clamped arithmetic mean of four
-caller-supplied scores. DOWN_WEIGHT exists but is unreachable. Historical FR05
-specifies their minimum instead. ST-007 resolves that divergence; neither
-formula or threshold has empirical calibration, and a nonblank reference does
-not verify provenance.
+The [contract identity decision](docs/decisions/contract_identity.md) specifies
+exact per-contract revisions, nested identity pins and explicit legacy
+migration. Revision 1 is supported for all six contracts; DC03 pins DC04
+revision 1, which pins DC02 revision 1. migrate_legacy_contract accepts only
+the registered d7c789b baseline and returns a decoded record plus attribution
+receipt. There is no automatic format detection, migration or latest-version
+fallback. See the decision's Python examples and the
+[implementation evidence](reports/ST-006%20versioned%20ingress.md).
+Schema export remains deferred; version metadata does not imply deep
+immutability, verified provenance or executed proof.
+
+[context_weight.py](spinaltap/context_weight.py) implements
+[governor-minimum-v1](docs/decisions/governor_policy.md). It revalidates the
+complete claim, blocks missing attribution or originality below 0.20, then
+uses the minimum of four caller-supplied scores. Zero support blocks, positive
+support below 1 down-weights, and full support allows. Re-evaluation replaces
+prior outputs without mutating the input or compounding the weight.
+The [implementation evidence](reports/ST-008%20governor%20implementation.md)
+records all specified outcomes and malformed-input refusals. The policy and
+threshold remain uncalibrated project rules; a nonblank reference does not
+verify provenance. Historical DC01 results still decode and migrate unchanged
+until explicitly re-evaluated.
 
 [time_packet.py](spinaltap/time_packet.py) validates finite nonnegative elapsed
 time/remainder, a positive fixed size and an integer budget of 1..4096 packets.

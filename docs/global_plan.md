@@ -128,8 +128,9 @@ Admission: P1's reproducible development path before source expansion.
 Independent proof, governor and timing decisions may be drafted while P1
 tooling is prepared. Source work follows the cards' prerequisites.
 
-Resolve the governor minimum-versus-mean divergence without pretending either
-formula is empirically calibrated. Separate proof-plan readiness from executed
+Apply the [selected minimum governor policy](decisions/governor_policy.md)
+without pretending its scores or thresholds are empirically calibrated.
+Separate proof-plan readiness from executed
 evidence. Distinguish caller-declared keys from authorization, and returned
 candidate atomicity from storage durability or callback rollback.
 
@@ -139,6 +140,15 @@ authority and whole-candidate checks have their own refusal evidence. The
 requirement matrix records what is implemented and what remains deferred.
 REQ08/REQ14 remain pending numeric/rendered style qualification in P3/P4;
 acknowledging that gap is not satisfying those requirements.
+
+The [contract identity policy](decisions/contract_identity.md) specifies the
+compatibility boundary for this phase. The
+[versioned ingress evidence](../reports/ST-006%20versioned%20ingress.md)
+covers strict decoding and explicit baseline migration. This bounded evidence
+does not close P2 or the proof, governance and authority workstreams.
+The [governor implementation evidence](../reports/ST-008%20governor%20implementation.md)
+covers reachable minimum-policy decisions and complete input revalidation.
+Source provenance remains a separate requirement owned by ST-009.
 
 Required cards:
 
@@ -281,11 +291,11 @@ Deferred discovery cards:
 > Dependency: [DP02] - GLOBAL_PHASES_AND_CANONICAL_TASK_CARDS
 > Requirement: [RQ02] - TRACE_EVERY_SLICE_TO_ITS_PARENT
 
-| Decision | Current uncertainty | Owning task |
+| Decision | Scope or selected policy | Owning task |
 | --- | --- | --- |
 | Prototype tooling | Python, environment and checkers | ST-001 |
 | Proof lifecycle | Planning-ready versus executed/accepted evidence | ST-023 |
-| Governor policy | Minimum versus mean, threshold and down-weight | ST-007 |
+| Governor policy | [Minimum, retained 0.20 originality floor and explicit outcomes](decisions/governor_policy.md) | ST-007 |
 | Contract evolution | Version identity and compatibility | ST-005 |
 | Time semantics | Backlog, refused steps and replay | ST-010 |
 | State authority | Owner lifecycle and state | ST-013 |
